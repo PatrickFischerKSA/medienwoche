@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Die vierte Gewalt | Lerneinheit</title>
+    <meta
+      name="description"
+      content="Interaktive, GitHub-fähige Lerneinheit zum Dokumentarfilm Die vierte Gewalt von Dieter Fahrer."
+    />
+    <meta name="theme-color" content="#12313a" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Dokumentarfilm und Medienkritik</p>
+          <h1>Die vierte Gewalt</h1>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="reset-progress" type="button" title="Fortschritt zurücksetzen" aria-label="Fortschritt zurücksetzen">↺</button>
+          <button class="text-button" id="export-notes" type="button">Notizen exportieren</button>
+        </div>
+      </header>
+
+      <main class="learning-grid">
+        <section class="video-pane" aria-label="Film">
+          <div class="video-frame">
+            <video id="film" controls preload="metadata" playsinline>
+              <source id="video-source" type="video/mp4" />
+            </video>
+            <div class="video-fallback" id="video-fallback">
+              <p>Falls der Film hier nicht lädt, öffnen Sie ihn direkt über SharePoint.</p>
+              <a id="video-link" target="_blank" rel="noreferrer">Film öffnen</a>
+            </div>
+          </div>
+          <div class="watch-tools">
+            <label for="student-name">Name</label>
+            <input id="student-name" type="text" autocomplete="off" placeholder="Name eintragen" />
+            <label for="time-note">Zeitmarke</label>
+            <input id="time-note" type="text" placeholder="z. B. 12:40" />
+            <button class="text-button" id="save-time-note" type="button">Zeitmarke merken</button>
+          </div>
+          <section class="reflection-panel">
+            <h2>Abschlussreflexion</h2>
+            <div id="reflection-list"></div>
+          </section>
+        </section>
+
+        <aside class="progress-pane" aria-label="Lernweg">
+          <div class="progress-head">
+            <span id="progress-label">0 von 21 beantwortet</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-track"><div id="progress-bar"></div></div>
+          <nav id="phase-nav" class="phase-nav" aria-label="Filmabschnitte"></nav>
+        </aside>
+
+        <section class="task-pane" aria-live="polite">
+          <div class="phase-header">
+            <p class="eyebrow" id="phase-focus"></p>
+            <h2 id="phase-title"></h2>
+          </div>
+          <div id="question-list" class="question-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

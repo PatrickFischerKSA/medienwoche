@@ -1,0 +1,405 @@
+:root {
+  --bg: #eef3f1;
+  --surface: #ffffff;
+  --surface-soft: #f7faf9;
+  --line: #d7e1df;
+  --text: #17252a;
+  --muted: #66777b;
+  --accent: #0e6674;
+  --accent-strong: #12313a;
+  --accent-soft: #d9eef1;
+  --gold: #a66f18;
+  --good: #1f7a4d;
+  --warn: #9b5e00;
+  --shadow: 0 18px 44px rgba(19, 49, 58, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    linear-gradient(180deg, rgba(238, 243, 241, 0.96), rgba(247, 250, 249, 0.98)),
+    repeating-linear-gradient(90deg, rgba(18, 49, 58, 0.04) 0 1px, transparent 1px 72px);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(1500px, calc(100% - 28px));
+  margin: 20px auto 36px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+.top-actions,
+.watch-tools,
+.progress-head,
+.question-meta {
+  display: flex;
+  align-items: center;
+}
+
+.top-actions {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.icon-button,
+.text-button {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--accent-strong);
+  box-shadow: 0 8px 18px rgba(19, 49, 58, 0.06);
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 1.35rem;
+}
+
+.text-button {
+  min-height: 42px;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-weight: 700;
+}
+
+.learning-grid {
+  display: grid;
+  grid-template-columns: minmax(420px, 1.15fr) 280px minmax(360px, 0.95fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.video-pane,
+.progress-pane,
+.task-pane {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.video-pane {
+  overflow: hidden;
+}
+
+.video-frame {
+  position: relative;
+  background: #0a1214;
+  aspect-ratio: 16 / 9;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.video-fallback {
+  position: absolute;
+  inset: auto 16px 16px 16px;
+  display: none;
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.video-fallback.visible {
+  display: block;
+}
+
+.video-fallback p {
+  margin: 0 0 8px;
+}
+
+.video-fallback a {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.watch-tools {
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-soft);
+}
+
+label {
+  font-weight: 800;
+}
+
+input,
+textarea {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  background: #fff;
+}
+
+input {
+  min-height: 42px;
+  padding: 0 12px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 132px;
+  margin-top: 12px;
+  padding: 12px;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.reflection-panel {
+  padding: 18px;
+}
+
+.reflection-list,
+#reflection-list,
+.question-list,
+.phase-nav {
+  display: grid;
+  gap: 12px;
+}
+
+.reflection-item {
+  display: block;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.reflection-item span {
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.45;
+}
+
+.progress-pane {
+  position: sticky;
+  top: 16px;
+  padding: 16px;
+}
+
+.progress-head {
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--accent-strong);
+  font-weight: 800;
+}
+
+.progress-track {
+  height: 10px;
+  margin: 14px 0 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+#progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  transition: width 180ms ease;
+}
+
+.phase-button {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  min-height: 58px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--text);
+  text-align: left;
+}
+
+.phase-button.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.phase-button span,
+.phase-button small {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.phase-button strong {
+  line-height: 1.2;
+}
+
+.task-pane {
+  padding: 18px;
+}
+
+.phase-header {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.question-list {
+  margin-top: 14px;
+}
+
+.question-card {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+.question-meta {
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.question-card label {
+  display: block;
+  line-height: 1.45;
+}
+
+.question-card p,
+.feedback {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.question-card p {
+  margin: 10px 0 0;
+}
+
+.quality {
+  padding: 4px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.quality.empty {
+  color: var(--muted);
+  background: #edf1f0;
+}
+
+.quality.low {
+  color: var(--warn);
+  background: #fff1d8;
+}
+
+.quality.mid {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.quality.high {
+  color: var(--good);
+  background: #dff2e8;
+}
+
+.feedback {
+  margin-top: 8px;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1180px) {
+  .learning-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .task-pane {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 780px) {
+  .app-shell {
+    width: min(100% - 18px, 1500px);
+  }
+
+  .topbar,
+  .learning-grid {
+    display: block;
+  }
+
+  .top-actions {
+    margin-top: 14px;
+  }
+
+  .progress-pane,
+  .task-pane {
+    margin-top: 14px;
+  }
+
+  .progress-pane {
+    position: static;
+  }
+
+  .watch-tools {
+    align-items: stretch;
+  }
+
+  .watch-tools input,
+  .watch-tools .text-button {
+    width: 100%;
+  }
+}
