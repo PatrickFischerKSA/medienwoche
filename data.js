@@ -24,19 +24,19 @@ window.LESSON_DATA = {
       id: "intro-eCD7QwM2SJo",
       title: "Einstieg 1",
       url: "https://www.youtube.com/watch?v=eCD7QwM2SJo",
-      embedUrl: "https://www.youtube-nocookie.com/embed/eCD7QwM2SJo"
+      thumbnailUrl: "https://img.youtube.com/vi/eCD7QwM2SJo/hqdefault.jpg"
     },
     {
       id: "intro-6q7dJdogPqA",
       title: "Einstieg 2",
       url: "https://www.youtube.com/watch?v=6q7dJdogPqA",
-      embedUrl: "https://www.youtube-nocookie.com/embed/6q7dJdogPqA"
+      thumbnailUrl: "https://img.youtube.com/vi/6q7dJdogPqA/hqdefault.jpg"
     },
     {
       id: "intro-i-qSJyyfDnE",
       title: "Einstieg 3",
       url: "https://www.youtube.com/watch?v=i-qSJyyfDnE",
-      embedUrl: "https://www.youtube-nocookie.com/embed/i-qSJyyfDnE"
+      thumbnailUrl: "https://img.youtube.com/vi/i-qSJyyfDnE/hqdefault.jpg"
     }
   ],
   resources: [
@@ -67,7 +67,9 @@ window.LESSON_DATA = {
           question:
             "Beschreiben Sie die Bilder am Anfang des Films und kommentieren Sie das Zitat von Ludwig Hasler.",
           help:
-            "Trennen Sie zuerst Bildbeschreibung und Deutung. Beziehen Sie das Zitat danach auf die Rolle der Medien."
+            "Trennen Sie zuerst Bildbeschreibung und Deutung. Beziehen Sie das Zitat danach auf die Rolle der Medien.",
+          quote:
+            "Ludwig Hasler: «Kommunikation konstituiert Wirklichkeit.»"
         },
         {
           id: "q2",

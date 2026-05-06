@@ -23,6 +23,7 @@ const els = {
   progressPercent: document.getElementById("progress-percent"),
   progressBar: document.getElementById("progress-bar"),
   phaseNav: document.getElementById("phase-nav"),
+  activeFilmPanel: document.getElementById("active-film-panel"),
   phaseFocus: document.getElementById("phase-focus"),
   phaseTitle: document.getElementById("phase-title"),
   questionList: document.getElementById("question-list"),
@@ -81,18 +82,39 @@ function renderProgress() {
 }
 
 function renderPhaseNav() {
-  els.phaseNav.innerHTML = data.phases
-    .map((phase, index) => {
-      const total = phase.questions.length;
-      const done = phase.questions.filter((question) => (state.answers[question.id] || "").trim()).length;
-      const active = phase.id === state.activePhaseId ? "active" : "";
-      const film = (data.films || []).find((entry) => entry.id === phase.filmId);
+  let counter = 0;
+  els.phaseNav.innerHTML = (data.films || [])
+    .map((film) => {
+      const phases = data.phases.filter((phase) => phase.filmId === film.id);
+      const total = phases.flatMap((phase) => phase.questions).length;
+      const done = phases
+        .flatMap((phase) => phase.questions)
+        .filter((question) => (state.answers[question.id] || "").trim()).length;
+      const phaseButtons = phases
+        .map((phase) => {
+          counter += 1;
+          const phaseTotal = phase.questions.length;
+          const phaseDone = phase.questions.filter((question) => (state.answers[question.id] || "").trim()).length;
+          const active = phase.id === state.activePhaseId ? "active" : "";
+          return `
+            <button class="phase-button ${active}" type="button" data-phase-id="${phase.id}">
+              <span>${String(counter).padStart(2, "0")}</span>
+              <strong>${escapeHtml(phase.title)}</strong>
+              <small>${phaseDone}/${phaseTotal}</small>
+            </button>
+          `;
+        })
+        .join("");
+
       return `
-        <button class="phase-button ${active}" type="button" data-phase-id="${phase.id}">
-          <span>${String(index + 1).padStart(2, "0")}</span>
-          <strong>${escapeHtml(phase.title)}<em>${escapeHtml(film?.title || "")}</em></strong>
-          <small>${done}/${total}</small>
-        </button>
+        <section class="phase-group ${film.id === state.activeFilmId ? "active" : ""}">
+          <div class="phase-group-head">
+            <span>${escapeHtml(film.label)}</span>
+            <strong>${escapeHtml(film.title)}</strong>
+            <small>${done}/${total}</small>
+          </div>
+          ${phaseButtons}
+        </section>
       `;
     })
     .join("");
@@ -107,7 +129,7 @@ function renderMediaSwitcher() {
           <button class="media-button" type="button" data-film-id="${film.id}">
             <span>${escapeHtml(film.label)}</span>
             <strong>${escapeHtml(film.title)}</strong>
-            <small>Fragen zu diesem Film anzeigen</small>
+            <small>Fragenblock zu diesem Film auswählen</small>
           </button>
           <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
             Im Mediaserver öffnen und anmelden
@@ -123,7 +145,9 @@ function renderResources() {
     .map(
       (video) => `
         <article class="intro-card">
-          <iframe title="${escapeHtml(video.title)}" src="${escapeHtml(video.embedUrl)}" allowfullscreen loading="lazy"></iframe>
+          <div class="intro-thumb" style="background-image: url('${escapeHtml(video.thumbnailUrl)}')" aria-hidden="true">
+            <span>Video</span>
+          </div>
           <a href="${escapeHtml(video.url)}" target="_blank" rel="noreferrer">${escapeHtml(video.title)} auf YouTube öffnen</a>
         </article>
       `
@@ -143,14 +167,33 @@ function renderResources() {
     .join("");
 }
 
+function renderActiveFilmPanel() {
+  const film = getActiveFilm();
+  const phase = getActivePhase();
+  els.activeFilmPanel.innerHTML = `
+    <div>
+      <p class="eyebrow">Aktueller Arbeitsblock</p>
+      <h2>${escapeHtml(film?.title || "")}</h2>
+      <p>${escapeHtml(phase.title)}: ${escapeHtml(phase.focus)}</p>
+    </div>
+    <a class="text-button strong-link" href="${escapeHtml(film?.url || "#")}" target="_blank" rel="noreferrer">
+      Film im Mediaserver öffnen
+    </a>
+  `;
+}
+
 function renderQuestions() {
   const phase = getActivePhase();
+  const film = getActiveFilm();
   els.phaseFocus.textContent = phase.focus;
-  els.phaseTitle.textContent = phase.title;
+  els.phaseTitle.textContent = `${film?.title || ""}: ${phase.title}`;
   els.questionList.innerHTML = phase.questions
     .map((question) => {
       const answer = state.answers[question.id] || "";
       const quality = getAnswerQuality(answer);
+      const quote = question.quote
+        ? `<blockquote class="quote-box">${escapeHtml(question.quote)}</blockquote>`
+        : "";
       return `
         <article class="question-card">
           <div class="question-meta">
@@ -158,6 +201,7 @@ function renderQuestions() {
             <span class="quality ${quality.className}">${quality.label}</span>
           </div>
           <label for="${question.id}">${escapeHtml(question.question)}</label>
+          ${quote}
           <p>${escapeHtml(question.help)}</p>
           <textarea id="${question.id}" data-question-id="${question.id}" rows="6" placeholder="Antwort, Beobachtungen und Filmbelege hier notieren">${escapeHtml(answer)}</textarea>
           <div class="feedback">${escapeHtml(quality.hint)}</div>
@@ -187,6 +231,7 @@ function render() {
   renderResources();
   renderProgress();
   renderPhaseNav();
+  renderActiveFilmPanel();
   renderQuestions();
   renderReflections();
 }
