@@ -119,6 +119,9 @@ h2 {
   grid-template-columns: minmax(360px, 470px) minmax(0, 1fr);
   gap: 18px;
   align-items: start;
+  grid-template-areas:
+    "progress tasks"
+    "materials tasks";
 }
 
 .video-pane,
@@ -131,19 +134,16 @@ h2 {
 }
 
 .video-pane {
-  grid-column: 1;
-  grid-row: 2;
+  grid-area: materials;
   overflow: hidden;
 }
 
 .progress-pane {
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: progress;
 }
 
 .task-pane {
-  grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-area: tasks;
 }
 
 .watch-tools,
