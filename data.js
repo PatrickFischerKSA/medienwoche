@@ -52,6 +52,12 @@ window.LESSON_DATA = {
       type: "Training",
       url: "https://www.teilenoderloeschen.ch/",
       description: "Interaktives Training zum Prüfen und Einordnen von Online-Inhalten."
+    },
+    {
+      title: "RTS: ergänzendes Videomaterial",
+      type: "Vertiefung",
+      url: "https://www.rts.ch/play/tv/-/video/-?urn=urn:rts:video:c63c8585-e0d1-3a82-ad35-8d75ed0d31ac",
+      description: "Zusätzliche französischsprachige Perspektive für die Medienkompetenzarbeit."
     }
   ],
   phases: [
