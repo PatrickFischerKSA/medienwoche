@@ -58,6 +58,12 @@ window.LESSON_DATA = {
       type: "Vertiefung",
       url: "https://www.rts.ch/play/tv/-/video/-?urn=urn:rts:video:c63c8585-e0d1-3a82-ad35-8d75ed0d31ac",
       description: "Zusätzliche französischsprachige Perspektive für die Medienkompetenzarbeit."
+    },
+    {
+      title: "RTS: 19h30 und Tagesschau im Sprachwechsel",
+      type: "Gegenstück",
+      url: "https://www.rts.ch/info/suisse/2025/article/changement-de-langue-ce-soir-avec-le-19h30-en-allemand-et-le-tagesschau-en-francais-29069600.html",
+      description: "Artikel zum Sprachwechsel zwischen RTS und SRF als Gegenstück zur deutschsprachigen Perspektive."
     }
   ],
   phases: [
