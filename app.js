@@ -3,6 +3,7 @@ const storageKey = "vierte-gewalt-lerneinheit-v1";
 
 const state = {
   activePhaseId: data.phases[0].id,
+  activeFilmId: data.films?.[0]?.id || "vierte-gewalt",
   studentName: "",
   answers: {},
   reflections: {},
@@ -14,6 +15,9 @@ const els = {
   videoSource: document.getElementById("video-source"),
   videoLink: document.getElementById("video-link"),
   videoFallback: document.getElementById("video-fallback"),
+  mediaSwitcher: document.getElementById("media-switcher"),
+  introGrid: document.getElementById("intro-grid"),
+  resourceList: document.getElementById("resource-list"),
   studentName: document.getElementById("student-name"),
   timeNote: document.getElementById("time-note"),
   saveTimeNote: document.getElementById("save-time-note"),
@@ -58,6 +62,10 @@ function getActivePhase() {
   return data.phases.find((phase) => phase.id === state.activePhaseId) || data.phases[0];
 }
 
+function getActiveFilm() {
+  return (data.films || []).find((film) => film.id === state.activeFilmId) || data.films?.[0] || null;
+}
+
 function getAnswerQuality(text = "") {
   const clean = text.trim();
   const words = clean.split(/\s+/).filter(Boolean).length;
@@ -82,14 +90,54 @@ function renderPhaseNav() {
       const total = phase.questions.length;
       const done = phase.questions.filter((question) => (state.answers[question.id] || "").trim()).length;
       const active = phase.id === state.activePhaseId ? "active" : "";
+      const film = (data.films || []).find((entry) => entry.id === phase.filmId);
       return `
         <button class="phase-button ${active}" type="button" data-phase-id="${phase.id}">
           <span>${String(index + 1).padStart(2, "0")}</span>
-          <strong>${escapeHtml(phase.title)}</strong>
+          <strong>${escapeHtml(phase.title)}<em>${escapeHtml(film?.title || "")}</em></strong>
           <small>${done}/${total}</small>
         </button>
       `;
     })
+    .join("");
+}
+
+function renderMediaSwitcher() {
+  els.mediaSwitcher.innerHTML = (data.films || [])
+    .map((film) => {
+      const active = film.id === state.activeFilmId ? "active" : "";
+      return `
+        <button class="media-button ${active}" type="button" data-film-id="${film.id}">
+          <span>${escapeHtml(film.label)}</span>
+          <strong>${escapeHtml(film.title)}</strong>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function renderResources() {
+  els.introGrid.innerHTML = (data.introVideos || [])
+    .map(
+      (video) => `
+        <article class="intro-card">
+          <iframe title="${escapeHtml(video.title)}" src="${escapeHtml(video.embedUrl)}" allowfullscreen loading="lazy"></iframe>
+          <a href="${escapeHtml(video.url)}" target="_blank" rel="noreferrer">${escapeHtml(video.title)} auf YouTube öffnen</a>
+        </article>
+      `
+    )
+    .join("");
+
+  els.resourceList.innerHTML = (data.resources || [])
+    .map(
+      (resource) => `
+        <a class="resource-link" href="${escapeHtml(resource.url)}" target="_blank" rel="noreferrer">
+          <span>${escapeHtml(resource.type)}</span>
+          <strong>${escapeHtml(resource.title)}</strong>
+          <small>${escapeHtml(resource.description)}</small>
+        </a>
+      `
+    )
     .join("");
 }
 
@@ -133,6 +181,8 @@ function renderReflections() {
 
 function render() {
   els.studentName.value = state.studentName || "";
+  renderMediaSwitcher();
+  renderResources();
   renderProgress();
   renderPhaseNav();
   renderQuestions();
@@ -188,7 +238,23 @@ function bindEvents() {
     const button = event.target.closest("[data-phase-id]");
     if (!button) return;
     state.activePhaseId = button.dataset.phaseId;
+    const phase = getActivePhase();
+    if (phase.filmId && phase.filmId !== state.activeFilmId) {
+      state.activeFilmId = phase.filmId;
+      initVideo();
+    }
     save();
+    render();
+  });
+
+  els.mediaSwitcher.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-film-id]");
+    if (!button) return;
+    state.activeFilmId = button.dataset.filmId;
+    const firstPhase = data.phases.find((phase) => phase.filmId === state.activeFilmId);
+    if (firstPhase) state.activePhaseId = firstPhase.id;
+    save();
+    initVideo();
     render();
   });
 
@@ -242,9 +308,12 @@ function bindEvents() {
 }
 
 function initVideo() {
-  els.videoSource.src = data.videoUrl;
-  els.videoLink.href = data.videoUrl;
-  els.videoLink.textContent = "Film in SharePoint öffnen";
+  const film = getActiveFilm();
+  const url = film?.url || data.videoUrl;
+  els.videoSource.src = url;
+  els.videoLink.href = url;
+  els.videoLink.textContent = `${film?.title || "Film"} in SharePoint öffnen`;
+  els.videoFallback.classList.remove("visible");
   els.film.load();
   els.film.addEventListener("error", () => {
     els.videoFallback.classList.add("visible");

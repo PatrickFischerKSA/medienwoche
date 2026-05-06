@@ -1,11 +1,63 @@
 window.LESSON_DATA = {
-  title: "Die vierte Gewalt",
-  subtitle: "Interaktive Lerneinheit zum Dokumentarfilm von Dieter Fahrer",
+  title: "Journalismus, Fake News und Medienkritik",
+  subtitle: "Interaktive Lerneinheit zu «Die vierte Gewalt» und «Tausend Zeilen»",
   videoUrl:
     "https://srza.sharepoint.com/:v:/r/sites/srzamedia/FilmeSRZA/Die%20vierte%20Gewalt.mp4?csf=1&web=1&e=ENZZFe&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
+  films: [
+    {
+      id: "vierte-gewalt",
+      title: "Die vierte Gewalt",
+      label: "Dokumentarfilm",
+      url:
+        "https://srza.sharepoint.com/:v:/r/sites/srzamedia/FilmeSRZA/Die%20vierte%20Gewalt.mp4?csf=1&web=1&e=ENZZFe&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+    },
+    {
+      id: "tausend-zeilen",
+      title: "Tausend Zeilen",
+      label: "Spielfilm",
+      url:
+        "https://srza.sharepoint.com/sites/srzamedia/_layouts/15/stream.aspx?id=%2Fsites%2Fsrzamedia%2FFilmeSRZA%2FTausend%20Zeilen%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ea691b447%2D31cc%2D4a29%2D854d%2D5e0302691873"
+    }
+  ],
+  introVideos: [
+    {
+      id: "intro-eCD7QwM2SJo",
+      title: "Einstieg 1",
+      url: "https://www.youtube.com/watch?v=eCD7QwM2SJo",
+      embedUrl: "https://www.youtube-nocookie.com/embed/eCD7QwM2SJo"
+    },
+    {
+      id: "intro-6q7dJdogPqA",
+      title: "Einstieg 2",
+      url: "https://www.youtube.com/watch?v=6q7dJdogPqA",
+      embedUrl: "https://www.youtube-nocookie.com/embed/6q7dJdogPqA"
+    },
+    {
+      id: "intro-i-qSJyyfDnE",
+      title: "Einstieg 3",
+      url: "https://www.youtube.com/watch?v=i-qSJyyfDnE",
+      embedUrl: "https://www.youtube-nocookie.com/embed/i-qSJyyfDnE"
+    }
+  ],
+  resources: [
+    {
+      title: "SRF School: Was sind Fake News?",
+      type: "Hintergrund",
+      url:
+        "https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1",
+      description: "Grundlagenmaterial zu Fake News und Medienkompetenz."
+    },
+    {
+      title: "Teilen oder löschen?",
+      type: "Training",
+      url: "https://www.teilenoderloeschen.ch/",
+      description: "Interaktives Training zum Prüfen und Einordnen von Online-Inhalten."
+    }
+  ],
   phases: [
     {
       id: "auftakt",
+      filmId: "vierte-gewalt",
       title: "Auftakt und Zeitungskultur",
       focus: "Bilder, Zitat, persönliche Medienbiografie",
       questions: [
@@ -28,6 +80,7 @@ window.LESSON_DATA = {
     },
     {
       id: "bund-watson",
+      filmId: "vierte-gewalt",
       title: "Bund und Watson",
       focus: "Redaktionsalltag zwischen Zeitung und digitalem News-Groove",
       questions: [
@@ -59,6 +112,7 @@ window.LESSON_DATA = {
     },
     {
       id: "radio-lokal",
+      filmId: "vierte-gewalt",
       title: "Radio SRF und Lokaljournalismus",
       focus: "Selbstverständnis, Recherche, Gespräch und Motivation",
       questions: [
@@ -90,6 +144,7 @@ window.LESSON_DATA = {
     },
     {
       id: "wandel",
+      filmId: "vierte-gewalt",
       title: "Wandel der Medienarbeit",
       focus: "Online-Druck, Planung, Framing und Social Media",
       questions: [
@@ -136,6 +191,7 @@ window.LESSON_DATA = {
     },
     {
       id: "oekonomie",
+      filmId: "vierte-gewalt",
       title: "Ökonomie, Klicks und Werbung",
       focus: "US-Wahl, Bonuslogik, Native Ads und journalistische Grenzen",
       questions: [
@@ -166,6 +222,7 @@ window.LESSON_DATA = {
     },
     {
       id: "republik-zukunft",
+      filmId: "vierte-gewalt",
       title: "Kontrapunkte und Zukunft",
       focus: "Republik, Tageszeitungen, Umzug, Aufgaben des Journalismus",
       questions: [
@@ -210,11 +267,121 @@ window.LESSON_DATA = {
             "Formulieren Sie eine knappe Schlussdiagnose zur Medienlandschaft."
         }
       ]
+    },
+    {
+      id: "tausend-zeilen-auftakt",
+      filmId: "tausend-zeilen",
+      title: "«Tausend Zeilen»: Fiktion und Realität",
+      focus: "Selbstbild, Beruf, Internet und erfundene Wirklichkeit",
+      questions: [
+        {
+          id: "tz1",
+          type: "Deuten",
+          question:
+            "Interpretieren Sie die einleitende Bemerkung. In welchem Verhältnis sollen Fiktion und Realität zueinander stehen?",
+          help:
+            "Klären Sie, ob der Film Wirklichkeit nur abbildet, überzeichnet oder kritisch nachstellt."
+        },
+        {
+          id: "tz2",
+          type: "Figurenprofil",
+          question:
+            "Wie stellt sich Juan Romero selber vor? Was sagt seine Tochter zum Beruf ihres Vaters? Welche Rolle spielt das Internet?",
+          help:
+            "Achten Sie auf Selbstbild, Fremdbild in der Familie und digitale Recherche- oder Öffentlichkeitsräume."
+        },
+        {
+          id: "tz3",
+          type: "Redaktionsgefüge",
+          question:
+            "Wie beschreibt Romero die «Chronik»? Wer ist Lars Bogenius? Wer sind Habicht und Eichner? Mit welchen Stories ist Bogenius bekannt geworden?",
+          help:
+            "Erstellen Sie ein kurzes Beziehungsnetz: Redaktion, Starautor, Chefs und Erfolgslogik."
+        }
+      ]
+    },
+    {
+      id: "tausend-zeilen-recherche",
+      filmId: "tausend-zeilen",
+      title: "Recherche, Story und Verdacht",
+      focus: "Arbeitsweisen im Vergleich und erste Zweifel",
+      questions: [
+        {
+          id: "tz4",
+          type: "Handlungsanalyse",
+          question:
+            "Wie wird Romero in eine Geschichte mit Bogenius hineingezogen? Wie wirkt der Chef Habicht der «Chronik»?",
+          help:
+            "Beschreiben Sie, wie Autorität, Erwartungsdruck und redaktionelle Hierarchie sichtbar werden."
+        },
+        {
+          id: "tz5",
+          type: "Vergleich",
+          question: "Wie «recherchiert» Bogenius? Wie arbeitet Romero?",
+          help:
+            "Stellen Sie Inszenierung, Kontrolle, Quellenarbeit, Zweifel und Genauigkeit gegenüber."
+        },
+        {
+          id: "tz6",
+          type: "Redaktionskultur",
+          question:
+            "Wie verläuft die Programmsitzung bei der «Chronik»? Wie wird der Kollege mit dem Parteitag abgewatscht? Wie wird die Geschichte von Romero zu Ende erzählt? Wie unterscheidet sich Romero von den anderen Journalisten?",
+          help:
+            "Achten Sie auf Ton, Konkurrenz, Story-Wert und Romeros Berufsethos."
+        },
+        {
+          id: "tz7",
+          type: "Misstrauen begründen",
+          question:
+            "Wie verläuft der Schreibprozess an der Titelgeschichte von Romero und Bogenius weiter? Weswegen wird Romero misstrauisch?",
+          help:
+            "Notieren Sie konkrete Auslöser des Verdachts und unterscheiden Sie Gefühl von überprüfbarem Beleg."
+        }
+      ]
+    },
+    {
+      id: "tausend-zeilen-entlarvung",
+      filmId: "tausend-zeilen",
+      title: "Entlarvung und Systemkritik",
+      focus: "Dokumentation, Karriere, Chefebene und Medienimage",
+      questions: [
+        {
+          id: "tz8",
+          type: "Belege prüfen",
+          question:
+            "Welche Geschichte tischt Lars Bogenius auf? Welche Fragen hat Romero? Welche Erwartungen hat Habicht? Wie rechtfertigt sich Bogenius? Was ist die Dokumentation? Wie geht Romero vor? Was kriegt Bogenius mit und was tut er damit?",
+          help:
+            "Ordnen Sie die vielen Teilfragen in drei Spalten: Behauptung, Prüfung, Reaktion."
+        },
+        {
+          id: "tz9",
+          type: "Karriere und Zweifel",
+          question:
+            "Wie entwickelt sich Bogenius’ Karriere weiter? Was wird aus Romeros Fragen? Wie kann er seine Zweifel belegen?",
+          help:
+            "Zeigen Sie, wie Erfolg die Überprüfung erschwert oder verzögert."
+        },
+        {
+          id: "tz10",
+          type: "Medienbild interpretieren",
+          question: "Interpretieren Sie in diesem Kontext den «Chronik»-Werbefilm.",
+          help:
+            "Vergleichen Sie das Selbstbild der Redaktion mit dem, was die Handlung über journalistische Praxis zeigt."
+        },
+        {
+          id: "tz11",
+          type: "Konsequenzen",
+          question:
+            "Wie widerlegt Romero Bogenius’ Geschichte? Welche Reaktionen löst dies auf der Chefebene aus?",
+          help:
+            "Beschreiben Sie Beweisführung, institutionelle Abwehr und mögliche Folgen für Glaubwürdigkeit."
+        }
+      ]
     }
   ],
   reflectionPrompts: [
-    "Welche Form von Journalismus wirkt im Film besonders glaubwürdig? Begründen Sie mit zwei Beispielen.",
-    "Wo zeigt der Film Konflikte zwischen Geschwindigkeit, Reichweite und Sorgfalt?",
-    "Welche Frage an die Zukunft der Medien bleibt nach dem Film offen?"
+    "Welche Form von Journalismus wirkt in den Materialien besonders glaubwürdig? Begründen Sie mit zwei Beispielen.",
+    "Wo zeigen die Filme Konflikte zwischen Geschwindigkeit, Reichweite, Storytelling und Sorgfalt?",
+    "Welche Strategien helfen Ihnen konkret, Fake News oder manipulatives Storytelling zu erkennen?"
   ]
 };

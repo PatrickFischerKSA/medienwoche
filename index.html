@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Die vierte Gewalt | Lerneinheit</title>
+    <title>Journalismus und Fake News | Lerneinheit</title>
     <meta
       name="description"
-      content="Interaktive, GitHub-fähige Lerneinheit zum Dokumentarfilm Die vierte Gewalt von Dieter Fahrer."
+      content="Interaktive, GitHub-fähige Lerneinheit zu Journalismus, Fake News, Die vierte Gewalt und Tausend Zeilen."
     />
     <meta name="theme-color" content="#12313a" />
     <link rel="stylesheet" href="styles.css" />
@@ -16,7 +16,7 @@
       <header class="topbar">
         <div>
           <p class="eyebrow">Dokumentarfilm und Medienkritik</p>
-          <h1>Die vierte Gewalt</h1>
+          <h1>Journalismus und Fake News</h1>
         </div>
         <div class="top-actions">
           <button class="icon-button" id="reset-progress" type="button" title="Fortschritt zurücksetzen" aria-label="Fortschritt zurücksetzen">↺</button>
@@ -26,6 +26,7 @@
 
       <main class="learning-grid">
         <section class="video-pane" aria-label="Film">
+          <div class="media-switcher" id="media-switcher"></div>
           <div class="video-frame">
             <video id="film" controls preload="metadata" playsinline>
               <source id="video-source" type="video/mp4" />
@@ -42,6 +43,14 @@
             <input id="time-note" type="text" placeholder="z. B. 12:40" />
             <button class="text-button" id="save-time-note" type="button">Zeitmarke merken</button>
           </div>
+          <section class="resource-panel">
+            <h2>Einstieg</h2>
+            <div class="intro-grid" id="intro-grid"></div>
+          </section>
+          <section class="resource-panel">
+            <h2>Ressourcen</h2>
+            <div class="resource-list" id="resource-list"></div>
+          </section>
           <section class="reflection-panel">
             <h2>Abschlussreflexion</h2>
             <div id="reflection-list"></div>

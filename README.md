@@ -1,11 +1,14 @@
-# Die vierte Gewalt | Interaktive Lerneinheit
+# Journalismus, Fake News und Medienkritik | Interaktive Lerneinheit
 
-Statische, GitHub-fähige Lerneinheit zum Dokumentarfilm **Die vierte Gewalt** von Dieter Fahrer.
+Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen**, Fake News und journalistischer Medienkritik.
 
 ## Inhalt
 
-- eingebetteter SharePoint-Film mit Direktlink als Fallback
-- 21 Fragen aus dem bereitgestellten PDF, in sechs Filmabschnitte gegliedert
+- zwei eingebettete SharePoint-Filme mit Direktlink als Fallback
+- drei YouTube-Videos als Einstieg in die ganze Einheit
+- SRF-School-Link und `teilenoderloeschen.ch` als Ressourcenbereich
+- 21 Fragen zu **Die vierte Gewalt**, in sechs Filmabschnitte gegliedert
+- 11 Fragen zu **Tausend Zeilen**, in drei Filmabschnitte gegliedert
 - lokale Speicherung von Antworten im Browser
 - Fortschrittsanzeige pro Abschnitt und für die gesamte Einheit
 - Zeitmarkenfeld für Filmbeobachtungen
@@ -16,7 +19,7 @@ Statische, GitHub-fähige Lerneinheit zum Dokumentarfilm **Die vierte Gewalt** v
 
 - `index.html` enthält die Seitenstruktur
 - `styles.css` definiert das responsive Layout
-- `data.js` enthält Film-Link, Abschnitte und Fragen
+- `data.js` enthält Film-Links, Einstiegsclips, Ressourcen, Abschnitte und Fragen
 - `app.js` rendert Aufgaben, speichert Fortschritt und exportiert Notizen
 - `.github/workflows/pages.yml` kann die Einheit über GitHub Pages veröffentlichen
 
@@ -24,7 +27,7 @@ Statische, GitHub-fähige Lerneinheit zum Dokumentarfilm **Die vierte Gewalt** v
 
 Die Einheit ist ohne Build-Schritt lauffähig. Lokal kann `index.html` direkt im Browser geöffnet werden. Für GitHub Pages genügt ein Repository mit diesen Dateien.
 
-Der Film liegt nicht im Repository, sondern wird über den bereitgestellten SharePoint-Link eingebunden. Je nach Rechteverwaltung müssen Lernende beim Öffnen im Browser mit dem Schul-Account angemeldet sein.
+Die Filme liegen nicht im Repository, sondern werden über die bereitgestellten SharePoint-Links eingebunden. Je nach Rechteverwaltung müssen Lernende beim Öffnen im Browser mit dem Schul-Account angemeldet sein.
 
 ## GitHub Pages
 
@@ -32,4 +35,4 @@ Nach dem Push auf `main` kann GitHub Pages über den enthaltenen Workflow deploy
 
 ## Materialgrundlage
 
-Die Fragen stammen aus der bereitgestellten Datei `Fragen zum Film Die vierte Gewalt.pdf` und wurden didaktisch in Filmabschnitte, Hilfetexte und Reflexionsschritte übertragen.
+Die Fragen stammen aus den bereitgestellten Dateien `Fragen zum Film Die vierte Gewalt.pdf` und `Fragen zum Film «Tausend Zeilen».docx` und wurden didaktisch in Filmabschnitte, Hilfetexte und Reflexionsschritte übertragen.
