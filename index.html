@@ -25,24 +25,7 @@
       </header>
 
       <main class="learning-grid">
-        <section class="video-pane" aria-label="Film">
-          <div class="media-switcher" id="media-switcher"></div>
-          <div class="video-frame">
-            <video id="film" controls preload="metadata" playsinline>
-              <source id="video-source" type="video/mp4" />
-            </video>
-            <div class="video-fallback" id="video-fallback">
-              <p>Falls der Film hier nicht lädt, öffnen Sie ihn direkt über SharePoint.</p>
-              <a id="video-link" target="_blank" rel="noreferrer">Film öffnen</a>
-            </div>
-          </div>
-          <div class="watch-tools">
-            <label for="student-name">Name</label>
-            <input id="student-name" type="text" autocomplete="off" placeholder="Name eintragen" />
-            <label for="time-note">Zeitmarke</label>
-            <input id="time-note" type="text" placeholder="z. B. 12:40" />
-            <button class="text-button" id="save-time-note" type="button">Zeitmarke merken</button>
-          </div>
+        <section class="video-pane" aria-label="Materialien">
           <section class="resource-panel">
             <h2>Einstieg</h2>
             <div class="intro-grid" id="intro-grid"></div>
@@ -51,6 +34,20 @@
             <h2>Ressourcen</h2>
             <div class="resource-list" id="resource-list"></div>
           </section>
+          <section class="film-panel">
+            <div>
+              <p class="eyebrow">Filme im Mediaserver</p>
+              <h2>Einloggen und Film öffnen</h2>
+            </div>
+            <div class="media-switcher" id="media-switcher"></div>
+          </section>
+          <div class="watch-tools">
+            <label for="student-name">Name</label>
+            <input id="student-name" type="text" autocomplete="off" placeholder="Name eintragen" />
+            <label for="time-note">Zeitmarke</label>
+            <input id="time-note" type="text" placeholder="z. B. 12:40" />
+            <button class="text-button" id="save-time-note" type="button">Zeitmarke merken</button>
+          </div>
           <section class="reflection-panel">
             <h2>Abschlussreflexion</h2>
             <div id="reflection-list"></div>

@@ -4,7 +4,7 @@ Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen
 
 ## Inhalt
 
-- zwei eingebettete SharePoint-Filme mit Direktlink als Fallback
+- zwei Filmzugänge über den SharePoint-/Mediaserver-Login
 - drei YouTube-Videos als Einstieg in die ganze Einheit
 - SRF-School-Link und `teilenoderloeschen.ch` als Ressourcenbereich
 - 21 Fragen zu **Die vierte Gewalt**, in sechs Filmabschnitte gegliedert
@@ -27,7 +27,7 @@ Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen
 
 Die Einheit ist ohne Build-Schritt lauffähig. Lokal kann `index.html` direkt im Browser geöffnet werden. Für GitHub Pages genügt ein Repository mit diesen Dateien.
 
-Die Filme liegen nicht im Repository, sondern werden über die bereitgestellten SharePoint-Links eingebunden. Je nach Rechteverwaltung müssen Lernende beim Öffnen im Browser mit dem Schul-Account angemeldet sein.
+Die Filme liegen nicht im Repository, sondern werden über die bereitgestellten SharePoint-/Mediaserver-Links geöffnet. Je nach Rechteverwaltung müssen Lernende beim Öffnen im Browser mit dem Schul-Account angemeldet sein.
 
 ## GitHub Pages
 

@@ -11,10 +11,6 @@ const state = {
 };
 
 const els = {
-  film: document.getElementById("film"),
-  videoSource: document.getElementById("video-source"),
-  videoLink: document.getElementById("video-link"),
-  videoFallback: document.getElementById("video-fallback"),
   mediaSwitcher: document.getElementById("media-switcher"),
   introGrid: document.getElementById("intro-grid"),
   resourceList: document.getElementById("resource-list"),
@@ -107,10 +103,16 @@ function renderMediaSwitcher() {
     .map((film) => {
       const active = film.id === state.activeFilmId ? "active" : "";
       return `
-        <button class="media-button ${active}" type="button" data-film-id="${film.id}">
-          <span>${escapeHtml(film.label)}</span>
-          <strong>${escapeHtml(film.title)}</strong>
-        </button>
+        <article class="media-card ${active}">
+          <button class="media-button" type="button" data-film-id="${film.id}">
+            <span>${escapeHtml(film.label)}</span>
+            <strong>${escapeHtml(film.title)}</strong>
+            <small>Fragen zu diesem Film anzeigen</small>
+          </button>
+          <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
+            Im Mediaserver öffnen und anmelden
+          </a>
+        </article>
       `;
     })
     .join("");
@@ -241,7 +243,6 @@ function bindEvents() {
     const phase = getActivePhase();
     if (phase.filmId && phase.filmId !== state.activeFilmId) {
       state.activeFilmId = phase.filmId;
-      initVideo();
     }
     save();
     render();
@@ -254,7 +255,6 @@ function bindEvents() {
     const firstPhase = data.phases.find((phase) => phase.filmId === state.activeFilmId);
     if (firstPhase) state.activePhaseId = firstPhase.id;
     save();
-    initVideo();
     render();
   });
 
@@ -307,20 +307,6 @@ function bindEvents() {
   });
 }
 
-function initVideo() {
-  const film = getActiveFilm();
-  const url = film?.url || data.videoUrl;
-  els.videoSource.src = url;
-  els.videoLink.href = url;
-  els.videoLink.textContent = `${film?.title || "Film"} in SharePoint öffnen`;
-  els.videoFallback.classList.remove("visible");
-  els.film.load();
-  els.film.addEventListener("error", () => {
-    els.videoFallback.classList.add("visible");
-  });
-}
-
 load();
-initVideo();
 bindEvents();
 render();

@@ -9,7 +9,7 @@ window.LESSON_DATA = {
       title: "Die vierte Gewalt",
       label: "Dokumentarfilm",
       url:
-        "https://srza.sharepoint.com/:v:/r/sites/srzamedia/FilmeSRZA/Die%20vierte%20Gewalt.mp4?csf=1&web=1&e=ENZZFe&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
+        "https://srza.sharepoint.com/sites/srzamedia/_layouts/15/stream.aspx?id=%2Fsites%2Fsrzamedia%2FFilmeSRZA%2FDie%20vierte%20Gewalt%2Emp4"
     },
     {
       id: "tausend-zeilen",
