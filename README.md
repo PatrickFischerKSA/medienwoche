@@ -1,6 +1,6 @@
 # Journalismus, Fake News und Medienkritik | Interaktive Lerneinheit
 
-Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen**, Fake News und journalistischer Medienkritik.
+Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen**, Fake News, journalistischer Medienkritik und einer eigenen kurzen Videoreportage.
 
 ## Inhalt
 
@@ -9,6 +9,7 @@ Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen
 - SRF-School-Link und `teilenoderloeschen.ch` als Ressourcenbereich
 - 21 Fragen zu **Die vierte Gewalt**, in sechs Filmabschnitte gegliedert
 - 11 Fragen zu **Tausend Zeilen**, in drei Filmabschnitte gegliedert
+- Selbstlerneinheit für eine eigene Videoreportage von ca. 5 Minuten
 - lokale Speicherung von Antworten im Browser
 - Fortschrittsanzeige pro Abschnitt und für die gesamte Einheit
 - Zeitmarkenfeld für Filmbeobachtungen

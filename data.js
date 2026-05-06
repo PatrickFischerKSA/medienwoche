@@ -17,6 +17,13 @@ window.LESSON_DATA = {
       label: "Spielfilm",
       url:
         "https://srza.sharepoint.com/sites/srzamedia/_layouts/15/stream.aspx?id=%2Fsites%2Fsrzamedia%2FFilmeSRZA%2FTausend%20Zeilen%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ea691b447%2D31cc%2D4a29%2D854d%2D5e0302691873"
+    },
+    {
+      id: "videoreportage",
+      title: "Eigene Videoreportage",
+      label: "Projekt",
+      url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
+      linkLabel: "Vorbild öffnen"
     }
   ],
   introVideos: [
@@ -64,6 +71,42 @@ window.LESSON_DATA = {
       type: "Gegenstück",
       url: "https://www.rts.ch/info/suisse/2025/article/changement-de-langue-ce-soir-avec-le-19h30-en-allemand-et-le-tagesschau-en-francais-29069600.html",
       description: "Artikel zum Sprachwechsel zwischen RTS und SRF als Gegenstück zur deutschsprachigen Perspektive."
+    },
+    {
+      title: "Vorbild: kurze Videoreportage",
+      type: "Projekt",
+      url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
+      description: "Beispielvideo als Orientierung für Aufbau, Bildsprache, Tempo und Erzählhaltung der eigenen Reportage."
+    },
+    {
+      title: "Reportage-Konzept schreiben",
+      type: "Theorie",
+      url: "https://www.newsonvideo.at/reportage-konzept-schreiben/",
+      description: "Grundlagen zu Konzeptentwicklung, Recherche, Struktur, Spannungsbogen und authentischen Bildern."
+    },
+    {
+      title: "Kurzformat-Storytelling",
+      type: "Theorie",
+      url: "https://www.newsonvideo.at/storytelling-lernen-mit-kurzformat-stortelling-ueberzeugen/",
+      description: "Hinweise dazu, wie kurze Videos schnell Aufmerksamkeit gewinnen, Spannung aufbauen und Emotionen wecken."
+    },
+    {
+      title: "Heldenreise als Story-Modell",
+      type: "Theorie",
+      url: "https://www.newsonvideo.at/storytelling-heldenreise-business-storytelling-fur-dein-unternehmen/",
+      description: "Dramaturgisches Modell für eine nachvollziehbare Entwicklung: Ausgangslage, Herausforderung, Wandel."
+    },
+    {
+      title: "Storytelling-Psychologie",
+      type: "Theorie",
+      url: "https://www.newsonvideo.at/storytelling-psychologie-wie-geschichten-wirken/",
+      description: "Warum Geschichten durch Emotionen, Identifikation und Erinnerung wirken."
+    },
+    {
+      title: "Storytelling-Beispielvideo",
+      type: "Theorie",
+      url: "https://www.youtube.com/watch?v=ec7YRbsJazE",
+      description: "Zusätzliches Video zur Frage, wie Geschichten in kurzen Formaten überzeugend erzählt werden."
     }
   ],
   phases: [
@@ -389,6 +432,134 @@ window.LESSON_DATA = {
             "Wie widerlegt Romero Bogenius’ Geschichte? Welche Reaktionen löst dies auf der Chefebene aus?",
           help:
             "Beschreiben Sie Beweisführung, institutionelle Abwehr und mögliche Folgen für Glaubwürdigkeit."
+        }
+      ]
+    },
+    {
+      id: "videoreportage-analyse",
+      filmId: "videoreportage",
+      title: "Vorbild analysieren",
+      focus: "Wie eine kurze Reportage Aufmerksamkeit, Nähe und Orientierung erzeugt",
+      questions: [
+        {
+          id: "vr1",
+          type: "Vorbild untersuchen",
+          question:
+            "Schauen Sie das Vorbildvideo an. Welche ersten 20 Sekunden ziehen Aufmerksamkeit auf sich? Beschreiben Sie Bild, Ton, Frage oder Konflikt.",
+          help:
+            "Notieren Sie genau, womit das Video einsteigt: Szene, Aussage, Problem, starke Figur oder überraschende Information."
+        },
+        {
+          id: "vr2",
+          type: "Story-Bausteine",
+          question:
+            "Welche Figur, welches Thema oder welcher Konflikt trägt die Reportage? Formulieren Sie den roten Faden in einem Satz.",
+          help:
+            "Eine gute Kurzreportage ist keine Sammlung von Bildern. Sie braucht eine klare Frage, eine Entwicklung und eine erkennbare Perspektive."
+        },
+        {
+          id: "vr3",
+          type: "Wirkung prüfen",
+          question:
+            "Wo arbeitet das Vorbild mit Emotion, Authentizität oder Nähe? Welche filmischen Mittel erzeugen diese Wirkung?",
+          help:
+            "Achten Sie auf O-Töne, Beobachtungen, Musik, Schnitte, Kameradistanz, Details und Momente, in denen Menschen konkret handeln."
+        }
+      ]
+    },
+    {
+      id: "videoreportage-konzept",
+      filmId: "videoreportage",
+      title: "Konzept für 5 Minuten",
+      focus: "Thema, Recherche, Zielgruppe, Leitfrage und Dramaturgie planen",
+      questions: [
+        {
+          id: "vr4",
+          type: "Thema festlegen",
+          question:
+            "Wählen Sie ein Thema für eine eigene Videoreportage von etwa 5 Minuten. Welche konkrete Leitfrage soll die Reportage beantworten?",
+          help:
+            "Die Leitfrage muss filmisch beobachtbar sein. Beispiele: Wie verändert ein neues Medium unseren Schulalltag? Wie entsteht Vertrauen in Nachrichten?"
+        },
+        {
+          id: "vr5",
+          type: "Rechercheplan",
+          question:
+            "Welche drei Quellen, Orte oder Personen müssen Sie recherchieren, damit die Reportage glaubwürdig wird?",
+          help:
+            "Planen Sie mindestens eine menschliche Stimme, eine beobachtbare Situation und eine überprüfbare Hintergrundinformation."
+        },
+        {
+          id: "vr6",
+          type: "Dramaturgie",
+          question:
+            "Skizzieren Sie den Spannungsbogen: Einstieg, Problem, Rechercheweg, Wendepunkt und Schlussgedanke.",
+          help:
+            "Orientieren Sie sich am Reportage-Konzept: klare Struktur, roter Faden, authentische Bilder und ein Schluss, der die Leitfrage beantwortet."
+        }
+      ]
+    },
+    {
+      id: "videoreportage-dreh",
+      filmId: "videoreportage",
+      title: "Drehplan und Storyboard",
+      focus: "Bilder, O-Töne, Off-Text und Schnittstruktur konkretisieren",
+      questions: [
+        {
+          id: "vr7",
+          type: "Storyboard",
+          question:
+            "Erstellen Sie eine Szenenliste für ungefähr 5 Minuten: Welche 8 bis 12 Einstellungen brauchen Sie zwingend?",
+          help:
+            "Denken Sie in Bildern: Totale zur Orientierung, Nahaufnahme für Details, Handlung im Moment, Interviewausschnitt, Schnittbilder."
+        },
+        {
+          id: "vr8",
+          type: "Interview und O-Ton",
+          question:
+            "Formulieren Sie fünf Interviewfragen. Welche zwei O-Töne wären ideal, damit die Reportage lebendig und glaubwürdig wird?",
+          help:
+            "Gute Fragen öffnen Erzählungen. Vermeiden Sie Ja/Nein-Fragen und fragen Sie nach konkreten Situationen, Entscheidungen und Beispielen."
+        },
+        {
+          id: "vr9",
+          type: "Off-Text",
+          question:
+            "Schreiben Sie einen kurzen Off-Text für den Anfang und den Schluss Ihrer Reportage.",
+          help:
+            "Der Off-Text soll orientieren, nicht alles erklären. Kurze Sätze, klare Begriffe und Raum für Bilder."
+        }
+      ]
+    },
+    {
+      id: "videoreportage-abgabe",
+      filmId: "videoreportage",
+      title: "Produktion und Selbstcheck",
+      focus: "Fertige Reportage prüfen, verbessern und reflektieren",
+      questions: [
+        {
+          id: "vr10",
+          type: "Schnittcheck",
+          question:
+            "Prüfen Sie den Rohschnitt: Versteht man die Leitfrage nach 20 Sekunden und bleibt sie bis zum Schluss erkennbar?",
+          help:
+            "Wenn nicht, kürzen Sie den Einstieg oder setzen Sie früher eine klare Frage, eine Aussage oder eine beobachtbare Situation."
+        },
+        {
+          id: "vr11",
+          type: "Qualitätsraster",
+          question:
+            "Bewerten Sie Ihre Reportage selbst: Recherche, roter Faden, Bild-Ton-Verhältnis, O-Töne, journalistische Sorgfalt und Wirkung.",
+          help:
+            "Geben Sie jedem Bereich 1 bis 5 Punkte und notieren Sie eine konkrete Verbesserung vor der Abgabe."
+        },
+        {
+          id: "vr12",
+          type: "Abgabe",
+          question:
+            "Formulieren Sie einen Titel, eine zweizeilige Beschreibung und eine Quellenliste für Ihre fertige Videoreportage.",
+          help:
+            "Zur Abgabe gehören Video, Titel, Kurzbeschreibung, verwendete Quellen und eine kurze Reflexion zur eigenen journalistischen Entscheidung."
         }
       ]
     }

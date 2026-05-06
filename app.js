@@ -132,7 +132,7 @@ function renderMediaSwitcher() {
             <small>Fragenblock zu diesem Film auswählen</small>
           </button>
           <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
-            Im Mediaserver öffnen und anmelden
+            ${escapeHtml(film.linkLabel || "Im Mediaserver öffnen und anmelden")}
           </a>
         </article>
       `;
@@ -177,7 +177,7 @@ function renderActiveFilmPanel() {
       <p>${escapeHtml(phase.title)}: ${escapeHtml(phase.focus)}</p>
     </div>
     <a class="text-button strong-link" href="${escapeHtml(film?.url || "#")}" target="_blank" rel="noreferrer">
-      Film im Mediaserver öffnen
+      ${escapeHtml(film?.linkLabel || "Film im Mediaserver öffnen")}
     </a>
   `;
 }
