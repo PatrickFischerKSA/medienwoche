@@ -160,11 +160,11 @@ function renderPhaseNav() {
 
       return `
         <section class="phase-group ${film.id === state.activeFilmId ? "active" : ""}">
-          <div class="phase-group-head">
+          <button class="phase-group-head" type="button" data-film-id="${film.id}">
             <span>${escapeHtml(film.label)}</span>
             <strong>${escapeHtml(film.title)}</strong>
             <small>${done}/${total}</small>
-          </div>
+          </button>
           ${phaseButtons}
         </section>
       `;
@@ -412,6 +412,16 @@ function exportText() {
 
 function bindEvents() {
   els.phaseNav.addEventListener("click", (event) => {
+    const filmButton = event.target.closest("[data-film-id]");
+    if (filmButton && !event.target.closest("[data-phase-id]")) {
+      state.activeFilmId = filmButton.dataset.filmId;
+      const firstPhase = data.phases.find((phase) => phase.filmId === state.activeFilmId);
+      if (firstPhase) state.activePhaseId = firstPhase.id;
+      save();
+      render();
+      return;
+    }
+
     const button = event.target.closest("[data-phase-id]");
     if (!button) return;
     state.activePhaseId = button.dataset.phaseId;
