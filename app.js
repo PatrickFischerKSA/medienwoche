@@ -453,7 +453,7 @@ function renderQuestions() {
     .join("");
   const loginPanel = canWork
     ? ""
-    : `<section class="station-panel"><p class="eyebrow">Login erforderlich</p><strong>Tragen Sie links Ihren Namen ein. Lehrpersonen verwenden das Format LP_Vorname.</strong></section>`;
+    : `<section class="station-panel"><p class="eyebrow">Login erforderlich</p><strong>Tragen Sie links Ihren Namen ein und bestätigen Sie mit Einloggen.</strong></section>`;
   els.questionList.insertAdjacentHTML("afterbegin", `${loginPanel}${anchorPanel}${reflectionPanel}`);
 }
 
