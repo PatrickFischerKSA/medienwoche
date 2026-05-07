@@ -1,7 +1,7 @@
 :root {
   --bg: #eef3f1;
-  --surface: rgba(255, 255, 255, 0.42);
-  --surface-soft: rgba(247, 250, 249, 0.22);
+  --surface: rgba(255, 255, 255, 0.16);
+  --surface-soft: rgba(247, 250, 249, 0.04);
   --line: #d7e1df;
   --text: #17252a;
   --muted: #66777b;
@@ -215,19 +215,19 @@ h2 {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
   backdrop-filter: blur(14px) saturate(1.12);
 }
 
 .media-card.active {
   border-color: var(--accent);
-  background: rgba(217, 238, 241, 0.34);
+  background: rgba(217, 238, 241, 0.18);
 }
 
 .media-card.project-card {
   border-color: rgba(166, 111, 24, 0.42);
-  background: rgba(255, 248, 232, 0.28);
+  background: rgba(255, 248, 232, 0.14);
 }
 
 .media-card.project-card .media-link {
@@ -287,6 +287,58 @@ h2 {
   text-decoration: none;
 }
 
+.toc-details {
+  border-top: 1px solid rgba(215, 225, 223, 0.7);
+  padding-top: 8px;
+}
+
+.toc-details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.toc-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.toc-button {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  min-height: 38px;
+  padding: 7px 8px;
+  border: 1px solid rgba(215, 225, 223, 0.78);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  text-align: left;
+  backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.toc-button.active {
+  border-color: var(--accent);
+  background: rgba(217, 238, 241, 0.22);
+}
+
+.toc-button span,
+.toc-button small {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.toc-button strong {
+  font-size: 0.82rem;
+  line-height: 1.18;
+}
+
 label {
   font-weight: 800;
 }
@@ -296,7 +348,7 @@ textarea {
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
   backdrop-filter: blur(12px) saturate(1.08);
 }
@@ -450,6 +502,10 @@ textarea {
   overflow: auto;
 }
 
+.progress-pane .phase-nav {
+  display: none;
+}
+
 .progress-head {
   justify-content: space-between;
   gap: 12px;
@@ -594,7 +650,7 @@ textarea {
   margin-bottom: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(217, 238, 241, 0.28);
+  background: rgba(217, 238, 241, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(14px) saturate(1.1);
 }
@@ -637,7 +693,7 @@ textarea {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(12px) saturate(1.08);
 }
@@ -675,7 +731,7 @@ textarea {
   padding: 14px 16px;
   border-left: 5px solid var(--accent);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(12px) saturate(1.08);
   color: var(--accent-strong);
@@ -691,7 +747,7 @@ textarea {
   padding: 12px;
   border: 1px solid rgba(14, 102, 116, 0.2);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(12px) saturate(1.08);
 }
@@ -703,7 +759,7 @@ textarea {
   padding: 12px;
   border: 1px solid rgba(31, 122, 77, 0.24);
   border-radius: 8px;
-  background: rgba(223, 242, 232, 0.22);
+  background: rgba(223, 242, 232, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(12px) saturate(1.08);
 }

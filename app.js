@@ -134,42 +134,7 @@ function renderProgress() {
 }
 
 function renderPhaseNav() {
-  let counter = 0;
-  els.phaseNav.innerHTML = (data.films || [])
-    .map((film) => {
-      const phases = data.phases.filter((phase) => phase.filmId === film.id);
-      const total = phases.flatMap((phase) => phase.questions).length;
-      const done = phases
-        .flatMap((phase) => phase.questions)
-        .filter((question) => (state.answers[question.id] || "").trim()).length;
-      const phaseButtons = phases
-        .map((phase) => {
-          counter += 1;
-          const phaseTotal = phase.questions.length;
-          const phaseDone = phase.questions.filter((question) => (state.answers[question.id] || "").trim()).length;
-          const active = phase.id === state.activePhaseId ? "active" : "";
-          return `
-            <button class="phase-button ${active}" type="button" data-phase-id="${phase.id}">
-              <span>${String(counter).padStart(2, "0")}</span>
-              <strong>${escapeHtml(phase.title)}</strong>
-              <small>${phaseDone}/${phaseTotal}</small>
-            </button>
-          `;
-        })
-        .join("");
-
-      return `
-        <section class="phase-group ${film.id === state.activeFilmId ? "active" : ""}">
-          <button class="phase-group-head" type="button" data-film-id="${film.id}">
-            <span>${escapeHtml(film.label)}</span>
-            <strong>${escapeHtml(film.title)}</strong>
-            <small>${done}/${total}</small>
-          </button>
-          ${phaseButtons}
-        </section>
-      `;
-    })
-    .join("");
+  els.phaseNav.innerHTML = "";
 }
 
 function renderMediaSwitcher() {
@@ -178,6 +143,21 @@ function renderMediaSwitcher() {
       const active = film.id === state.activeFilmId ? "active" : "";
       const phases = data.phases.filter((phase) => phase.filmId === film.id);
       const questionCount = phases.flatMap((phase) => phase.questions).length;
+      const toc = phases
+        .map((phase) => {
+          const index = data.phases.findIndex((entry) => entry.id === phase.id) + 1;
+          const phaseDone = phase.questions.filter((question) => (state.answers[question.id] || "").trim()).length;
+          const phaseTotal = phase.questions.length;
+          const phaseActive = phase.id === state.activePhaseId ? "active" : "";
+          return `
+            <button class="toc-button ${phaseActive}" type="button" data-phase-id="${phase.id}">
+              <span>${String(index).padStart(2, "0")}</span>
+              <strong>${escapeHtml(phase.title)}</strong>
+              <small>${phaseDone}/${phaseTotal}</small>
+            </button>
+          `;
+        })
+        .join("");
       return `
         <article class="media-card ${active} ${film.id === "videoreportage" ? "project-card" : ""}">
           <button class="media-button" type="button" data-film-id="${film.id}">
@@ -190,6 +170,10 @@ function renderMediaSwitcher() {
           <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
             ${escapeHtml(film.linkLabel || "Im Mediaserver öffnen und anmelden")}
           </a>
+          <details class="toc-details" ${film.id === state.activeFilmId ? "open" : ""}>
+            <summary>Inhaltsverzeichnis</summary>
+            <div class="toc-list">${toc}</div>
+          </details>
         </article>
       `;
     })
@@ -434,6 +418,16 @@ function bindEvents() {
   });
 
   els.mediaSwitcher.addEventListener("click", (event) => {
+    const phaseButton = event.target.closest("[data-phase-id]");
+    if (phaseButton) {
+      state.activePhaseId = phaseButton.dataset.phaseId;
+      const phase = getActivePhase();
+      if (phase.filmId) state.activeFilmId = phase.filmId;
+      save();
+      render();
+      return;
+    }
+
     const button = event.target.closest("[data-film-id]");
     if (!button) return;
     state.activeFilmId = button.dataset.filmId;
@@ -449,7 +443,7 @@ function bindEvents() {
     state.answers[textarea.dataset.questionId] = textarea.value;
     save();
     renderProgress();
-    renderPhaseNav();
+    renderMediaSwitcher();
     const card = textarea.closest(".question-card");
     const question = allQuestions().find((entry) => entry.id === textarea.dataset.questionId) || {};
     const quality = getKnowledgeQuality(textarea.value, question);
