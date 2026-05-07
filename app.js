@@ -17,6 +17,7 @@ const els = {
   introGrid: document.getElementById("intro-grid"),
   resourceList: document.getElementById("resource-list"),
   studentName: document.getElementById("student-name"),
+  applyLogin: document.getElementById("apply-login"),
   timeNote: document.getElementById("time-note"),
   saveTimeNote: document.getElementById("save-time-note"),
   resetProgress: document.getElementById("reset-progress"),
@@ -44,6 +45,15 @@ function load() {
 function save() {
   localStorage.setItem(storageKey, JSON.stringify(state));
   saveProfile();
+}
+
+function clearWorkState() {
+  state.activePhaseId = data.phases[0].id;
+  state.activeFilmId = data.films?.[0]?.id || "vierte-gewalt";
+  state.answers = {};
+  state.checks = {};
+  state.reflections = {};
+  state.timeNotes = [];
 }
 
 function isTeacherLogin(name = "") {
@@ -97,6 +107,37 @@ function loadProfile(name) {
   state.checks = profile.checks || {};
   state.reflections = profile.reflections || {};
   state.timeNotes = profile.timeNotes || [];
+}
+
+function applyLogin() {
+  const nextName = els.studentName.value.trim();
+  if (!nextName) return;
+
+  const currentName = state.studentName.trim();
+  if (currentName && currentName !== nextName && !isTeacherLogin(currentName)) {
+    saveProfile();
+  }
+
+  if (isTeacherLogin(nextName)) {
+    clearWorkState();
+    state.studentName = nextName;
+    save();
+    render();
+    return;
+  }
+
+  const profiles = getProfiles();
+  if (profiles[nextName]) {
+    loadProfile(nextName);
+  } else if (currentName !== nextName) {
+    clearWorkState();
+    state.studentName = nextName;
+  } else {
+    state.studentName = nextName;
+  }
+
+  save();
+  render();
 }
 
 function escapeHtml(value = "") {
@@ -579,28 +620,19 @@ function bindEvents() {
   });
 
   els.studentName.addEventListener("input", () => {
-    state.studentName = els.studentName.value;
-    renderTeacherDashboard();
+    const name = els.studentName.value.trim();
+    if (isTeacherLogin(name)) {
+      state.studentName = name;
+      renderTeacherDashboard();
+    }
   });
 
-  els.studentName.addEventListener("change", () => {
-    const name = els.studentName.value.trim();
-    if (!name) return;
-    saveProfile();
-    if (isTeacherLogin(name)) {
-      state.activePhaseId = data.phases[0].id;
-      state.activeFilmId = data.films?.[0]?.id || "vierte-gewalt";
-      state.answers = {};
-      state.checks = {};
-      state.reflections = {};
-      state.timeNotes = [];
-    } else {
-      loadProfile(name);
-    }
-    state.studentName = name;
-    save();
-    render();
+  els.studentName.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") applyLogin();
   });
+
+  els.studentName.addEventListener("change", applyLogin);
+  els.applyLogin.addEventListener("click", applyLogin);
 
   els.saveTimeNote.addEventListener("click", () => {
     const value = els.timeNote.value.trim();
@@ -647,13 +679,8 @@ function bindEvents() {
       delete profiles[state.studentName];
       setProfiles(profiles);
     }
-    state.activePhaseId = data.phases[0].id;
-    state.activeFilmId = data.films?.[0]?.id || "vierte-gewalt";
+    clearWorkState();
     state.studentName = "";
-    state.answers = {};
-    state.checks = {};
-    state.reflections = {};
-    state.timeNotes = [];
     save();
     render();
   });
