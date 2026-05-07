@@ -1,7 +1,7 @@
 :root {
   --bg: #eef3f1;
-  --surface: rgba(255, 255, 255, 0.84);
-  --surface-soft: rgba(247, 250, 249, 0.78);
+  --surface: rgba(255, 255, 255, 0.64);
+  --surface-soft: rgba(247, 250, 249, 0.48);
   --line: #d7e1df;
   --text: #17252a;
   --muted: #66777b;
@@ -94,7 +94,7 @@ button {
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(18px) saturate(1.12);
 }
 
 .eyebrow {
@@ -215,17 +215,19 @@ h2 {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+  backdrop-filter: blur(14px) saturate(1.12);
 }
 
 .media-card.active {
   border-color: var(--accent);
-  background: var(--accent-soft);
+  background: rgba(217, 238, 241, 0.54);
 }
 
 .media-card.project-card {
   border-color: rgba(166, 111, 24, 0.42);
-  background: rgba(255, 248, 232, 0.78);
+  background: rgba(255, 248, 232, 0.52);
 }
 
 .media-card.project-card .media-link {
@@ -294,7 +296,9 @@ textarea {
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 input {
@@ -340,6 +344,8 @@ textarea {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 .intro-thumb {
@@ -404,6 +410,8 @@ textarea {
   border-radius: 8px;
   color: var(--text);
   background: var(--surface-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
   text-decoration: none;
 }
 
@@ -469,7 +477,9 @@ textarea {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 .phase-group.active {
@@ -517,14 +527,14 @@ textarea {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--surface-soft);
+  background: rgba(247, 250, 249, 0.46);
   color: var(--text);
   text-align: left;
 }
 
 .phase-button.active {
   border-color: var(--accent);
-  background: var(--accent-soft);
+  background: rgba(217, 238, 241, 0.56);
 }
 
 .phase-button span,
@@ -559,7 +569,9 @@ textarea {
   margin-bottom: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(217, 238, 241, 0.82);
+  background: rgba(217, 238, 241, 0.52);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(14px) saturate(1.1);
 }
 
 .active-film-panel p:not(.eyebrow) {
@@ -591,6 +603,8 @@ textarea {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 .knowledge-panel,
@@ -598,7 +612,9 @@ textarea {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 .knowledge-panel ul {
@@ -634,7 +650,9 @@ textarea {
   padding: 14px 16px;
   border-left: 5px solid var(--accent);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
   color: var(--accent-strong);
   font-size: 1.05rem;
   font-weight: 800;
@@ -648,7 +666,9 @@ textarea {
   padding: 12px;
   border: 1px solid rgba(14, 102, 116, 0.2);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 .concept-feedback {
@@ -658,7 +678,9 @@ textarea {
   padding: 12px;
   border: 1px solid rgba(31, 122, 77, 0.24);
   border-radius: 8px;
-  background: rgba(223, 242, 232, 0.62);
+  background: rgba(223, 242, 232, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 .concept-head,

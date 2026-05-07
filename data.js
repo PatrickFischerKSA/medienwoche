@@ -26,7 +26,7 @@ window.LESSON_DATA = {
       label: "Projekt",
       description: "Eigenständige Praxiseinheit: Sie entwickeln, drehen, schneiden und reflektieren eine Reportage von etwa fünf Minuten.",
       url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
-      linkLabel: "Vorbild öffnen"
+      linkLabel: "Reportage von SRF Impact öffnen"
     }
   ],
   introVideos: [
@@ -82,7 +82,7 @@ window.LESSON_DATA = {
       description: "Artikel zum Sprachwechsel zwischen RTS und SRF als Gegenstück zur deutschsprachigen Perspektive."
     },
     {
-      title: "Vorbild: kurze Videoreportage",
+      title: "Reportage von SRF Impact",
       type: "Projekt",
       url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
       description: "Beispielvideo als Orientierung für Aufbau, Bildsprache, Tempo und Erzählhaltung der eigenen Reportage."
@@ -465,20 +465,20 @@ window.LESSON_DATA = {
     {
       id: "videoreportage-briefing",
       filmId: "videoreportage",
-      title: "1. Briefing und Vorbild",
+      title: "1. Briefing und Reportage von SRF Impact",
       focus: "Projektauftrag, Beispielreportage und Reportageprinzip verstehen",
       anchors: [
         "Eine Reportage ist keine Themenpräsentation, sondern eine geführte Beobachtung: Sie beantwortet eine Leitfrage mit Szenen, O-Tönen und überprüfbaren Informationen.",
         "Für fünf Minuten brauchen Sie einen engen Fokus: eine Hauptfrage, wenige Orte, klare Hauptpersonen und Bilder, die wirklich etwas zeigen.",
-        "Feedback-Ziel dieser Station: Nach dem Vorbildvideo «Vorbild: kurze Videoreportage» müssen Sie benennen können, welche Wirkung Ihre eigene Reportage erzeugen soll."
+        "Feedback-Ziel dieser Station: Nach der Reportage von SRF Impact müssen Sie benennen können, welche Wirkung Ihre eigene Reportage erzeugen soll."
       ],
-      reflection: "Welche Szene aus dem Vorbild bleibt hängen, und warum wirkt sie stärker als eine bloße Erklärung?",
+      reflection: "Welche Szene aus der Reportage von SRF Impact bleibt hängen, und warum wirkt sie stärker als eine bloße Erklärung?",
       questions: [
         {
           id: "vr1",
-          type: "Vorbildanalyse",
+          type: "Beispielreportage analysieren",
           question:
-            "Schauen Sie die Ressource «Vorbild: kurze Videoreportage» an. Zerlegen Sie die ersten 30 Sekunden minutiös: erstes Bild, erster Ton, erste Information, erste offene Frage.",
+            "Schauen Sie die Ressource «Reportage von SRF Impact» an. Zerlegen Sie die ersten 30 Sekunden minutiös: erstes Bild, erster Ton, erste Information, erste offene Frage.",
           help:
             "Erstellen Sie vier kurze Notizen. Ziel ist nicht Inhaltsangabe, sondern zu verstehen, wie Einstieg und Aufmerksamkeit gebaut werden.",
           checklist: ["Erstes Bild benannt", "Erster Ton/O-Ton benannt", "Konflikt oder Leitfrage erkannt", "Wirkung in einem Satz erklärt"]
