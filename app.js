@@ -52,6 +52,19 @@ function escapeHtml(value = "") {
     .replaceAll("'", "&#39;");
 }
 
+function normalizeText(value = "") {
+  return String(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/ß/g, "ss")
+    .replace(/[„“"']/g, "")
+    .replace(/[-–—_/]/g, " ")
+    .replace(/[.,;:!?()[\]{}]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function allQuestions() {
   return data.phases.flatMap((phase) => phase.questions);
 }
@@ -71,6 +84,37 @@ function getAnswerQuality(text = "") {
   if (words < 18) return { label: "knapp", className: "low", hint: "Ergänzen Sie mindestens einen konkreten Filmbeleg." };
   if (words < 45) return { label: "solide", className: "mid", hint: "Gut. Eine Deutung oder ein Vergleich würde die Antwort stärken." };
   return { label: "ausgeführt", className: "high", hint: "Ausführlich beantwortet. Prüfen Sie noch, ob Filmbelege und eigenes Urteil klar getrennt sind." };
+}
+
+function evaluateConcepts(answer = "", question = {}) {
+  const groups = question.conceptGroups || [];
+  const normalizedAnswer = normalizeText(answer);
+  if (!groups.length) return { hits: [], missing: [], total: 0, done: 0 };
+
+  const hits = [];
+  const missing = [];
+  groups.forEach((group) => {
+    const matched = (group.variants || []).some((variant) => normalizedAnswer.includes(normalizeText(variant)));
+    if (matched) hits.push(group.label);
+    else missing.push(group.label);
+  });
+
+  return { hits, missing, total: groups.length, done: hits.length };
+}
+
+function getKnowledgeQuality(answer = "", question = {}) {
+  const concepts = evaluateConcepts(answer, question);
+  if (!concepts.total) return getAnswerQuality(answer);
+  if (!answer.trim()) {
+    return { label: "offen", className: "empty", hint: "Noch keine Antwort gespeichert." };
+  }
+  if (concepts.done === concepts.total) {
+    return { label: "korrekt", className: "high", hint: "Alle erwarteten Wissensanker sind enthalten." };
+  }
+  if (concepts.done >= Math.ceil(concepts.total * 0.6)) {
+    return { label: "teilweise", className: "mid", hint: "Mehrere Wissensanker sind enthalten. Ergänzen Sie die fehlenden Punkte." };
+  }
+  return { label: "unvollständig", className: "low", hint: "Es fehlen noch zentrale Wissensanker. Nutzen Sie die Hinweise unter dem Antwortfeld." };
 }
 
 function getChecklistStatus(question) {
@@ -221,8 +265,9 @@ function renderQuestions() {
   els.questionList.innerHTML = phase.questions
     .map((question) => {
       const answer = state.answers[question.id] || "";
-      const quality = getAnswerQuality(answer);
+      const quality = getKnowledgeQuality(answer, question);
       const checklistStatus = getChecklistStatus(question);
+      const concepts = evaluateConcepts(answer, question);
       const quote = question.quote
         ? `<blockquote class="quote-box">${escapeHtml(question.quote)}</blockquote>`
         : "";
@@ -247,6 +292,26 @@ function renderQuestions() {
           </div>
         `
         : "";
+      const conceptFeedback = concepts.total
+        ? `
+          <div class="concept-feedback" data-concept-feedback="${question.id}">
+            <div class="concept-head">
+              <strong>Sofortkorrektur Wissensanker</strong>
+              <span>${concepts.done}/${concepts.total}</span>
+            </div>
+            <div class="concept-columns">
+              <div>
+                <span class="concept-label">Erkannt</span>
+                <p>${concepts.hits.length ? concepts.hits.map(escapeHtml).join(", ") : "noch keine erwarteten Konzepte erkannt"}</p>
+              </div>
+              <div>
+                <span class="concept-label">Fehlt noch</span>
+                <p>${concepts.missing.length ? concepts.missing.map(escapeHtml).join(", ") : "nichts"}</p>
+              </div>
+            </div>
+          </div>
+        `
+        : "";
       return `
         <article class="question-card">
           <div class="question-meta">
@@ -257,6 +322,7 @@ function renderQuestions() {
           ${quote}
           <p>${escapeHtml(question.help)}</p>
           <textarea id="${question.id}" data-question-id="${question.id}" rows="6" placeholder="Antwort, Beobachtungen und Filmbelege hier notieren">${escapeHtml(answer)}</textarea>
+          ${conceptFeedback}
           ${checklist}
           <div class="feedback">${escapeHtml(quality.hint)}</div>
         </article>
@@ -309,6 +375,11 @@ function exportText() {
       if ((question.checklist || []).length) {
         const status = getChecklistStatus(question);
         lines.push(`Feedback-Checkliste: ${status.done}/${status.total}`);
+      }
+      if ((question.conceptGroups || []).length) {
+        const concepts = evaluateConcepts(state.answers[question.id] || "", question);
+        lines.push(`Sofortkorrektur Wissensanker: ${concepts.done}/${concepts.total}`);
+        if (concepts.missing.length) lines.push(`Fehlt noch: ${concepts.missing.join(", ")}`);
       }
     });
     lines.push("");
@@ -370,10 +441,19 @@ function bindEvents() {
     renderProgress();
     renderPhaseNav();
     const card = textarea.closest(".question-card");
-    const quality = getAnswerQuality(textarea.value);
+    const question = allQuestions().find((entry) => entry.id === textarea.dataset.questionId) || {};
+    const quality = getKnowledgeQuality(textarea.value, question);
+    const concepts = evaluateConcepts(textarea.value, question);
     card.querySelector(".quality").className = `quality ${quality.className}`;
     card.querySelector(".quality").textContent = quality.label;
     card.querySelector(".feedback").textContent = quality.hint;
+    const conceptBox = card.querySelector("[data-concept-feedback]");
+    if (conceptBox && concepts.total) {
+      conceptBox.querySelector(".concept-head span").textContent = `${concepts.done}/${concepts.total}`;
+      const paragraphs = conceptBox.querySelectorAll(".concept-columns p");
+      paragraphs[0].textContent = concepts.hits.length ? concepts.hits.join(", ") : "noch keine erwarteten Konzepte erkannt";
+      paragraphs[1].textContent = concepts.missing.length ? concepts.missing.join(", ") : "nichts";
+    }
   });
 
   els.questionList.addEventListener("change", (event) => {

@@ -1,4 +1,4 @@
-# Journalismus, Fake News und Medienkritik | Interaktive Lerneinheit
+# Medienwoche: Filme, Fake News und Videoreportage | Interaktive Lerneinheit
 
 Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen**, Fake News, journalistischer Medienkritik und einer eigenen kurzen Videoreportage.
 

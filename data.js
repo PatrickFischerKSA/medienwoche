@@ -1,6 +1,6 @@
 window.LESSON_DATA = {
-  title: "Journalismus, Fake News und Medienkritik",
-  subtitle: "Drei Einheiten: Medienanalyse, Fake News und eigene Videoreportage",
+  title: "Medienwoche: Filme, Fake News und Videoreportage",
+  subtitle: "Drei Einheiten: Medienanalyse, Quellenkritik und eigenes Praxisprojekt",
   videoUrl:
     "https://srza.sharepoint.com/:v:/r/sites/srzamedia/FilmeSRZA/Die%20vierte%20Gewalt.mp4?csf=1&web=1&e=ENZZFe&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
   films: [
@@ -788,3 +788,181 @@ window.LESSON_DATA = {
     "Welche Strategien helfen Ihnen konkret, Fake News oder manipulatives Storytelling zu erkennen?"
   ]
 };
+
+(function attachKnowledgeChecks() {
+  const checks = {
+    q12: [
+      ["Framing", "frame", "deutungsrahmen", "rahmung", "einordnung", "perspektive"],
+      ["Auswahl", "auswählen", "gewichtung", "akzent", "fokus", "themensetzung"],
+      ["Debatte", "nationalratsdebatte", "masseneinwanderungsinitiative", "argumente", "politische kommunikation"]
+    ],
+    q16: [
+      ["Werbung", "anzeige", "advertising", "sponsoring", "bezahlter inhalt"],
+      ["journalistisches Umfeld", "redaktionell", "artikel", "redaktion", "layout", "look"],
+      ["Problem", "kennzeichnung", "transparenz", "vermischung", "glaubwürdigkeit", "interessenkonflikt"]
+    ],
+    vr1: [
+      ["erstes Bild", "anfangsbild", "erste einstellung", "bild"],
+      ["erster Ton", "ton", "o-ton", "originalton", "musik", "atmo"],
+      ["offene Frage", "leitfrage", "frage", "konflikt", "problem"],
+      ["Wirkung", "aufmerksamkeit", "spannung", "nähe", "neugier"]
+    ],
+    vr2: [
+      ["Videopodcast", "video podcast", "seriell", "episode", "format"],
+      ["Reportage-Konzept", "reportagekonzept", "konzept", "recherche", "exposé", "treatment"],
+      ["Kurzformat-Storytelling", "kurzformat", "storytelling", "roter faden", "dramaturgie"],
+      ["Beobachtung", "beobachten", "szene", "situation", "handlung"],
+      ["O-Ton", "o ton", "originalton", "interview", "aussage"],
+      ["Abgrenzung", "erklärvideo", "vortrag", "präsentation", "unterschied"]
+    ],
+    vr3: [
+      ["Verstehensziel", "verstanden", "information", "erkennen", "wissen"],
+      ["Bildziel", "gesehen", "bild", "szene", "beobachtung"],
+      ["Wirkungsziel", "gefühlt", "wirkung", "emotion", "haltung"]
+    ],
+    vr4: [
+      ["enges Thema", "eingegrenzt", "fokus", "konkret"],
+      ["Leitfrage", "frage", "hauptfrage"],
+      ["beobachtbar", "filmisch", "sichtbar", "szene"]
+    ],
+    vr5: [
+      ["Person", "protagonist", "interview", "mensch"],
+      ["Ort/Vorgang", "ort", "situation", "vorgang", "beobachtung"],
+      ["Quelle", "hintergrundquelle", "beleg", "recherche", "daten"],
+      ["Glaubwürdigkeit", "prüfbar", "überprüfbar", "verlässlich"]
+    ],
+    vr6: [
+      ["Thema", "gegenstand", "fokus"],
+      ["Leitfrage", "hauptfrage", "frage"],
+      ["Zielpublikum", "publikum", "adressat", "zuschauer"],
+      ["Haltung", "perspektive", "autorinnenhaltung", "standpunkt"],
+      ["Szenen", "situation", "bilder", "orte"],
+      ["Schlussgedanke", "schluss", "fazit", "einsicht"]
+    ],
+    vr7: [
+      ["Einstieg", "anfang", "0:00", "attention", "aufmerksamkeit"],
+      ["Problem", "konflikt", "frage", "herausforderung"],
+      ["Rechercheweg", "recherche", "weg", "prüfung", "suche"],
+      ["Wendepunkt", "wende", "überraschung", "neue erkenntnis"],
+      ["Schluss", "schlussgedanke", "fazit", "ende"],
+      ["O-Ton/Szene", "o-ton", "originalton", "szene", "bild"]
+    ],
+    vr8: [
+      ["reale Situationen", "real", "beobachtbar", "situation", "alltag"],
+      ["Perspektive", "haltung", "blick", "erzählperspektive"],
+      ["Offenheit", "überraschung", "unvorhergesehen", "wirklichkeit"],
+      ["filmische Mittel", "kamera", "ton", "schnitt", "musik", "off-kommentar"]
+    ],
+    vr9: [
+      ["Testperson", "unbeteiligt", "feedback", "gegenlesen"],
+      ["Verständnisfrage", "frage", "unklar", "verständnis"],
+      ["Verbesserungsvorschlag", "vorschlag", "verbesserung", "ändern"],
+      ["Entscheidung", "übernehmen", "nicht übernehmen", "begründung"]
+    ],
+    vr10: [
+      ["Regie", "regie"],
+      ["Kamera", "kamera", "bild"],
+      ["Ton", "ton", "audio"],
+      ["Schnitt", "schnitt", "montage"],
+      ["Organisation/Rechte", "rechte", "genehmigung", "organisation"]
+    ],
+    vr11: [
+      ["Ort", "drehort", "ort"],
+      ["Person", "protagonist", "interviewpartner", "person"],
+      ["Technik", "kamera", "mikrofon", "akku", "speicher", "technik"],
+      ["Zeit", "zeitfenster", "termin", "dauer"],
+      ["Genehmigung", "einverständnis", "rechte", "erlaubnis"],
+      ["Plan B", "alternative", "ersatz", "notfall"]
+    ],
+    vr12: [
+      ["offene Fragen", "wie", "warum", "erzählen", "beschreiben"],
+      ["Situation", "beispiel", "konkret", "erlebnis"],
+      ["O-Ton", "originalton", "aussage", "zitat"],
+      ["keine Ja/Nein-Frage", "nicht ja nein", "offen"]
+    ],
+    vr13: [
+      ["Orientierung", "totale", "establishing", "überblick"],
+      ["Handlung", "aktion", "vorgang", "beobachtung"],
+      ["Detail", "nahaufnahme", "detail", "close"],
+      ["Interview", "o-ton", "gespräch", "aussage"],
+      ["Schnittbild", "b-roll", "zwischenschnitt", "schnittbild"],
+      ["Schlussbild", "schluss", "endbild", "letztes bild"]
+    ],
+    vr14: [
+      ["Ton-Bild-Schere", "ton bild schere", "widerspruch", "unverbunden"],
+      ["Tonfunktion", "o-ton", "off-text", "atmo", "musik", "ton"],
+      ["Bildfunktion", "bild", "szene", "zeigt", "einstellung"],
+      ["Korrektur", "anpassen", "ersetzen", "schnittbild", "passend"]
+    ],
+    vr15: [
+      ["Achsensprung", "achsensprung", "180-grad-regel", "180 grad", "achse"],
+      ["Blickrichtung", "blick", "richtung", "raumorientierung"],
+      ["Kameraseite", "seite", "kameraposition", "achse"],
+      ["Übergang", "neutrale einstellung", "bewegung", "schnittbild"]
+    ],
+    vr16: [
+      ["gedrehte Szenen", "szene", "gedreht", "material"],
+      ["Tonqualität", "ton", "brauchbar", "rauschen", "übersteuert", "verständlich"],
+      ["fehlende Szene", "fehlt", "lücke", "nachdrehen"],
+      ["Sicherung", "backup", "sichern", "dateiname", "ordner"]
+    ],
+    vr17: [
+      ["drei O-Töne", "o-ton", "originalton", "aussage"],
+      ["Leitfrage", "frage", "hauptfrage"],
+      ["Wirkung", "glaubwürdig", "nähe", "haltung", "konflikt"]
+    ],
+    vr18: [
+      ["Leitfrage", "leitfrage", "hauptfrage"],
+      ["20 Sekunden", "20", "anfang", "einstieg"],
+      ["Szenenfunktion", "funktion", "trägt", "notwendig"],
+      ["Schnittentscheidung", "kürzen", "verschieben", "streichen", "ergänzen"]
+    ],
+    vr19: [
+      ["zwei Testpersonen", "zwei", "testperson", "publikum"],
+      ["Verständnis", "verstanden", "klar", "unklar"],
+      ["Orientierung", "orientierung", "verwirrung", "sprung"],
+      ["stärkste Szene", "stark", "wirkung", "beste szene"]
+    ],
+    vr20: [
+      ["drei Änderungen", "änderung", "kürzen", "verschieben", "ergänzen", "streichen"],
+      ["roter Faden", "roter faden", "dramaturgie", "struktur"],
+      ["Verständlichkeit", "verständlich", "klar", "orientierung"],
+      ["Glaubwürdigkeit", "glaubwürdig", "sorgfalt", "quelle"]
+    ],
+    vr21: [
+      ["Tonverständlichkeit", "ton", "verständlich", "pegel", "rauschen"],
+      ["Ton-Bild-Schere", "ton bild schere", "bild-ton", "widerspruch"],
+      ["Achsensprung", "achsensprung", "achse", "180-grad-regel", "180 grad"],
+      ["Quellen/Rechte", "quelle", "rechte", "genehmigung", "musik"],
+      ["Titel/Abspann", "titel", "abspann", "credits"]
+    ],
+    vr22: [
+      ["Titel", "titel"],
+      ["Beschreibung", "beschreibung", "zweizeilig", "kurztext"],
+      ["Leitfrage", "leitfrage", "hauptfrage"],
+      ["Quellenliste", "quellen", "quelle", "links"]
+    ],
+    vr23: [
+      ["Recherche", "recherche", "quelle"],
+      ["roter Faden", "roter faden", "dramaturgie", "struktur"],
+      ["Bild", "bild", "kamera", "einstellung"],
+      ["Ton", "ton", "audio", "o-ton"],
+      ["journalistische Sorgfalt", "sorgfalt", "glaubwürdigkeit", "rechte"],
+      ["Verbesserung", "nächstes mal", "lernaufgabe", "verbessern"]
+    ]
+  };
+
+  const byId = new Map();
+  window.LESSON_DATA.phases.forEach((phase) => {
+    phase.questions.forEach((question) => byId.set(question.id, question));
+  });
+
+  Object.entries(checks).forEach(([questionId, groups]) => {
+    const question = byId.get(questionId);
+    if (!question) return;
+    question.conceptGroups = groups.map(([label, ...variants]) => ({
+      label,
+      variants: [label, ...variants]
+    }));
+  });
+})();

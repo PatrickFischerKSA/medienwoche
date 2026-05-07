@@ -651,6 +651,52 @@ textarea {
   background: rgba(255, 255, 255, 0.62);
 }
 
+.concept-feedback {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(31, 122, 77, 0.24);
+  border-radius: 8px;
+  background: rgba(223, 242, 232, 0.62);
+}
+
+.concept-head,
+.concept-columns {
+  display: grid;
+  gap: 10px;
+}
+
+.concept-head {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  color: var(--accent-strong);
+}
+
+.concept-head span {
+  color: var(--good);
+  font-weight: 900;
+}
+
+.concept-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.concept-label {
+  display: block;
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.concept-columns p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .self-check-head,
 .check-row {
   display: flex;
@@ -759,7 +805,8 @@ textarea {
   }
 
   .media-switcher,
-  .intro-grid {
+  .intro-grid,
+  .concept-columns {
     grid-template-columns: 1fr;
   }
 
