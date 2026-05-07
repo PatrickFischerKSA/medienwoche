@@ -18,6 +18,7 @@ const els = {
   resourceList: document.getElementById("resource-list"),
   studentName: document.getElementById("student-name"),
   applyLogin: document.getElementById("apply-login"),
+  logout: document.getElementById("logout"),
   timeNote: document.getElementById("time-note"),
   saveTimeNote: document.getElementById("save-time-note"),
   resetProgress: document.getElementById("reset-progress"),
@@ -136,6 +137,17 @@ function applyLogin() {
     state.studentName = nextName;
   }
 
+  save();
+  render();
+}
+
+function logout() {
+  if (state.studentName.trim() && !isTeacherLogin(state.studentName)) {
+    saveProfile();
+  }
+  localStorage.removeItem(storageKey);
+  clearWorkState();
+  state.studentName = "";
   save();
   render();
 }
@@ -633,6 +645,7 @@ function bindEvents() {
 
   els.studentName.addEventListener("change", applyLogin);
   els.applyLogin.addEventListener("click", applyLogin);
+  els.logout.addEventListener("click", logout);
 
   els.saveTimeNote.addEventListener("click", () => {
     const value = els.timeNote.value.trim();
