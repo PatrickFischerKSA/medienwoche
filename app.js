@@ -1,5 +1,6 @@
 const data = window.LESSON_DATA;
 const storageKey = "vierte-gewalt-lerneinheit-v1";
+const profilesKey = "medienwoche-lernprofile-v1";
 
 const state = {
   activePhaseId: data.phases[0].id,
@@ -23,6 +24,7 @@ const els = {
   progressLabel: document.getElementById("progress-label"),
   progressPercent: document.getElementById("progress-percent"),
   progressBar: document.getElementById("progress-bar"),
+  teacherDashboard: document.getElementById("teacher-dashboard"),
   phaseNav: document.getElementById("phase-nav"),
   activeFilmPanel: document.getElementById("active-film-panel"),
   phaseFocus: document.getElementById("phase-focus"),
@@ -41,6 +43,60 @@ function load() {
 
 function save() {
   localStorage.setItem(storageKey, JSON.stringify(state));
+  saveProfile();
+}
+
+function isTeacherLogin(name = "") {
+  return /^LP_[A-Za-zÄÖÜäöüÉÈÀéèàç]+$/.test(name.trim());
+}
+
+function getProfiles() {
+  try {
+    return JSON.parse(localStorage.getItem(profilesKey)) || {};
+  } catch {
+    return {};
+  }
+}
+
+function setProfiles(profiles) {
+  localStorage.setItem(profilesKey, JSON.stringify(profiles));
+}
+
+function getCompletion() {
+  const total = allQuestions().length;
+  const done = allQuestions().filter((question) => (state.answers[question.id] || "").trim()).length;
+  const percent = total ? Math.round((done / total) * 100) : 0;
+  return { done, total, percent };
+}
+
+function saveProfile() {
+  const name = state.studentName.trim();
+  if (!name || isTeacherLogin(name)) return;
+  const profiles = getProfiles();
+  profiles[name] = {
+    name,
+    updatedAt: new Date().toISOString(),
+    activePhaseId: state.activePhaseId,
+    activeFilmId: state.activeFilmId,
+    answers: state.answers,
+    checks: state.checks,
+    reflections: state.reflections,
+    timeNotes: state.timeNotes,
+    completion: getCompletion()
+  };
+  setProfiles(profiles);
+}
+
+function loadProfile(name) {
+  const profile = getProfiles()[name];
+  if (!profile) return;
+  state.activePhaseId = profile.activePhaseId || data.phases[0].id;
+  state.activeFilmId = profile.activeFilmId || data.films?.[0]?.id || "vierte-gewalt";
+  state.studentName = profile.name;
+  state.answers = profile.answers || {};
+  state.checks = profile.checks || {};
+  state.reflections = profile.reflections || {};
+  state.timeNotes = profile.timeNotes || [];
 }
 
 function escapeHtml(value = "") {
@@ -125,12 +181,52 @@ function getChecklistStatus(question) {
 }
 
 function renderProgress() {
-  const total = allQuestions().length;
-  const done = allQuestions().filter((question) => (state.answers[question.id] || "").trim()).length;
-  const percent = total ? Math.round((done / total) * 100) : 0;
+  const { done, total, percent } = getCompletion();
   els.progressLabel.textContent = `${done} von ${total} beantwortet`;
   els.progressPercent.textContent = `${percent}%`;
   els.progressBar.style.width = `${percent}%`;
+}
+
+function renderTeacherDashboard() {
+  const teacherMode = isTeacherLogin(state.studentName);
+  els.teacherDashboard.hidden = !teacherMode;
+  if (!teacherMode) {
+    els.teacherDashboard.innerHTML = "";
+    return;
+  }
+
+  const profiles = Object.values(getProfiles()).sort((a, b) => (a.name || "").localeCompare(b.name || "", "de-CH"));
+  const rows = profiles.length
+    ? profiles
+        .map((profile) => {
+          const completion = profile.completion || { done: 0, total: allQuestions().length, percent: 0 };
+          const date = profile.updatedAt ? new Date(profile.updatedAt).toLocaleString("de-CH") : "unbekannt";
+          return `
+            <tr>
+              <td>${escapeHtml(profile.name)}</td>
+              <td>${completion.done}/${completion.total}</td>
+              <td>${completion.percent}%</td>
+              <td>${escapeHtml(date)}</td>
+            </tr>
+          `;
+        })
+        .join("")
+    : `<tr><td colspan="4">Noch keine lokalen Lernstände gespeichert.</td></tr>`;
+
+  els.teacherDashboard.innerHTML = `
+    <p class="eyebrow">Lehrpersonen-Dashboard</p>
+    <h2>Lernstände</h2>
+    <p>Dieses Dashboard zeigt die in diesem Browser gespeicherten Profile.</p>
+    <div class="dashboard-table-wrap">
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Antworten</th><th>Fortschritt</th><th>Aktualisiert</th></tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <button class="text-button" id="export-dashboard" type="button">Dashboard exportieren</button>
+  `;
 }
 
 function renderPhaseNav() {
@@ -225,6 +321,7 @@ function renderActiveFilmPanel() {
 function renderQuestions() {
   const phase = getActivePhase();
   const film = getActiveFilm();
+  const canWork = state.studentName.trim() && !isTeacherLogin(state.studentName);
   els.phaseFocus.textContent = phase.focus;
   els.phaseTitle.textContent = `${film?.title || ""}: ${phase.title}`;
   const anchors = (phase.anchors || [])
@@ -267,7 +364,7 @@ function renderQuestions() {
                 const id = `${question.id}-${index}`;
                 return `
                   <label class="check-row">
-                    <input type="checkbox" data-check-id="${id}" ${state.checks?.[id] ? "checked" : ""} />
+                    <input type="checkbox" data-check-id="${id}" ${state.checks?.[id] ? "checked" : ""} ${canWork ? "" : "disabled"} />
                     <span>${escapeHtml(item)}</span>
                   </label>
                 `;
@@ -305,7 +402,7 @@ function renderQuestions() {
           <label for="${question.id}">${escapeHtml(question.question)}</label>
           ${quote}
           <p>${escapeHtml(question.help)}</p>
-          <textarea id="${question.id}" data-question-id="${question.id}" rows="6" placeholder="Antwort, Beobachtungen und Filmbelege hier notieren">${escapeHtml(answer)}</textarea>
+          <textarea id="${question.id}" data-question-id="${question.id}" rows="6" placeholder="${canWork ? "Antwort, Beobachtungen und Filmbelege hier notieren" : "Bitte zuerst mit Namen einloggen"}" ${canWork ? "" : "disabled"}>${escapeHtml(answer)}</textarea>
           ${conceptFeedback}
           ${checklist}
           <div class="feedback">${escapeHtml(quality.hint)}</div>
@@ -313,17 +410,21 @@ function renderQuestions() {
       `;
     })
     .join("");
-  els.questionList.insertAdjacentHTML("afterbegin", `${anchorPanel}${reflectionPanel}`);
+  const loginPanel = canWork
+    ? ""
+    : `<section class="station-panel"><p class="eyebrow">Login erforderlich</p><strong>Tragen Sie links Ihren Namen ein. Lehrpersonen verwenden das Format LP_Vorname.</strong></section>`;
+  els.questionList.insertAdjacentHTML("afterbegin", `${loginPanel}${anchorPanel}${reflectionPanel}`);
 }
 
 function renderReflections() {
+  const canWork = state.studentName.trim() && !isTeacherLogin(state.studentName);
   els.reflectionList.innerHTML = data.reflectionPrompts
     .map((prompt, index) => {
       const id = `reflection-${index}`;
       return `
         <label class="reflection-item" for="${id}">
           <span>${escapeHtml(prompt)}</span>
-          <textarea id="${id}" data-reflection-id="${id}" rows="4">${escapeHtml(state.reflections[id] || "")}</textarea>
+          <textarea id="${id}" data-reflection-id="${id}" rows="4" ${canWork ? "" : "disabled"}>${escapeHtml(state.reflections[id] || "")}</textarea>
         </label>
       `;
     })
@@ -335,6 +436,7 @@ function render() {
   renderMediaSwitcher();
   renderResources();
   renderProgress();
+  renderTeacherDashboard();
   renderPhaseNav();
   renderActiveFilmPanel();
   renderQuestions();
@@ -478,7 +580,26 @@ function bindEvents() {
 
   els.studentName.addEventListener("input", () => {
     state.studentName = els.studentName.value;
+    renderTeacherDashboard();
+  });
+
+  els.studentName.addEventListener("change", () => {
+    const name = els.studentName.value.trim();
+    if (!name) return;
+    saveProfile();
+    if (isTeacherLogin(name)) {
+      state.activePhaseId = data.phases[0].id;
+      state.activeFilmId = data.films?.[0]?.id || "vierte-gewalt";
+      state.answers = {};
+      state.checks = {};
+      state.reflections = {};
+      state.timeNotes = [];
+    } else {
+      loadProfile(name);
+    }
+    state.studentName = name;
     save();
+    render();
   });
 
   els.saveTimeNote.addEventListener("click", () => {
@@ -491,9 +612,41 @@ function bindEvents() {
 
   els.exportNotes.addEventListener("click", exportText);
 
+  els.teacherDashboard.addEventListener("click", (event) => {
+    if (!event.target.closest("#export-dashboard")) return;
+    const profiles = Object.values(getProfiles());
+    const rows = ["Name,Antworten,Gesamt,Fortschritt,Aktualisiert"];
+    profiles.forEach((profile) => {
+      const completion = profile.completion || { done: 0, total: allQuestions().length, percent: 0 };
+      rows.push(
+        [
+          profile.name,
+          completion.done,
+          completion.total,
+          `${completion.percent}%`,
+          profile.updatedAt || ""
+        ]
+          .map((value) => `"${String(value).replaceAll('"', '""')}"`)
+          .join(",")
+      );
+    });
+    const blob = new Blob([rows.join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "medienwoche-lernstaende.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+
   els.resetProgress.addEventListener("click", () => {
     if (!confirm("Alle lokalen Antworten dieser Lerneinheit löschen?")) return;
     localStorage.removeItem(storageKey);
+    if (state.studentName && !isTeacherLogin(state.studentName)) {
+      const profiles = getProfiles();
+      delete profiles[state.studentName];
+      setProfiles(profiles);
+    }
     state.activePhaseId = data.phases[0].id;
     state.activeFilmId = data.films?.[0]?.id || "vierte-gewalt";
     state.studentName = "";

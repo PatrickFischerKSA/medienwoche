@@ -634,7 +634,7 @@ window.LESSON_DATA = {
       anchors: [
         "Ton-Bild-Schere bedeutet: Bild und Ton erzählen widersprüchliche oder unverbundene Informationen, ohne dass dies bewusst gestaltet ist. Vermeidung: Bild zeigt, was der Ton behauptet, ergänzt oder sinnvoll kontrastiert.",
         "Achsensprung bedeutet: Die Kamera überschreitet die gedachte Handlungs- oder Blickachse, sodass Blickrichtungen und Raumorientierung plötzlich falsch wirken. Vermeidung: Achse festlegen, auf einer Seite bleiben, Übergänge mit neutraler Einstellung lösen.",
-        "Bild-Ton-Verhältnis planen: Atmo für Räume, O-Ton für Glaubwürdigkeit, Off-Text nur für Orientierung, Schnittbilder für Übergänge und Verdichtung."
+        "Bild-Ton-Verhältnis planen: Originalgeräusche für Räume, O-Ton für Glaubwürdigkeit, Off-Text nur für Orientierung, Schnittbilder für Übergänge und Verdichtung."
       ],
       reflection: "Wo könnte in Ihrem Projekt eine Ton-Bild-Schere entstehen, und wie verhindern Sie sie?",
       questions: [

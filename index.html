@@ -33,16 +33,20 @@
       <main class="learning-grid">
         <section class="video-pane" aria-label="Materialien">
           <section class="resource-panel">
-            <h2>Einstieg</h2>
-            <div class="intro-grid" id="intro-grid"></div>
+            <details open>
+              <summary>Einstieg</summary>
+              <div class="intro-grid" id="intro-grid"></div>
+            </details>
           </section>
           <section class="resource-panel">
-            <h2>Ressourcen</h2>
-            <div class="resource-list" id="resource-list"></div>
+            <details>
+              <summary>Ressourcen</summary>
+              <div class="resource-list" id="resource-list"></div>
+            </details>
           </section>
           <div class="watch-tools">
-            <label for="student-name">Name</label>
-            <input id="student-name" type="text" autocomplete="off" placeholder="Name eintragen" />
+            <label for="student-name">Login</label>
+            <input id="student-name" type="text" autocomplete="off" placeholder="Name oder LP_Vorname" />
             <label for="time-note">Zeitmarke</label>
             <input id="time-note" type="text" placeholder="z. B. 12:40" />
             <button class="text-button" id="save-time-note" type="button">Zeitmarke merken</button>
@@ -59,6 +63,7 @@
             <span id="progress-percent">0%</span>
           </div>
           <div class="progress-track"><div id="progress-bar"></div></div>
+          <section class="teacher-dashboard" id="teacher-dashboard" hidden></section>
           <nav id="phase-nav" class="phase-nav" aria-label="Filmabschnitte"></nav>
         </aside>
 

@@ -358,6 +358,12 @@ input {
   padding: 0 12px;
 }
 
+input:disabled,
+textarea:disabled {
+  color: rgba(23, 37, 42, 0.62);
+  background: rgba(255, 255, 255, 0.01);
+}
+
 textarea {
   width: 100%;
   min-height: 132px;
@@ -369,7 +375,7 @@ textarea {
 
 .reflection-panel,
 .resource-panel {
-  padding: 18px;
+  padding: 12px 14px;
 }
 
 .reflection-list,
@@ -386,9 +392,27 @@ textarea {
   border-bottom: 1px solid var(--line);
 }
 
+.resource-panel summary {
+  cursor: pointer;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.resource-panel details:not([open]) {
+  min-height: 28px;
+}
+
+.resource-list {
+  max-height: 260px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
 .intro-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 12px;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .intro-card {
@@ -398,6 +422,13 @@ textarea {
   background: var(--surface-soft);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.intro-card a {
+  display: block;
+  padding: 8px;
+  font-size: 0.86rem;
+  line-height: 1.15;
 }
 
 .intro-thumb {
@@ -424,11 +455,12 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 88px;
-  min-height: 56px;
+  min-width: 64px;
+  min-height: 38px;
   border-radius: 8px;
   background: #d4141e;
   color: #fff;
+  font-size: 0.82rem;
   font-weight: 900;
 }
 
@@ -519,6 +551,48 @@ textarea {
   overflow: hidden;
   border-radius: 999px;
   background: var(--accent-soft);
+}
+
+.teacher-dashboard {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.teacher-dashboard h2,
+.teacher-dashboard p {
+  margin: 0;
+}
+
+.teacher-dashboard p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.dashboard-table-wrap {
+  max-height: 340px;
+  overflow: auto;
+  border: 1px solid rgba(215, 225, 223, 0.78);
+  border-radius: 8px;
+}
+
+.teacher-dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.teacher-dashboard th,
+.teacher-dashboard td {
+  padding: 8px;
+  border-bottom: 1px solid rgba(215, 225, 223, 0.72);
+  text-align: left;
+}
+
+.teacher-dashboard th {
+  color: var(--accent);
+  font-weight: 900;
 }
 
 #progress-bar {
