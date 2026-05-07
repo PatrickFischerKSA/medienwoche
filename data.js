@@ -8,6 +8,7 @@ window.LESSON_DATA = {
       id: "vierte-gewalt",
       title: "Die vierte Gewalt",
       label: "Dokumentarfilm",
+      description: "Filmanalyse zur journalistischen Öffentlichkeit, Medienwandel, Redaktionsarbeit und Glaubwürdigkeit.",
       url:
         "https://srza.sharepoint.com/sites/srzamedia/_layouts/15/stream.aspx?id=%2Fsites%2Fsrzamedia%2FFilmeSRZA%2FDie%20vierte%20Gewalt%2Emp4"
     },
@@ -15,6 +16,7 @@ window.LESSON_DATA = {
       id: "tausend-zeilen",
       title: "Tausend Zeilen",
       label: "Spielfilm",
+      description: "Spielfilmanalyse zu erfundenen Reportagen, Recherchepflicht, Storytelling und institutioneller Verantwortung.",
       url:
         "https://srza.sharepoint.com/sites/srzamedia/_layouts/15/stream.aspx?id=%2Fsites%2Fsrzamedia%2FFilmeSRZA%2FTausend%20Zeilen%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ea691b447%2D31cc%2D4a29%2D854d%2D5e0302691873"
     },
@@ -22,6 +24,7 @@ window.LESSON_DATA = {
       id: "videoreportage",
       title: "Eigene Videoreportage",
       label: "Projekt",
+      description: "Eigenständige Praxiseinheit: Sie entwickeln, drehen, schneiden und reflektieren eine Reportage von etwa fünf Minuten.",
       url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
       linkLabel: "Vorbild öffnen"
     }
@@ -466,8 +469,8 @@ window.LESSON_DATA = {
       focus: "Projektauftrag, Beispielreportage und Reportageprinzip verstehen",
       anchors: [
         "Eine Reportage ist keine Themenpräsentation, sondern eine geführte Beobachtung: Sie beantwortet eine Leitfrage mit Szenen, O-Tönen und überprüfbaren Informationen.",
-        "Für fünf Minuten braucht ihr einen engen Fokus: eine Hauptfrage, wenige Orte, klare Hauptpersonen und Bilder, die wirklich etwas zeigen.",
-        "Feedback-Ziel dieser Station: Nach dem Vorbildvideo muss klar sein, welche Wirkung ihr selbst erzeugen wollt."
+        "Für fünf Minuten brauchen Sie einen engen Fokus: eine Hauptfrage, wenige Orte, klare Hauptpersonen und Bilder, die wirklich etwas zeigen.",
+        "Feedback-Ziel dieser Station: Nach dem Vorbildvideo «Vorbild: kurze Videoreportage» müssen Sie benennen können, welche Wirkung Ihre eigene Reportage erzeugen soll."
       ],
       reflection: "Welche Szene aus dem Vorbild bleibt hängen, und warum wirkt sie stärker als eine bloße Erklärung?",
       questions: [
@@ -475,7 +478,7 @@ window.LESSON_DATA = {
           id: "vr1",
           type: "Vorbildanalyse",
           question:
-            "Schauen Sie das Vorbildvideo an. Zerlegen Sie die ersten 30 Sekunden minutiös: erstes Bild, erster Ton, erste Information, erste offene Frage.",
+            "Schauen Sie die Ressource «Vorbild: kurze Videoreportage» an. Zerlegen Sie die ersten 30 Sekunden minutiös: erstes Bild, erster Ton, erste Information, erste offene Frage.",
           help:
             "Erstellen Sie vier kurze Notizen. Ziel ist nicht Inhaltsangabe, sondern zu verstehen, wie Einstieg und Aufmerksamkeit gebaut werden.",
           checklist: ["Erstes Bild benannt", "Erster Ton/O-Ton benannt", "Konflikt oder Leitfrage erkannt", "Wirkung in einem Satz erklärt"]
@@ -484,18 +487,18 @@ window.LESSON_DATA = {
           id: "vr2",
           type: "Formatwissen",
           question:
-            "Lesen Sie die Ressourcen zu Videopodcast, Reportage-Konzept und Kurzformat-Storytelling. Was unterscheidet eine 5-Minuten-Videoreportage von einem Erklärvideo oder Vortrag?",
+            "Lesen Sie die Ressourcen «Videopodcast: Begriffsklärung», «Reportage-Konzept schreiben» und «Kurzformat-Storytelling». Was unterscheidet eine 5-Minuten-Videoreportage von einem Erklärvideo oder Vortrag?",
           help:
-            "Nutzen Sie die Begriffe Beobachtung, O-Ton, roter Faden, Zielpublikum, Szene und Autor*innenhaltung.",
+            "Beziehen Sie Ihre Antwort ausdrücklich auf diese drei Ressourcen. Nutzen Sie die Begriffe Beobachtung, O-Ton, roter Faden, Zielpublikum, Szene und Autor*innenhaltung.",
           checklist: ["Mindestens drei Fachbegriffe verwendet", "Reportage vom Erklärvideo abgegrenzt", "Zielpublikum erwähnt"]
         },
         {
           id: "vr3",
           type: "Projektentscheidung",
           question:
-            "Formulieren Sie Ihr persönliches Produktionsziel: Was sollen Zuschauer*innen nach fünf Minuten verstanden, gesehen und gefühlt haben?",
+            "Formulieren Sie das persönliche Produktionsziel: Was sollen Zuschauer*innen nach fünf Minuten verstanden, gesehen und gefühlt haben?",
           help:
-            "Diese Antwort ist Ihr Kompass für alle weiteren Entscheidungen. Halten Sie sie knapp, konkret und überprüfbar.",
+            "Diese Antwort dient als Kompass für alle weiteren Entscheidungen. Halten Sie sie knapp, konkret und überprüfbar.",
           checklist: ["Verstehensziel", "Bildziel", "Wirkungsziel"]
         }
       ]
@@ -536,7 +539,7 @@ window.LESSON_DATA = {
           question:
             "Schreiben Sie ein Mini-Exposé von 120 bis 180 Wörtern: Thema, Leitfrage, Zielpublikum, Haltung, mögliche Szenen und Schlussgedanke.",
           help:
-            "Das Exposé ist Ihr Produktionsvertrag mit sich selbst. Es muss präzise genug sein, damit ein Team danach arbeiten kann.",
+            "Das Exposé ist der Produktionsvertrag mit sich selbst. Es muss präzise genug sein, damit ein Team danach arbeiten kann.",
           checklist: ["Thema", "Leitfrage", "Zielpublikum", "Haltung", "Szenen", "Schlussgedanke"]
         }
       ]
@@ -575,7 +578,7 @@ window.LESSON_DATA = {
           id: "vr9",
           type: "Feedbackstation",
           question:
-            "Lassen Sie Ihr Treatment von einer unbeteiligten Person lesen. Welche Verständnisfrage und welchen Verbesserungsvorschlag erhalten Sie?",
+            "Lassen Sie das Treatment von einer unbeteiligten Person lesen. Welche Verständnisfrage und welchen Verbesserungsvorschlag erhalten Sie?",
           help:
             "Notieren Sie Feedback nicht defensiv. Entscheiden Sie danach, was Sie übernehmen und was nicht.",
           checklist: ["Testperson", "Verständnisfrage", "Verbesserungsvorschlag", "eigene Entscheidung"]
@@ -592,7 +595,7 @@ window.LESSON_DATA = {
         "Ton ist im Dokumentarischen zentral. Ein unscharfes Bild lässt sich manchmal ersetzen, ein unbrauchbarer O-Ton meist nicht.",
         "Sichert und benennt Material konsequent: Drehtag, Ort, Person, Szene. Chaos im Schnitt entsteht fast immer schon beim Dreh."
       ],
-      reflection: "Welche organisatorische Schwäche könnte Ihr Projekt am ehesten gefährden?",
+      reflection: "Welche organisatorische Schwäche könnte das Projekt am ehesten gefährden?",
       questions: [
         {
           id: "vr10",
@@ -764,7 +767,7 @@ window.LESSON_DATA = {
           question:
             "Formulieren Sie Titel, zweizeilige Beschreibung, Leitfrage und Quellenliste für die fertige Reportage.",
           help:
-            "Der Abgabetext zeigt, dass Ihr Film nicht zufällig entstanden ist, sondern auf Recherche und Konzept beruht.",
+            "Der Abgabetext zeigt, dass der Film nicht zufällig entstanden ist, sondern auf Recherche und Konzept beruht.",
           checklist: ["Titel", "Beschreibung", "Leitfrage", "Quellenliste"]
         },
         {

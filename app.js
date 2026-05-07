@@ -132,13 +132,17 @@ function renderMediaSwitcher() {
   els.mediaSwitcher.innerHTML = (data.films || [])
     .map((film) => {
       const active = film.id === state.activeFilmId ? "active" : "";
+      const phases = data.phases.filter((phase) => phase.filmId === film.id);
+      const questionCount = phases.flatMap((phase) => phase.questions).length;
       return `
         <article class="media-card ${active} ${film.id === "videoreportage" ? "project-card" : ""}">
           <button class="media-button" type="button" data-film-id="${film.id}">
             <span>${escapeHtml(film.label)}</span>
             <strong>${escapeHtml(film.title)}</strong>
+            <small>${escapeHtml(film.description || "")}</small>
             <small>${film.id === "videoreportage" ? "Eigenständige Praxiseinheit öffnen" : "Fragenblock zu diesem Film auswählen"}</small>
           </button>
+          <div class="media-count">${phases.length} Stationen · ${questionCount} Aufgaben</div>
           <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
             ${escapeHtml(film.linkLabel || "Im Mediaserver öffnen und anmelden")}
           </a>
