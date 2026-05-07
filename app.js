@@ -6,6 +6,7 @@ const state = {
   activeFilmId: data.films?.[0]?.id || "vierte-gewalt",
   studentName: "",
   answers: {},
+  checks: {},
   reflections: {},
   timeNotes: []
 };
@@ -72,6 +73,13 @@ function getAnswerQuality(text = "") {
   return { label: "ausgeführt", className: "high", hint: "Ausführlich beantwortet. Prüfen Sie noch, ob Filmbelege und eigenes Urteil klar getrennt sind." };
 }
 
+function getChecklistStatus(question) {
+  const items = question.checklist || [];
+  if (!items.length) return { done: 0, total: 0 };
+  const done = items.filter((_, index) => state.checks?.[`${question.id}-${index}`]).length;
+  return { done, total: items.length };
+}
+
 function renderProgress() {
   const total = allQuestions().length;
   const done = allQuestions().filter((question) => (state.answers[question.id] || "").trim()).length;
@@ -125,11 +133,11 @@ function renderMediaSwitcher() {
     .map((film) => {
       const active = film.id === state.activeFilmId ? "active" : "";
       return `
-        <article class="media-card ${active}">
+        <article class="media-card ${active} ${film.id === "videoreportage" ? "project-card" : ""}">
           <button class="media-button" type="button" data-film-id="${film.id}">
             <span>${escapeHtml(film.label)}</span>
             <strong>${escapeHtml(film.title)}</strong>
-            <small>Fragenblock zu diesem Film auswählen</small>
+            <small>${film.id === "videoreportage" ? "Eigenständige Praxiseinheit öffnen" : "Fragenblock zu diesem Film auswählen"}</small>
           </button>
           <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
             ${escapeHtml(film.linkLabel || "Im Mediaserver öffnen und anmelden")}
@@ -187,12 +195,53 @@ function renderQuestions() {
   const film = getActiveFilm();
   els.phaseFocus.textContent = phase.focus;
   els.phaseTitle.textContent = `${film?.title || ""}: ${phase.title}`;
+  const anchors = (phase.anchors || [])
+    .map((anchor) => `<li>${escapeHtml(anchor)}</li>`)
+    .join("");
+  const anchorPanel = anchors
+    ? `
+      <section class="knowledge-panel">
+        <p class="eyebrow">Wissensanker</p>
+        <ul>${anchors}</ul>
+      </section>
+    `
+    : "";
+  const reflectionPanel = phase.reflection
+    ? `
+      <section class="station-panel">
+        <p class="eyebrow">Reflexionsstation</p>
+        <strong>${escapeHtml(phase.reflection)}</strong>
+      </section>
+    `
+    : "";
   els.questionList.innerHTML = phase.questions
     .map((question) => {
       const answer = state.answers[question.id] || "";
       const quality = getAnswerQuality(answer);
+      const checklistStatus = getChecklistStatus(question);
       const quote = question.quote
         ? `<blockquote class="quote-box">${escapeHtml(question.quote)}</blockquote>`
+        : "";
+      const checklist = (question.checklist || []).length
+        ? `
+          <div class="self-check">
+            <div class="self-check-head">
+              <strong>Feedback-Checkliste</strong>
+              <span>${checklistStatus.done}/${checklistStatus.total}</span>
+            </div>
+            ${(question.checklist || [])
+              .map((item, index) => {
+                const id = `${question.id}-${index}`;
+                return `
+                  <label class="check-row">
+                    <input type="checkbox" data-check-id="${id}" ${state.checks?.[id] ? "checked" : ""} />
+                    <span>${escapeHtml(item)}</span>
+                  </label>
+                `;
+              })
+              .join("")}
+          </div>
+        `
         : "";
       return `
         <article class="question-card">
@@ -204,11 +253,13 @@ function renderQuestions() {
           ${quote}
           <p>${escapeHtml(question.help)}</p>
           <textarea id="${question.id}" data-question-id="${question.id}" rows="6" placeholder="Antwort, Beobachtungen und Filmbelege hier notieren">${escapeHtml(answer)}</textarea>
+          ${checklist}
           <div class="feedback">${escapeHtml(quality.hint)}</div>
         </article>
       `;
     })
     .join("");
+  els.questionList.insertAdjacentHTML("afterbegin", `${anchorPanel}${reflectionPanel}`);
 }
 
 function renderReflections() {
@@ -251,6 +302,10 @@ function exportText() {
       lines.push("");
       lines.push(question.question);
       lines.push(state.answers[question.id]?.trim() || "[offen]");
+      if ((question.checklist || []).length) {
+        const status = getChecklistStatus(question);
+        lines.push(`Feedback-Checkliste: ${status.done}/${status.total}`);
+      }
     });
     lines.push("");
   });
@@ -317,6 +372,15 @@ function bindEvents() {
     card.querySelector(".feedback").textContent = quality.hint;
   });
 
+  els.questionList.addEventListener("change", (event) => {
+    const checkbox = event.target.closest("[data-check-id]");
+    if (!checkbox) return;
+    state.checks ||= {};
+    state.checks[checkbox.dataset.checkId] = checkbox.checked;
+    save();
+    renderQuestions();
+  });
+
   els.reflectionList.addEventListener("input", (event) => {
     const textarea = event.target.closest("[data-reflection-id]");
     if (!textarea) return;
@@ -343,8 +407,10 @@ function bindEvents() {
     if (!confirm("Alle lokalen Antworten dieser Lerneinheit löschen?")) return;
     localStorage.removeItem(storageKey);
     state.activePhaseId = data.phases[0].id;
+    state.activeFilmId = data.films?.[0]?.id || "vierte-gewalt";
     state.studentName = "";
     state.answers = {};
+    state.checks = {};
     state.reflections = {};
     state.timeNotes = [];
     save();

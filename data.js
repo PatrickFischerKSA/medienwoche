@@ -1,6 +1,6 @@
 window.LESSON_DATA = {
   title: "Journalismus, Fake News und Medienkritik",
-  subtitle: "Interaktive Lerneinheit zu «Die vierte Gewalt» und «Tausend Zeilen»",
+  subtitle: "Drei Einheiten: Medienanalyse, Fake News und eigene Videoreportage",
   videoUrl:
     "https://srza.sharepoint.com/:v:/r/sites/srzamedia/FilmeSRZA/Die%20vierte%20Gewalt.mp4?csf=1&web=1&e=ENZZFe&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D",
   films: [
@@ -48,6 +48,12 @@ window.LESSON_DATA = {
   ],
   resources: [
     {
+      title: "Fake News: zusätzlicher Materialpool",
+      type: "Fake News",
+      url: "https://s.craft.me/Z2FlEgbJzpGL7V",
+      description: "Weiterführende Sammlung zu Fake News, Quellenkritik und Desinformation."
+    },
+    {
       title: "SRF School: Was sind Fake News?",
       type: "Hintergrund",
       url:
@@ -77,6 +83,24 @@ window.LESSON_DATA = {
       type: "Projekt",
       url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
       description: "Beispielvideo als Orientierung für Aufbau, Bildsprache, Tempo und Erzählhaltung der eigenen Reportage."
+    },
+    {
+      title: "Dokumentarfilm im Unterricht: Wie ein Dokumentarfilm entsteht",
+      type: "Projekt",
+      url: "assets/docs/dokumentarfilm-im-unterricht-modul-3.pdf",
+      description: "PDF-Modul zu Idee, Exposé, Treatment, Teamrollen, Drehplanung, Ton, Montage und Feedback."
+    },
+    {
+      title: "Videopodcast: Begriffsklärung",
+      type: "Theorie",
+      url: "https://www.e-teaching.org/materialien/glossar/videopodcast",
+      description: "Kurzer Glossareintrag zum Format Videopodcast als Orientierung für serielle und erklärende Videoformate."
+    },
+    {
+      title: "Videoproduktion Schritt für Schritt",
+      type: "Theorie",
+      url: "https://blogs.urz.uni-halle.de/erklaervideos/die-produktion-schritt-fuer-schritt-sinnvoll-angehen/",
+      description: "Praxisnahe Schrittfolge für Planung, Produktion und Überarbeitung von Erklär- und Lernvideos."
     },
     {
       title: "Reportage-Konzept schreiben",
@@ -436,130 +460,321 @@ window.LESSON_DATA = {
       ]
     },
     {
-      id: "videoreportage-analyse",
+      id: "videoreportage-briefing",
       filmId: "videoreportage",
-      title: "Vorbild analysieren",
-      focus: "Wie eine kurze Reportage Aufmerksamkeit, Nähe und Orientierung erzeugt",
+      title: "1. Briefing und Vorbild",
+      focus: "Projektauftrag, Beispielreportage und Reportageprinzip verstehen",
+      anchors: [
+        "Eine Reportage ist keine Themenpräsentation, sondern eine geführte Beobachtung: Sie beantwortet eine Leitfrage mit Szenen, O-Tönen und überprüfbaren Informationen.",
+        "Für fünf Minuten braucht ihr einen engen Fokus: eine Hauptfrage, wenige Orte, klare Hauptpersonen und Bilder, die wirklich etwas zeigen.",
+        "Feedback-Ziel dieser Station: Nach dem Vorbildvideo muss klar sein, welche Wirkung ihr selbst erzeugen wollt."
+      ],
+      reflection: "Welche Szene aus dem Vorbild bleibt hängen, und warum wirkt sie stärker als eine bloße Erklärung?",
       questions: [
         {
           id: "vr1",
-          type: "Vorbild untersuchen",
+          type: "Vorbildanalyse",
           question:
-            "Schauen Sie das Vorbildvideo an. Welche ersten 20 Sekunden ziehen Aufmerksamkeit auf sich? Beschreiben Sie Bild, Ton, Frage oder Konflikt.",
+            "Schauen Sie das Vorbildvideo an. Zerlegen Sie die ersten 30 Sekunden minutiös: erstes Bild, erster Ton, erste Information, erste offene Frage.",
           help:
-            "Notieren Sie genau, womit das Video einsteigt: Szene, Aussage, Problem, starke Figur oder überraschende Information."
+            "Erstellen Sie vier kurze Notizen. Ziel ist nicht Inhaltsangabe, sondern zu verstehen, wie Einstieg und Aufmerksamkeit gebaut werden.",
+          checklist: ["Erstes Bild benannt", "Erster Ton/O-Ton benannt", "Konflikt oder Leitfrage erkannt", "Wirkung in einem Satz erklärt"]
         },
         {
           id: "vr2",
-          type: "Story-Bausteine",
+          type: "Formatwissen",
           question:
-            "Welche Figur, welches Thema oder welcher Konflikt trägt die Reportage? Formulieren Sie den roten Faden in einem Satz.",
+            "Lesen Sie die Ressourcen zu Videopodcast, Reportage-Konzept und Kurzformat-Storytelling. Was unterscheidet eine 5-Minuten-Videoreportage von einem Erklärvideo oder Vortrag?",
           help:
-            "Eine gute Kurzreportage ist keine Sammlung von Bildern. Sie braucht eine klare Frage, eine Entwicklung und eine erkennbare Perspektive."
+            "Nutzen Sie die Begriffe Beobachtung, O-Ton, roter Faden, Zielpublikum, Szene und Autor*innenhaltung.",
+          checklist: ["Mindestens drei Fachbegriffe verwendet", "Reportage vom Erklärvideo abgegrenzt", "Zielpublikum erwähnt"]
         },
         {
           id: "vr3",
-          type: "Wirkung prüfen",
+          type: "Projektentscheidung",
           question:
-            "Wo arbeitet das Vorbild mit Emotion, Authentizität oder Nähe? Welche filmischen Mittel erzeugen diese Wirkung?",
+            "Formulieren Sie Ihr persönliches Produktionsziel: Was sollen Zuschauer*innen nach fünf Minuten verstanden, gesehen und gefühlt haben?",
           help:
-            "Achten Sie auf O-Töne, Beobachtungen, Musik, Schnitte, Kameradistanz, Details und Momente, in denen Menschen konkret handeln."
+            "Diese Antwort ist Ihr Kompass für alle weiteren Entscheidungen. Halten Sie sie knapp, konkret und überprüfbar.",
+          checklist: ["Verstehensziel", "Bildziel", "Wirkungsziel"]
         }
       ]
     },
     {
       id: "videoreportage-konzept",
       filmId: "videoreportage",
-      title: "Konzept für 5 Minuten",
-      focus: "Thema, Recherche, Zielgruppe, Leitfrage und Dramaturgie planen",
+      title: "2. Thema, Recherche, Exposé",
+      focus: "Von der Idee zur tragfähigen Leitfrage und zu überprüfbaren Quellen",
+      anchors: [
+        "Aus der Idee entsteht zuerst ein Exposé: ein kurzer Text, der Thema, Leitfrage, Hauptpersonen, Orte und mögliche Entwicklung bündelt.",
+        "Ein Treatment ist offener als ein Drehbuch: Es plant Situationen und Herangehensweisen, lässt aber Raum für Wirklichkeit.",
+        "Ohne Recherche kippt Reportage in Meinung. Jede starke Szene braucht mindestens eine verlässliche Quelle oder beobachtbare Situation."
+      ],
+      reflection: "Wo besteht bei Ihrem Thema die Gefahr, nur Ihre eigene Meinung zu bestätigen?",
       questions: [
         {
           id: "vr4",
-          type: "Thema festlegen",
+          type: "Leitfrage",
           question:
-            "Wählen Sie ein Thema für eine eigene Videoreportage von etwa 5 Minuten. Welche konkrete Leitfrage soll die Reportage beantworten?",
+            "Wählen Sie ein enges Thema und formulieren Sie eine Leitfrage, die filmisch beobachtbar ist.",
           help:
-            "Die Leitfrage muss filmisch beobachtbar sein. Beispiele: Wie verändert ein neues Medium unseren Schulalltag? Wie entsteht Vertrauen in Nachrichten?"
+            "Nicht: «Fake News allgemein». Besser: «Wie prüft unsere Klasse Nachrichten, bevor sie sie teilt?»",
+          checklist: ["Thema eingegrenzt", "Leitfrage als Frage formuliert", "Filmische Beobachtbarkeit geprüft"]
         },
         {
           id: "vr5",
           type: "Rechercheplan",
           question:
-            "Welche drei Quellen, Orte oder Personen müssen Sie recherchieren, damit die Reportage glaubwürdig wird?",
+            "Legen Sie drei Rechercheanker fest: eine Person, einen Ort oder Vorgang und eine überprüfbare Hintergrundquelle.",
           help:
-            "Planen Sie mindestens eine menschliche Stimme, eine beobachtbare Situation und eine überprüfbare Hintergrundinformation."
+            "Planen Sie nicht nur Interviews. Eine Reportage lebt von Situationen, in denen Menschen handeln.",
+          checklist: ["Person", "Ort/Vorgang", "Quelle", "Relevanz begründet"]
         },
         {
           id: "vr6",
-          type: "Dramaturgie",
+          type: "Mini-Exposé",
           question:
-            "Skizzieren Sie den Spannungsbogen: Einstieg, Problem, Rechercheweg, Wendepunkt und Schlussgedanke.",
+            "Schreiben Sie ein Mini-Exposé von 120 bis 180 Wörtern: Thema, Leitfrage, Zielpublikum, Haltung, mögliche Szenen und Schlussgedanke.",
           help:
-            "Orientieren Sie sich am Reportage-Konzept: klare Struktur, roter Faden, authentische Bilder und ein Schluss, der die Leitfrage beantwortet."
+            "Das Exposé ist Ihr Produktionsvertrag mit sich selbst. Es muss präzise genug sein, damit ein Team danach arbeiten kann.",
+          checklist: ["Thema", "Leitfrage", "Zielpublikum", "Haltung", "Szenen", "Schlussgedanke"]
         }
       ]
     },
     {
-      id: "videoreportage-dreh",
+      id: "videoreportage-treatment",
       filmId: "videoreportage",
-      title: "Drehplan und Storyboard",
-      focus: "Bilder, O-Töne, Off-Text und Schnittstruktur konkretisieren",
+      title: "3. Treatment und Dramaturgie",
+      focus: "Roter Faden, Szenenfolge, Storytelling und Reflexion der eigenen Haltung",
+      anchors: [
+        "Dramaturgie bedeutet: Die Zuschauer*innen werden durch eine Entwicklung geführt, nicht durch eine Liste von Informationen.",
+        "Kurzformat-Storytelling braucht Verdichtung: Einstieg, Problem, Rechercheweg, Wendepunkt, Einsicht.",
+        "Die Heldenreise ist kein starres Schema, aber nützlich: Jemand steht vor einer Herausforderung und kommt verändert oder informierter heraus."
+      ],
+      reflection: "Welche Information ist zwar interessant, aber wahrscheinlich nicht nötig für den roten Faden?",
       questions: [
         {
           id: "vr7",
-          type: "Storyboard",
+          type: "Spannungsbogen",
           question:
-            "Erstellen Sie eine Szenenliste für ungefähr 5 Minuten: Welche 8 bis 12 Einstellungen brauchen Sie zwingend?",
+            "Planen Sie die 5-Minuten-Struktur in fünf Teilen: 0:00 Einstieg, 0:30 Problem, 1:30 Rechercheweg, 3:30 Wendepunkt, 4:30 Schluss.",
           help:
-            "Denken Sie in Bildern: Totale zur Orientierung, Nahaufnahme für Details, Handlung im Moment, Interviewausschnitt, Schnittbilder."
+            "Schreiben Sie zu jedem Teil, welche Szene oder welcher O-Ton ihn trägt.",
+          checklist: ["Fünf Zeitfenster ausgefüllt", "Szenen/O-Töne zugeordnet", "Wendepunkt erkennbar"]
         },
         {
           id: "vr8",
-          type: "Interview und O-Ton",
+          type: "Treatment",
           question:
-            "Formulieren Sie fünf Interviewfragen. Welche zwei O-Töne wären ideal, damit die Reportage lebendig und glaubwürdig wird?",
+            "Schreiben Sie ein Treatment: Welche realen Situationen wollen Sie filmen, welche Perspektive nehmen Sie ein, und wo bleibt Raum für Überraschungen?",
           help:
-            "Gute Fragen öffnen Erzählungen. Vermeiden Sie Ja/Nein-Fragen und fragen Sie nach konkreten Situationen, Entscheidungen und Beispielen."
+            "Beschreiben Sie keine erfundenen Dialoge. Beschreiben Sie beobachtbare Situationen und Ihre filmische Herangehensweise.",
+          checklist: ["Reale Situationen", "Erzählperspektive", "Offenheit für Wirklichkeit", "Filmische Mittel"]
         },
         {
           id: "vr9",
-          type: "Off-Text",
+          type: "Feedbackstation",
           question:
-            "Schreiben Sie einen kurzen Off-Text für den Anfang und den Schluss Ihrer Reportage.",
+            "Lassen Sie Ihr Treatment von einer unbeteiligten Person lesen. Welche Verständnisfrage und welchen Verbesserungsvorschlag erhalten Sie?",
           help:
-            "Der Off-Text soll orientieren, nicht alles erklären. Kurze Sätze, klare Begriffe und Raum für Bilder."
+            "Notieren Sie Feedback nicht defensiv. Entscheiden Sie danach, was Sie übernehmen und was nicht.",
+          checklist: ["Testperson", "Verständnisfrage", "Verbesserungsvorschlag", "eigene Entscheidung"]
+        }
+      ]
+    },
+    {
+      id: "videoreportage-drehplanung",
+      filmId: "videoreportage",
+      title: "4. Drehplanung und Rollen",
+      focus: "Team, Rechte, Orte, Interviews, Ton und Materialsystem vorbereiten",
+      anchors: [
+        "Regie, Kamera, Ton und Schnitt müssen nicht vier verschiedene Personen sein, aber während des Drehs braucht jede Aufgabe Aufmerksamkeit.",
+        "Ton ist im Dokumentarischen zentral. Ein unscharfes Bild lässt sich manchmal ersetzen, ein unbrauchbarer O-Ton meist nicht.",
+        "Sichert und benennt Material konsequent: Drehtag, Ort, Person, Szene. Chaos im Schnitt entsteht fast immer schon beim Dreh."
+      ],
+      reflection: "Welche organisatorische Schwäche könnte Ihr Projekt am ehesten gefährden?",
+      questions: [
+        {
+          id: "vr10",
+          type: "Rollenplan",
+          question:
+            "Verteilen Sie Rollen und Verantwortlichkeiten: Regie, Kamera, Ton, Interview, Schnitt, Rechte/Organisation.",
+          help:
+            "Auch Einzelarbeit braucht Rollenbewusstsein. Schreiben Sie auf, wann Sie welche Rolle bewusst wechseln.",
+          checklist: ["Rollen verteilt", "letzte Entscheidung geklärt", "Schnittverantwortung geklärt"]
+        },
+        {
+          id: "vr11",
+          type: "Drehplan",
+          question:
+            "Erstellen Sie einen Drehplan mit Orten, Personen, Genehmigungen, Technik, Zeitfenstern und Plan B.",
+          help:
+            "Plan B ist Pflicht: Was tun Sie, wenn eine Person absagt, ein Ort zu laut ist oder Bild/Ton nicht funktionieren?",
+          checklist: ["Ort", "Person", "Technik", "Zeit", "Genehmigung", "Plan B"]
+        },
+        {
+          id: "vr12",
+          type: "Interview",
+          question:
+            "Formulieren Sie sieben Interviewfragen und markieren Sie die zwei wichtigsten möglichen O-Töne.",
+          help:
+            "Fragen Sie nach Situationen, Beispielen und Entscheidungen. Vermeiden Sie Ja/Nein-Fragen.",
+          checklist: ["Sieben offene Fragen", "zwei Ziel-O-Töne", "keine Ja/Nein-Fragen"]
+        }
+      ]
+    },
+    {
+      id: "videoreportage-filmsprache",
+      filmId: "videoreportage",
+      title: "5. Filmsprache: Bild und Ton",
+      focus: "Storyboard, Ton-Bild-Verhältnis, Ton-Bild-Schere und Achsensprung vermeiden",
+      anchors: [
+        "Ton-Bild-Schere bedeutet: Bild und Ton erzählen widersprüchliche oder unverbundene Informationen, ohne dass dies bewusst gestaltet ist. Vermeidung: Bild zeigt, was der Ton behauptet, ergänzt oder sinnvoll kontrastiert.",
+        "Achsensprung bedeutet: Die Kamera überschreitet die gedachte Handlungs- oder Blickachse, sodass Blickrichtungen und Raumorientierung plötzlich falsch wirken. Vermeidung: Achse festlegen, auf einer Seite bleiben, Übergänge mit neutraler Einstellung lösen.",
+        "Bild-Ton-Verhältnis planen: Atmo für Räume, O-Ton für Glaubwürdigkeit, Off-Text nur für Orientierung, Schnittbilder für Übergänge und Verdichtung."
+      ],
+      reflection: "Wo könnte in Ihrem Projekt eine Ton-Bild-Schere entstehen, und wie verhindern Sie sie?",
+      questions: [
+        {
+          id: "vr13",
+          type: "Storyboard",
+          question:
+            "Erstellen Sie eine Szenenliste mit 10 bis 14 Einstellungen: Orientierung, Handlung, Detail, Interview, Schnittbild, Schlussbild.",
+          help:
+            "Jede Einstellung braucht eine Funktion. Schreiben Sie neben jede Szene: Was sieht man? Was hört man? Warum ist sie nötig?",
+          checklist: ["10 bis 14 Einstellungen", "Bildfunktion", "Tonfunktion", "Schlussbild"]
+        },
+        {
+          id: "vr14",
+          type: "Ton-Bild-Schere",
+          question:
+            "Prüfen Sie drei geplante Szenen: Passt der Ton zum Bild, ergänzt er das Bild oder widerspricht er ungewollt?",
+          help:
+            "Ungewollte Ton-Bild-Schere vermeiden Sie, indem Off-Text, O-Ton und Bild dieselbe Erzähllogik verfolgen.",
+          checklist: ["drei Szenen geprüft", "Tonfunktion benannt", "Risiko benannt", "Korrektur geplant"]
+        },
+        {
+          id: "vr15",
+          type: "Achsensprung",
+          question:
+            "Planen Sie eine Interview- oder Gesprächssituation. Wo verläuft die Achse, auf welcher Seite bleibt die Kamera, und welche Einstellung hilft beim Übergang?",
+          help:
+            "Skizzieren Sie die Blickrichtung. Wechseln Sie die Seite nur bewusst und mit einer neutralen oder bewegten Einstellung.",
+          checklist: ["Achse beschrieben", "Kameraseite festgelegt", "Übergangseinstellung geplant"]
+        }
+      ]
+    },
+    {
+      id: "videoreportage-produktion",
+      filmId: "videoreportage",
+      title: "6. Dreh und Materialordnung",
+      focus: "Aufnehmen, sichern, benennen, Ton kontrollieren und fehlende Szenen erkennen",
+      anchors: [
+        "Schaltet die Kamera früh an und spät aus: Oft entstehen die besten dokumentarischen Momente vor oder nach der erwarteten Aussage.",
+        "Kontrolliert Ton sofort mit Kopfhörer. Wind, Hall, Verkehr oder Übersteuerung zerstören später den roten Faden.",
+        "Nach jedem Dreh: Material sichern, eindeutig benennen, Notizen zu starken Momenten schreiben."
+      ],
+      reflection: "Welche Szene hat sich anders entwickelt als geplant, und was bedeutet das für Ihre Geschichte?",
+      questions: [
+        {
+          id: "vr16",
+          type: "Drehprotokoll",
+          question:
+            "Führen Sie ein Drehprotokoll: Was wurde gedreht, welcher Ton ist brauchbar, welche Szene fehlt noch?",
+          help:
+            "Das Protokoll spart im Schnitt viel Zeit und zeigt früh, ob der rote Faden Materiallücken hat.",
+          checklist: ["gedrehte Szenen", "Tonqualität", "fehlende Szene", "Nach Dreh gesichert"]
+        },
+        {
+          id: "vr17",
+          type: "O-Ton-Check",
+          question:
+            "Wählen Sie drei starke O-Töne aus. Warum tragen sie die Leitfrage besser als eine Zusammenfassung im Off?",
+          help:
+            "Gute O-Töne zeigen Haltung, Erfahrung oder Konflikt. Sie machen die Reportage glaubwürdiger als reine Behauptungen.",
+          checklist: ["drei O-Töne", "Bezug zur Leitfrage", "Wirkung begründet"]
+        }
+      ]
+    },
+    {
+      id: "videoreportage-schnitt",
+      filmId: "videoreportage",
+      title: "7. Rohschnitt und Feedback",
+      focus: "Erst Struktur, dann Feinschnitt: Verständlichkeit, Rhythmus und Gegencheck",
+      anchors: [
+        "Im Rohschnitt steht zuerst das Gerüst der Geschichte. Musik, Effekte, Farbe und Feinschnitt kommen später.",
+        "Testpublikum ist Pflicht: Wer nicht im Projekt steckt, merkt Verständnissprünge, Langeweile und fehlenden Kontext schneller.",
+        "Kill your darlings: Eine schöne Szene bleibt nur, wenn sie die Leitfrage, Figur oder Entwicklung trägt."
+      ],
+      reflection: "Welche gelungene Szene mussten oder müssten Sie kürzen, weil sie den roten Faden schwächt?",
+      questions: [
+        {
+          id: "vr18",
+          type: "Rohschnitt",
+          question:
+            "Prüfen Sie den Rohschnitt: Ist die Leitfrage nach 20 Sekunden klar, und trägt jede Szene zur Antwort bei?",
+          help:
+            "Schreiben Sie drei konkrete Schnittentscheidungen auf: kürzen, verschieben, ergänzen oder streichen.",
+          checklist: ["Leitfrage früh klar", "Szenenfunktion geprüft", "drei Schnittentscheidungen"]
+        },
+        {
+          id: "vr19",
+          type: "Feedbackrunde",
+          question:
+            "Zeigen Sie den Rohschnitt zwei Testpersonen. Was verstehen sie sofort, wo verlieren sie Orientierung, und welche Szene wirkt am stärksten?",
+          help:
+            "Fragen Sie nicht: «Gefällt es dir?» Fragen Sie nach Verständnis, Spannung, Glaubwürdigkeit und Wirkung.",
+          checklist: ["zwei Testpersonen", "Verständnis", "Orientierungsproblem", "stärkste Szene"]
+        },
+        {
+          id: "vr20",
+          type: "Überarbeitung",
+          question:
+            "Planen Sie die Überarbeitung: Welche drei Änderungen setzen Sie vor dem Feinschnitt um?",
+          help:
+            "Nehmen Sie nur Änderungen vor, die den roten Faden, die Verständlichkeit oder die Glaubwürdigkeit verbessern.",
+          checklist: ["Änderung 1", "Änderung 2", "Änderung 3", "Begründung"]
         }
       ]
     },
     {
       id: "videoreportage-abgabe",
       filmId: "videoreportage",
-      title: "Produktion und Selbstcheck",
-      focus: "Fertige Reportage prüfen, verbessern und reflektieren",
+      title: "8. Feinschnitt, Abgabe, Reflexion",
+      focus: "Ton-Bild-Endkontrolle, Quellen, Rechte, Export und Selbstbewertung",
+      anchors: [
+        "Feinschnitt beginnt erst, wenn die Reihenfolge stimmt: Danach kommen Tonbearbeitung, Off-Text, Musik, Titel, Quellen und Export.",
+        "Rechte klären: Personen, Musik, Bilder und fremdes Material dürfen nur verwendet werden, wenn die Nutzung erlaubt ist.",
+        "Letzter Check: keine ungewollte Ton-Bild-Schere, kein irritierender Achsensprung, verständliche O-Töne, sichtbare Quellenlogik."
+      ],
+      reflection: "Welche journalistische Entscheidung war in Ihrem Projekt am schwierigsten?",
       questions: [
         {
-          id: "vr10",
-          type: "Schnittcheck",
+          id: "vr21",
+          type: "Endkontrolle",
           question:
-            "Prüfen Sie den Rohschnitt: Versteht man die Leitfrage nach 20 Sekunden und bleibt sie bis zum Schluss erkennbar?",
+            "Führen Sie den Endcheck durch: Tonverständlichkeit, Ton-Bild-Verhältnis, Achse, Quellen, Rechte, Titel, Abspann.",
           help:
-            "Wenn nicht, kürzen Sie den Einstieg oder setzen Sie früher eine klare Frage, eine Aussage oder eine beobachtbare Situation."
+            "Wenn eine Kategorie unsicher ist, wird vor der Abgabe nachgebessert. Besonders Ton und Orientierung sind nicht kosmetisch.",
+          checklist: ["Ton verständlich", "keine ungewollte Ton-Bild-Schere", "kein irritierender Achsensprung", "Quellen/Rechte geklärt", "Titel/Abspann"]
         },
         {
-          id: "vr11",
-          type: "Qualitätsraster",
+          id: "vr22",
+          type: "Abgabetext",
           question:
-            "Bewerten Sie Ihre Reportage selbst: Recherche, roter Faden, Bild-Ton-Verhältnis, O-Töne, journalistische Sorgfalt und Wirkung.",
+            "Formulieren Sie Titel, zweizeilige Beschreibung, Leitfrage und Quellenliste für die fertige Reportage.",
           help:
-            "Geben Sie jedem Bereich 1 bis 5 Punkte und notieren Sie eine konkrete Verbesserung vor der Abgabe."
+            "Der Abgabetext zeigt, dass Ihr Film nicht zufällig entstanden ist, sondern auf Recherche und Konzept beruht.",
+          checklist: ["Titel", "Beschreibung", "Leitfrage", "Quellenliste"]
         },
         {
-          id: "vr12",
-          type: "Abgabe",
+          id: "vr23",
+          type: "Selbstbewertung",
           question:
-            "Formulieren Sie einen Titel, eine zweizeilige Beschreibung und eine Quellenliste für Ihre fertige Videoreportage.",
+            "Bewerten Sie Ihre Reportage mit 1 bis 5 Punkten in sechs Bereichen: Recherche, roter Faden, Bild, Ton, O-Töne, journalistische Sorgfalt. Wo verbessern Sie sich beim nächsten Mal?",
           help:
-            "Zur Abgabe gehören Video, Titel, Kurzbeschreibung, verwendete Quellen und eine kurze Reflexion zur eigenen journalistischen Entscheidung."
+            "Schreiben Sie keine allgemeine Selbsteinschätzung. Nennen Sie eine konkrete Stärke und eine konkrete nächste Lernaufgabe.",
+          checklist: ["sechs Bereiche bewertet", "konkrete Stärke", "konkrete nächste Lernaufgabe"]
         }
       ]
     }
