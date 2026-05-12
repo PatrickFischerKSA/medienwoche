@@ -504,14 +504,60 @@ textarea {
   backdrop-filter: blur(12px) saturate(1.08);
 }
 
-.inspiration-card iframe {
+.inspiration-card iframe,
+.video-shell iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
   background: #0a1214;
 }
 
-.inspiration-card div {
+.video-shell {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background:
+    linear-gradient(135deg, rgba(10, 18, 20, 0.16), rgba(10, 18, 20, 0.58)),
+    linear-gradient(140deg, rgba(217, 238, 241, 0.82), rgba(166, 111, 24, 0.42));
+}
+
+.video-load-button {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-content: center;
+  gap: 8px;
+  border: 0;
+  color: #fff;
+  background: transparent;
+  text-align: center;
+  text-shadow: 0 2px 18px rgba(10, 18, 20, 0.46);
+}
+
+.video-load-button::before {
+  content: "";
+  width: 0;
+  height: 0;
+  margin: 0 auto 4px;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-left: 28px solid #fff;
+}
+
+.video-load-button span {
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.video-load-button strong {
+  max-width: 26ch;
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.inspiration-body {
   display: grid;
   gap: 5px;
   padding: 12px;
@@ -560,8 +606,7 @@ textarea {
   overflow: hidden;
 }
 
-.embedded-resource iframe,
-.active-film-embed {
+.embedded-resource iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;

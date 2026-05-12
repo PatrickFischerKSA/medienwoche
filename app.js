@@ -330,6 +330,18 @@ function renderMediaSwitcher() {
     .join("");
 }
 
+function renderVideoShell(item, label = "Film laden") {
+  if (!item?.embedUrl) return "";
+  return `
+    <div class="video-shell" data-embed-src="${escapeHtml(item.embedUrl)}" data-embed-title="${escapeHtml(item.title)}">
+      <button class="video-load-button" type="button">
+        <span>${escapeHtml(label)}</span>
+        <strong>${escapeHtml(item.title)}</strong>
+      </button>
+    </div>
+  `;
+}
+
 function renderResources() {
   els.introGrid.innerHTML = (data.introVideos || [])
     .map(
@@ -348,14 +360,8 @@ function renderResources() {
     .map(
       (film) => `
         <article class="inspiration-card">
-          <iframe
-            src="${escapeHtml(film.embedUrl)}"
-            title="${escapeHtml(film.title)}"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-          <div>
+          ${renderVideoShell(film, "Inspirationsfilm laden")}
+          <div class="inspiration-body">
             <span>${escapeHtml(film.type)}</span>
             <strong>${escapeHtml(film.title)}</strong>
             <small>${escapeHtml(film.observation)}</small>
@@ -371,13 +377,7 @@ function renderResources() {
       if (resource.embedUrl) {
         return `
           <article class="resource-link embedded-resource">
-            <iframe
-              src="${escapeHtml(resource.embedUrl)}"
-              title="${escapeHtml(resource.title)}"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+            ${renderVideoShell(resource, "Ressource laden")}
             <a href="${escapeHtml(resource.url)}" target="_blank" rel="noreferrer">
               <span>${escapeHtml(resource.type)}</span>
               <strong>${escapeHtml(resource.title)}</strong>
@@ -401,18 +401,7 @@ function renderResources() {
 function renderActiveFilmPanel() {
   const film = getActiveFilm();
   const phase = getActivePhase();
-  const embed = film?.embedUrl
-    ? `
-      <iframe
-        class="active-film-embed"
-        src="${escapeHtml(film.embedUrl)}"
-        title="${escapeHtml(film.title)}"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    `
-    : "";
+  const embed = renderVideoShell(film, "Beispielvideo laden");
   els.activeFilmPanel.innerHTML = `
     <div>
       <p class="eyebrow">Aktueller Arbeitsblock</p>
@@ -605,6 +594,24 @@ function exportText() {
 }
 
 function bindEvents() {
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".video-load-button");
+    if (!button) return;
+    const shell = button.closest(".video-shell");
+    if (!shell) return;
+    const src = shell.dataset.embedSrc;
+    const title = shell.dataset.embedTitle || "Video";
+    shell.innerHTML = `
+      <iframe
+        src="${escapeHtml(src)}"
+        title="${escapeHtml(title)}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    `;
+  });
+
   els.phaseNav.addEventListener("click", (event) => {
     const filmButton = event.target.closest("[data-film-id]");
     if (filmButton && !event.target.closest("[data-phase-id]")) {
