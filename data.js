@@ -26,6 +26,7 @@ window.LESSON_DATA = {
       label: "Projekt",
       description: "Eigenständige Praxiseinheit: Sie entwickeln, drehen, schneiden und reflektieren eine Reportage von etwa fünf Minuten.",
       url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
+      embedUrl: "https://www.youtube-nocookie.com/embed/XRBsO8ytyCk",
       linkLabel: "Reportage von SRF Impact öffnen"
     }
   ],
@@ -85,7 +86,55 @@ window.LESSON_DATA = {
       title: "Reportage von SRF Impact",
       type: "Projekt",
       url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
+      embedUrl: "https://www.youtube-nocookie.com/embed/XRBsO8ytyCk",
       description: "Beispielvideo als Orientierung für Aufbau, Bildsprache, Tempo und Erzählhaltung der eigenen Reportage."
+    },
+    {
+      title: "Auftrag: Videoreportage «Schule im Fokus»",
+      type: "Projektauftrag",
+      url: "assets/docs/Videoreportage_Schule_im_Fokus.docx",
+      description: "Originalauftrag mit Anforderungen und Bewertungsraster für Deutsch und Kommunikation."
+    },
+    {
+      title: "Rainer Wolf: Filmen mit dem Smartphone",
+      type: "Rainer Wolf",
+      url: "https://www.youtube.com/watch?v=cRyEIpEqVoY",
+      embedUrl: "https://www.youtube-nocookie.com/embed/cRyEIpEqVoY",
+      description: "Zehn Grundlagen für den Start: bewusst filmen, Ton beachten, Geschichten erzählen, nicht zu lang werden."
+    },
+    {
+      title: "Rainer Wolf: Ein Interview filmen mit dem iPhone",
+      type: "Interview",
+      url: "https://www.youtube.com/watch?v=1NQhHxKhgKM",
+      embedUrl: "https://www.youtube-nocookie.com/embed/1NQhHxKhgKM",
+      description: "Praktische Orientierung zu Location, Bildkomposition, Licht, Kameraeinstellung und Ton."
+    },
+    {
+      title: "Rainer Wolf: Wie filmt man ein Interview?",
+      type: "Interview",
+      url: "https://www.youtube.com/watch?v=ovF2EB0k71E",
+      embedUrl: "https://www.youtube-nocookie.com/embed/ovF2EB0k71E",
+      description: "Vertiefung für Interviews: ruhiger Ort, kontrollierbares Licht, Tiefe, Einstellungsgrößen und Kameras."
+    },
+    {
+      title: "Rainer Wolf: Storytelling für Filmanfänger",
+      type: "Storytelling",
+      url: "https://www.youtube.com/watch?v=_o9bIzEPzpM",
+      embedUrl: "https://www.youtube-nocookie.com/embed/_o9bIzEPzpM",
+      description: "Hilft beim roten Faden: Figur, Frage, Konflikt, Wendepunkt und Schlussbild statt Themenreferat."
+    },
+    {
+      title: "Rainer Wolf: 5 Tipps für stärkere Bilder",
+      type: "Bildgestaltung",
+      url: "https://www.youtube.com/watch?v=e7k_qmS2Erc",
+      embedUrl: "https://www.youtube-nocookie.com/embed/e7k_qmS2Erc",
+      description: "Konkrete Impulse zu Kamerabewegung, Nähe, Vordergrund, Komposition und Licht."
+    },
+    {
+      title: "Rainer Wolf / Wolffilms: Kanal",
+      type: "Kanal",
+      url: "https://www.youtube.com/@rainer_wolf",
+      description: "Weitere Tutorials zu Smartphone-Filmen, Kameraführung, Licht, Schnitt, Sound und KI-Video."
     },
     {
       title: "Dokumentarfilm im Unterricht: Wie ein Dokumentarfilm entsteht",
@@ -487,9 +536,9 @@ window.LESSON_DATA = {
           id: "vr2",
           type: "Formatwissen",
           question:
-            "Lesen Sie die Ressourcen «Videopodcast: Begriffsklärung», «Reportage-Konzept schreiben» und «Kurzformat-Storytelling». Was unterscheidet eine 5-Minuten-Videoreportage von einem Erklärvideo oder Vortrag?",
+            "Lesen Sie «Reportage-Konzept schreiben» und schauen Sie «Rainer Wolf: Filmen mit dem Smartphone» sowie «Rainer Wolf: Storytelling für Filmanfänger». Was unterscheidet eine 5-Minuten-Videoreportage von einem Erklärvideo oder Vortrag?",
           help:
-            "Beziehen Sie Ihre Antwort ausdrücklich auf diese drei Ressourcen. Nutzen Sie die Begriffe Beobachtung, O-Ton, roter Faden, Zielpublikum, Szene und Autor*innenhaltung.",
+            "Beziehen Sie Ihre Antwort ausdrücklich auf diese Ressourcen. Nutzen Sie die Begriffe Beobachtung, O-Ton, roter Faden, Zielpublikum, Szene und Autor*innenhaltung.",
           checklist: ["Mindestens drei Fachbegriffe verwendet", "Reportage vom Erklärvideo abgegrenzt", "Zielpublikum erwähnt"]
         },
         {
@@ -619,10 +668,10 @@ window.LESSON_DATA = {
           id: "vr12",
           type: "Interview",
           question:
-            "Formulieren Sie sieben Interviewfragen und markieren Sie die zwei wichtigsten möglichen O-Töne.",
+            "Schauen Sie mindestens eines der beiden Rainer-Wolf-Interviewvideos. Formulieren Sie danach sieben Interviewfragen und markieren Sie die zwei wichtigsten möglichen O-Töne.",
           help:
-            "Fragen Sie nach Situationen, Beispielen und Entscheidungen. Vermeiden Sie Ja/Nein-Fragen.",
-          checklist: ["Sieben offene Fragen", "zwei Ziel-O-Töne", "keine Ja/Nein-Fragen"]
+            "Fragen Sie nach Situationen, Beispielen und Entscheidungen. Planen Sie außerdem Ort, Licht, Blickrichtung, Bildausschnitt und Ton.",
+          checklist: ["Interviewvideo genutzt", "sieben offene Fragen", "zwei Ziel-O-Töne", "Ort/Licht/Ton geplant", "keine Ja/Nein-Fragen"]
         }
       ]
     },
@@ -642,10 +691,10 @@ window.LESSON_DATA = {
           id: "vr13",
           type: "Storyboard",
           question:
-            "Erstellen Sie eine Szenenliste mit 10 bis 14 Einstellungen: Orientierung, Handlung, Detail, Interview, Schnittbild, Schlussbild.",
+            "Schauen Sie «Rainer Wolf: 5 Tipps für stärkere Bilder». Erstellen Sie danach eine Szenenliste mit 10 bis 14 Einstellungen: Orientierung, Handlung, Detail, Interview, Schnittbild, Schlussbild.",
           help:
-            "Jede Einstellung braucht eine Funktion. Schreiben Sie neben jede Szene: Was sieht man? Was hört man? Warum ist sie nötig?",
-          checklist: ["10 bis 14 Einstellungen", "Bildfunktion", "Tonfunktion", "Schlussbild"]
+            "Jede Einstellung braucht eine Funktion. Schreiben Sie neben jede Szene: Was sieht man? Was hört man? Warum ist sie nötig? Wo arbeiten Sie mit Nähe, Vordergrund, Bewegung oder bewusstem Licht?",
+          checklist: ["Bildtutorial genutzt", "10 bis 14 Einstellungen", "Bildfunktion", "Tonfunktion", "Schlussbild"]
         },
         {
           id: "vr14",

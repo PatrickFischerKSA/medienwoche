@@ -344,27 +344,59 @@ function renderResources() {
     .join("");
 
   els.resourceList.innerHTML = (data.resources || [])
-    .map(
-      (resource) => `
+    .map((resource) => {
+      if (resource.embedUrl) {
+        return `
+          <article class="resource-link embedded-resource">
+            <iframe
+              src="${escapeHtml(resource.embedUrl)}"
+              title="${escapeHtml(resource.title)}"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <a href="${escapeHtml(resource.url)}" target="_blank" rel="noreferrer">
+              <span>${escapeHtml(resource.type)}</span>
+              <strong>${escapeHtml(resource.title)}</strong>
+              <small>${escapeHtml(resource.description)}</small>
+            </a>
+          </article>
+        `;
+      }
+
+      return `
         <a class="resource-link" href="${escapeHtml(resource.url)}" target="_blank" rel="noreferrer">
           <span>${escapeHtml(resource.type)}</span>
           <strong>${escapeHtml(resource.title)}</strong>
           <small>${escapeHtml(resource.description)}</small>
         </a>
-      `
-    )
+      `;
+    })
     .join("");
 }
 
 function renderActiveFilmPanel() {
   const film = getActiveFilm();
   const phase = getActivePhase();
+  const embed = film?.embedUrl
+    ? `
+      <iframe
+        class="active-film-embed"
+        src="${escapeHtml(film.embedUrl)}"
+        title="${escapeHtml(film.title)}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    `
+    : "";
   els.activeFilmPanel.innerHTML = `
     <div>
       <p class="eyebrow">Aktueller Arbeitsblock</p>
       <h2>${escapeHtml(film?.title || "")}</h2>
       <p>${escapeHtml(phase.title)}: ${escapeHtml(phase.focus)}</p>
     </div>
+    ${embed}
     <a class="text-button strong-link" href="${escapeHtml(film?.url || "#")}" target="_blank" rel="noreferrer">
       ${escapeHtml(film?.linkLabel || "Film im Mediaserver öffnen")}
     </a>
