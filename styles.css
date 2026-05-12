@@ -388,7 +388,8 @@ textarea {
 .phase-nav,
 .intro-grid,
 .inspiration-list,
-.resource-list {
+.resource-list,
+.fake-news-list {
   display: grid;
   gap: 12px;
 }
@@ -416,6 +417,13 @@ textarea {
 
 .inspiration-list {
   max-height: 760px;
+  margin-top: 12px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.fake-news-list {
+  max-height: 680px;
   margin-top: 12px;
   overflow: auto;
   padding-right: 4px;
@@ -637,6 +645,58 @@ textarea {
   margin-top: 5px;
   color: var(--muted);
   line-height: 1.4;
+}
+
+.fake-news-brief,
+.fake-news-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.fake-news-brief {
+  padding: 14px;
+}
+
+.fake-news-brief h2 {
+  margin-bottom: 8px;
+}
+
+.fake-news-brief p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.fake-news-card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px;
+}
+
+.fake-news-card span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--accent);
+  font-weight: 900;
+}
+
+.fake-news-card strong,
+.fake-news-card p {
+  display: block;
+}
+
+.fake-news-card p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  line-height: 1.42;
 }
 
 .reflection-item {

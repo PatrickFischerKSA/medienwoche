@@ -17,10 +17,12 @@ const els = {
   introDetails: document.getElementById("intro-details"),
   inspirationDetails: document.getElementById("inspiration-details"),
   resourceDetails: document.getElementById("resource-details"),
+  fakeNewsDetails: document.getElementById("fake-news-details"),
   mediaSwitcher: document.getElementById("media-switcher"),
   introGrid: document.getElementById("intro-grid"),
   inspirationList: document.getElementById("inspiration-list"),
   resourceList: document.getElementById("resource-list"),
+  fakeNewsList: document.getElementById("fake-news-list"),
   studentName: document.getElementById("student-name"),
   applyLogin: document.getElementById("apply-login"),
   logout: document.getElementById("logout"),
@@ -43,7 +45,8 @@ const els = {
 const renderedMaterials = {
   intro: false,
   inspiration: false,
-  resources: false
+  resources: false,
+  fakeNews: false
 };
 
 function load() {
@@ -418,10 +421,38 @@ function renderResourceLinks() {
   renderedMaterials.resources = true;
 }
 
+function renderFakeNewsChecks() {
+  if (renderedMaterials.fakeNews) return;
+  const checks = (data.fakeNewsChecks || [])
+    .map(
+      (item, index) => `
+        <article class="fake-news-card">
+          <span>${String(index + 1).padStart(2, "0")}</span>
+          <div>
+            <strong>${escapeHtml(item.title)}</strong>
+            <p>${escapeHtml(item.text)}</p>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+
+  els.fakeNewsList.innerHTML = `
+    <section class="fake-news-brief">
+      <p class="eyebrow">16 Methoden zur Überprüfung</p>
+      <h2>Fake News im Internet erkennen</h2>
+      <p>${escapeHtml(data.fakeNewsReminder || "")}</p>
+    </section>
+    ${checks}
+  `;
+  renderedMaterials.fakeNews = true;
+}
+
 function renderResources() {
   if (els.introDetails?.open) renderIntroVideos();
   if (els.inspirationDetails?.open) renderInspirationFilms();
   if (els.resourceDetails?.open) renderResourceLinks();
+  if (els.fakeNewsDetails?.open) renderFakeNewsChecks();
 }
 
 function renderActiveFilmPanel() {
@@ -623,7 +654,8 @@ function bindEvents() {
   const materialToggles = [
     [els.introDetails, renderIntroVideos],
     [els.inspirationDetails, renderInspirationFilms],
-    [els.resourceDetails, renderResourceLinks]
+    [els.resourceDetails, renderResourceLinks],
+    [els.fakeNewsDetails, renderFakeNewsChecks]
   ];
 
   materialToggles.forEach(([details, renderer]) => {

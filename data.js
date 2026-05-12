@@ -100,6 +100,74 @@ window.LESSON_DATA = {
         "Achten Sie auf Archiv, Erinnerung und Atmosphäre: Wie wird ein vergangener Ausnahmezustand filmisch wieder greifbar?"
     }
   ],
+  fakeNewsChecks: [
+    {
+      title: "Quelle prüfen",
+      text: "Wer hat den Beitrag veröffentlicht? Seriöse Medien nennen meistens Autor, Datum, Impressum und Quellen. Unbekannte Seiten ohne klare Angaben sind verdächtig."
+    },
+    {
+      title: "Überschrift hinterfragen",
+      text: "Reißerische Titel wie «Unglaublich!», «Das verschweigen sie dir!» oder «Schockierende Wahrheit!» sollen oft vor allem Aufmerksamkeit erzeugen."
+    },
+    {
+      title: "Datum kontrollieren",
+      text: "Alte Nachrichten werden manchmal neu geteilt, obwohl sie nicht mehr aktuell sind. Deshalb sollte man immer prüfen, wann ein Beitrag veröffentlicht wurde."
+    },
+    {
+      title: "Mit anderen Quellen vergleichen",
+      text: "Berichten auch andere seriöse Medien darüber? Wenn nur eine fragwürdige Seite die Nachricht verbreitet, sollte man vorsichtig sein."
+    },
+    {
+      title: "Bilder und Videos prüfen",
+      text: "Bilder und Videos können aus dem Zusammenhang gerissen oder bearbeitet sein. Man sollte prüfen, ob sie wirklich zum behaupteten Ereignis gehören."
+    },
+    {
+      title: "Fakten von Meinung trennen",
+      text: "Fake News vermischen oft Behauptungen, Gerüchte und starke Meinungen, ohne klare Beweise zu liefern."
+    },
+    {
+      title: "Auf Sprache achten",
+      text: "Viele Rechtschreibfehler, viele Ausrufezeichen, starke Wut, Angst oder Hass als Hauptwirkung sind Warnzeichen."
+    },
+    {
+      title: "URL genau anschauen",
+      text: "Fake-Seiten verwenden oft ähnlich aussehende Internetadressen wie bekannte Nachrichtenseiten. Kleine Schreibfehler oder ungewöhnliche Endungen können Hinweise sein."
+    },
+    {
+      title: "Bild-Rückwärtssuche verwenden",
+      text: "Mit Google Lens, TinEye oder Yandex kann man prüfen, ob ein Bild schon früher oder in einem anderen Zusammenhang veröffentlicht wurde."
+    },
+    {
+      title: "Videos technisch überprüfen",
+      text: "Bei Videos kann man einzelne Standbilder als Screenshot speichern und per Bildersuche prüfen. Außerdem sollte man auf Schnitte, unnatürliche Stimmen, falsche Lippenbewegungen oder seltsame Schatten achten."
+    },
+    {
+      title: "Faktencheck-Websites nutzen",
+      text: "Seiten wie Correctiv, Mimikama, dpa-Faktencheck oder der ARD-Faktenfinder überprüfen verbreitete Behauptungen."
+    },
+    {
+      title: "Metadaten prüfen",
+      text: "Bei Bildern oder Dokumenten können Metadaten zeigen, wann und mit welchem Gerät eine Datei erstellt wurde. Aber Vorsicht: Metadaten können gelöscht oder manipuliert werden."
+    },
+    {
+      title: "KI- und Deepfake-Hinweise suchen",
+      text: "Bei KI-Bildern sind oft Hände, Schrift, Spiegelungen, Zähne oder Hintergründe fehlerhaft. Bei Deepfake-Videos wirken Mimik, Augenbewegungen oder Stimme manchmal unnatürlich."
+    },
+    {
+      title: "Browser-Erweiterungen nutzen",
+      text: "Manche Erweiterungen und Online-Tools warnen vor unseriösen Seiten oder zeigen Informationen zur Glaubwürdigkeit einer Quelle an."
+    },
+    {
+      title: "Archivseiten verwenden",
+      text: "Mit der Wayback Machine kann man prüfen, ob eine Website früher anders aussah oder ob Inhalte nachträglich verändert wurden."
+    },
+    {
+      title: "Link-Vorschau und Kurzlinks prüfen",
+      text: "Gekürzte Links können das eigentliche Ziel verstecken. Tools wie CheckShortURL zeigen, wohin ein Kurzlink führt."
+    }
+  ],
+  fakeNewsReminder:
+    "Erst Quelle, Inhalt, Bild/Video und Link prüfen - dann teilen. Besonders Nachrichten, die starke Gefühle auslösen, sollte man kritisch hinterfragen.",
   resources: [
     {
       title: "Fake News: zusätzlicher Materialpool",
