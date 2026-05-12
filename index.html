@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <img id="bg-gif" src="assets/images/tagesschau_trailer.gif" alt="" aria-hidden="true" />
+    <img id="bg-gif" data-src="assets/images/tagesschau_trailer.gif" alt="" aria-hidden="true" />
     <div id="vignette" aria-hidden="true"></div>
     <div class="app-shell">
       <header class="topbar">
@@ -33,19 +33,19 @@
       <main class="learning-grid">
         <section class="video-pane" aria-label="Materialien">
           <section class="resource-panel">
-            <details open>
+            <details id="intro-details">
               <summary>Einstieg</summary>
               <div class="intro-grid" id="intro-grid"></div>
             </details>
           </section>
           <section class="resource-panel">
-            <details open>
+            <details id="inspiration-details">
               <summary>Inspirationsfilme</summary>
               <div class="inspiration-list" id="inspiration-list"></div>
             </details>
           </section>
           <section class="resource-panel">
-            <details open>
+            <details id="resource-details">
               <summary>Ressourcen</summary>
               <div class="resource-list" id="resource-list"></div>
             </details>

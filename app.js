@@ -13,6 +13,10 @@ const state = {
 };
 
 const els = {
+  bgGif: document.getElementById("bg-gif"),
+  introDetails: document.getElementById("intro-details"),
+  inspirationDetails: document.getElementById("inspiration-details"),
+  resourceDetails: document.getElementById("resource-details"),
   mediaSwitcher: document.getElementById("media-switcher"),
   introGrid: document.getElementById("intro-grid"),
   inspirationList: document.getElementById("inspiration-list"),
@@ -34,6 +38,12 @@ const els = {
   phaseTitle: document.getElementById("phase-title"),
   questionList: document.getElementById("question-list"),
   reflectionList: document.getElementById("reflection-list")
+};
+
+const renderedMaterials = {
+  intro: false,
+  inspiration: false,
+  resources: false
 };
 
 function load() {
@@ -342,7 +352,8 @@ function renderVideoShell(item, label = "Film laden") {
   `;
 }
 
-function renderResources() {
+function renderIntroVideos() {
+  if (renderedMaterials.intro) return;
   els.introGrid.innerHTML = (data.introVideos || [])
     .map(
       (video) => `
@@ -355,7 +366,11 @@ function renderResources() {
       `
     )
     .join("");
+  renderedMaterials.intro = true;
+}
 
+function renderInspirationFilms() {
+  if (renderedMaterials.inspiration) return;
   els.inspirationList.innerHTML = (data.inspirationFilms || [])
     .map(
       (film) => `
@@ -371,7 +386,11 @@ function renderResources() {
       `
     )
     .join("");
+  renderedMaterials.inspiration = true;
+}
 
+function renderResourceLinks() {
+  if (renderedMaterials.resources) return;
   els.resourceList.innerHTML = (data.resources || [])
     .map((resource) => {
       if (resource.embedUrl) {
@@ -396,6 +415,13 @@ function renderResources() {
       `;
     })
     .join("");
+  renderedMaterials.resources = true;
+}
+
+function renderResources() {
+  if (els.introDetails?.open) renderIntroVideos();
+  if (els.inspirationDetails?.open) renderInspirationFilms();
+  if (els.resourceDetails?.open) renderResourceLinks();
 }
 
 function renderActiveFilmPanel() {
@@ -594,6 +620,18 @@ function exportText() {
 }
 
 function bindEvents() {
+  const materialToggles = [
+    [els.introDetails, renderIntroVideos],
+    [els.inspirationDetails, renderInspirationFilms],
+    [els.resourceDetails, renderResourceLinks]
+  ];
+
+  materialToggles.forEach(([details, renderer]) => {
+    details?.addEventListener("toggle", () => {
+      if (details.open) renderer();
+    });
+  });
+
   document.addEventListener("click", (event) => {
     const button = event.target.closest(".video-load-button");
     if (!button) return;
@@ -761,6 +799,23 @@ function bindEvents() {
   });
 }
 
+function loadBackgroundLater() {
+  if (!els.bgGif?.dataset.src) return;
+  if (window.matchMedia?.("(max-width: 760px)").matches) return;
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
+  const load = () => {
+    els.bgGif.src = els.bgGif.dataset.src;
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(load, { timeout: 3500 });
+  } else {
+    window.setTimeout(load, 2500);
+  }
+}
+
 load();
 bindEvents();
 render();
+loadBackgroundLater();

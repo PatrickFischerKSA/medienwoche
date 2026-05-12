@@ -42,6 +42,10 @@ body {
   pointer-events: none;
 }
 
+#bg-gif:not([src]) {
+  display: none;
+}
+
 #vignette {
   position: fixed;
   inset: 0;
@@ -1077,6 +1081,10 @@ textarea {
 }
 
 @media (max-width: 780px) {
+  #bg-gif {
+    display: none;
+  }
+
   .app-shell {
     width: min(100% - 18px, 1500px);
   }
@@ -1116,5 +1124,11 @@ textarea {
   .watch-tools input,
   .watch-tools .text-button {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bg-gif {
+    display: none;
   }
 }
