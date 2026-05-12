@@ -383,6 +383,7 @@ textarea {
 .question-list,
 .phase-nav,
 .intro-grid,
+.inspiration-list,
 .resource-list {
   display: grid;
   gap: 12px;
@@ -405,6 +406,13 @@ textarea {
 
 .resource-list {
   max-height: 640px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.inspiration-list {
+  max-height: 760px;
+  margin-top: 12px;
   overflow: auto;
   padding-right: 4px;
 }
@@ -485,6 +493,54 @@ textarea {
 
 .resource-list {
   margin-top: 12px;
+}
+
+.inspiration-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.inspiration-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #0a1214;
+}
+
+.inspiration-card div {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+}
+
+.inspiration-card span {
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.inspiration-card strong,
+.inspiration-card small {
+  display: block;
+}
+
+.inspiration-card small {
+  color: var(--muted);
+  line-height: 1.42;
+}
+
+.inspiration-card a {
+  margin-top: 4px;
+  color: var(--accent-strong);
+  font-weight: 850;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 .resource-link {

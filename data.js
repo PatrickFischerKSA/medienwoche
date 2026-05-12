@@ -50,6 +50,56 @@ window.LESSON_DATA = {
       thumbnailUrl: "https://img.youtube.com/vi/i-qSJyyfDnE/hqdefault.jpg"
     }
   ],
+  inspirationFilms: [
+    {
+      title: "Leben im Provisorium: Wie es wirklich ist",
+      type: "Schulalltag",
+      url: "https://videopress.com/v/9Lxem27a",
+      embedUrl: "https://videopress.com/embed/9Lxem27a",
+      observation:
+        "Beobachten Sie, wie ein konkreter Schulort zum Thema wird: Welche Bilder zeigen Alltag, welche Aussagen ordnen ihn ein?"
+    },
+    {
+      title: "Reportage Schulklima KSA",
+      type: "Zusammenleben",
+      url: "https://videopress.com/v/MVuJHNCG",
+      embedUrl: "https://videopress.com/embed/MVuJHNCG",
+      observation:
+        "Achten Sie auf die Stimmenvielfalt: Wer spricht, wer bleibt unsichtbar, und wie entsteht daraus ein Bild von Schulklima?"
+    },
+    {
+      title: "Digitalisierung im Unterricht",
+      type: "Digitalität",
+      url: "https://videopress.com/v/FxlHkLvf",
+      embedUrl: "https://videopress.com/embed/FxlHkLvf",
+      observation:
+        "Prüfen Sie, ob digitale Medien nur Thema sind oder auch filmisch sichtbar werden: Geräte, Routinen, Konflikte, Entscheidungen."
+    },
+    {
+      title: "Reportage von Livia und Lynn",
+      type: "Perspektive",
+      url: "https://videopress.com/v/m9gY79M8",
+      embedUrl: "https://videopress.com/embed/m9gY79M8",
+      observation:
+        "Untersuchen Sie den Einstieg: Welche Frage wird geöffnet, und welche Szene macht neugierig auf den weiteren Verlauf?"
+    },
+    {
+      title: "Reportage Christ-Königs-Kollegium Nuolen",
+      type: "Schulporträt",
+      url: "https://videopress.com/v/Ex65Di8G",
+      embedUrl: "https://videopress.com/embed/Ex65Di8G",
+      observation:
+        "Vergleichen Sie Porträt und Reportage: Wo beschreibt der Film eine Schule, wo beobachtet er einen konkreten Vorgang?"
+    },
+    {
+      title: "KSA während der Corona-Pandemie",
+      type: "Krise und Erinnerung",
+      url: "https://videopress.com/v/Gwfbmj8n",
+      embedUrl: "https://videopress.com/embed/Gwfbmj8n",
+      observation:
+        "Achten Sie auf Archiv, Erinnerung und Atmosphäre: Wie wird ein vergangener Ausnahmezustand filmisch wieder greifbar?"
+    }
+  ],
   resources: [
     {
       title: "Fake News: zusätzlicher Materialpool",
@@ -94,6 +144,18 @@ window.LESSON_DATA = {
       type: "Projektauftrag",
       url: "assets/docs/Videoreportage_Schule_im_Fokus.docx",
       description: "Originalauftrag mit Anforderungen und Bewertungsraster für Deutsch und Kommunikation."
+    },
+    {
+      title: "Dokumentarfilm im Unterricht",
+      type: "Methodenheft",
+      url: "assets/docs/Dokumentarfilm-im-Unterricht.pdf",
+      description: "Methodisches Heft als Arbeitsgrundlage für dokumentarische Idee, Recherche, Drehplanung, Bild/Ton, Montage und Auswertung."
+    },
+    {
+      title: "Die perfekte Schule",
+      type: "Großprojekt",
+      url: "https://www.dropbox.com/scl/fi/d39kyfyi0gl395cnjp2ws/Die-perfekte-Schule-Dokumentarfilm.mp4?rlkey=5a008nmkordli8eb73krbja9f&st=tshmu2wh&dl=0",
+      description: "Längerer Dokumentarfilm als großes Vergleichsprojekt: Schulvision, Dramaturgie, Figurenführung, Institution und Konflikt."
     },
     {
       title: "Rainer Wolf: Filmen mit dem Smartphone",
@@ -515,13 +577,14 @@ window.LESSON_DATA = {
       id: "videoreportage-briefing",
       filmId: "videoreportage",
       title: "1. Briefing und Reportage von SRF Impact",
-      focus: "Projektauftrag, Beispielreportage und Reportageprinzip verstehen",
+      focus: "Projektauftrag, Beispielreportage, Inspirationsfilme und Reportageprinzip verstehen",
       anchors: [
         "Eine Reportage ist keine Themenpräsentation, sondern eine geführte Beobachtung: Sie beantwortet eine Leitfrage mit Szenen, O-Tönen und überprüfbaren Informationen.",
         "Für fünf Minuten brauchen Sie einen engen Fokus: eine Hauptfrage, wenige Orte, klare Hauptpersonen und Bilder, die wirklich etwas zeigen.",
-        "Feedback-Ziel dieser Station: Nach der Reportage von SRF Impact müssen Sie benennen können, welche Wirkung Ihre eigene Reportage erzeugen soll."
+        "Die Inspirationsfilme zeigen mögliche Themenfelder: Provisorium, Schulklima, Digitalisierung, Schulporträt, Krise und Erinnerung.",
+        "Feedback-Ziel dieser Station: Nach den Beispielen müssen Sie benennen können, welche Wirkung Ihre eigene Reportage erzeugen soll."
       ],
-      reflection: "Welche Szene aus der Reportage von SRF Impact bleibt hängen, und warum wirkt sie stärker als eine bloße Erklärung?",
+      reflection: "Welche Szene aus den Inspirationsfilmen bleibt hängen, und warum wirkt sie stärker als eine bloße Erklärung?",
       questions: [
         {
           id: "vr1",
@@ -533,13 +596,22 @@ window.LESSON_DATA = {
           checklist: ["Erstes Bild benannt", "Erster Ton/O-Ton benannt", "Konflikt oder Leitfrage erkannt", "Wirkung in einem Satz erklärt"]
         },
         {
+          id: "vr1b",
+          type: "Inspirationsfilme auswerten",
+          question:
+            "Wählen Sie zwei Inspirationsfilme aus. Vergleichen Sie Thema, Einstieg, wichtigste Person/Stimme, stärkstes Bild und Schlusswirkung.",
+          help:
+            "Arbeiten Sie mit einer kleinen Tabelle: Film 1 / Film 2. Entscheidend ist, welche konkrete Lösung Sie für Ihr eigenes Projekt übernehmen oder bewusst vermeiden.",
+          checklist: ["zwei Filme gewählt", "Thema verglichen", "Einstieg verglichen", "stärkstes Bild benannt", "eigene Konsequenz formuliert"]
+        },
+        {
           id: "vr2",
           type: "Formatwissen",
           question:
-            "Lesen Sie «Reportage-Konzept schreiben» und schauen Sie «Rainer Wolf: Filmen mit dem Smartphone» sowie «Rainer Wolf: Storytelling für Filmanfänger». Was unterscheidet eine 5-Minuten-Videoreportage von einem Erklärvideo oder Vortrag?",
+            "Lesen Sie «Dokumentarfilm im Unterricht» und «Reportage-Konzept schreiben». Schauen Sie außerdem «Rainer Wolf: Filmen mit dem Smartphone» sowie «Rainer Wolf: Storytelling für Filmanfänger». Was unterscheidet eine 5-Minuten-Videoreportage von einem Erklärvideo oder Vortrag?",
           help:
             "Beziehen Sie Ihre Antwort ausdrücklich auf diese Ressourcen. Nutzen Sie die Begriffe Beobachtung, O-Ton, roter Faden, Zielpublikum, Szene und Autor*innenhaltung.",
-          checklist: ["Mindestens drei Fachbegriffe verwendet", "Reportage vom Erklärvideo abgegrenzt", "Zielpublikum erwähnt"]
+          checklist: ["Methodenheft genutzt", "Mindestens drei Fachbegriffe verwendet", "Reportage vom Erklärvideo abgegrenzt", "Zielpublikum erwähnt"]
         },
         {
           id: "vr3",
@@ -560,7 +632,8 @@ window.LESSON_DATA = {
       anchors: [
         "Aus der Idee entsteht zuerst ein Exposé: ein kurzer Text, der Thema, Leitfrage, Hauptpersonen, Orte und mögliche Entwicklung bündelt.",
         "Ein Treatment ist offener als ein Drehbuch: Es plant Situationen und Herangehensweisen, lässt aber Raum für Wirklichkeit.",
-        "Ohne Recherche kippt Reportage in Meinung. Jede starke Szene braucht mindestens eine verlässliche Quelle oder beobachtbare Situation."
+        "Ohne Recherche kippt Reportage in Meinung. Jede starke Szene braucht mindestens eine verlässliche Quelle oder beobachtbare Situation.",
+        "Der Großprojekt-Film «Die perfekte Schule» dient als Vergleich: Wie wird aus einer abstrakten Schulidee ein beobachtbarer dokumentarischer Konflikt?"
       ],
       reflection: "Wo besteht bei Ihrem Thema die Gefahr, nur Ihre eigene Meinung zu bestätigen?",
       questions: [
@@ -568,10 +641,10 @@ window.LESSON_DATA = {
           id: "vr4",
           type: "Leitfrage",
           question:
-            "Wählen Sie ein enges Thema und formulieren Sie eine Leitfrage, die filmisch beobachtbar ist.",
+            "Wählen Sie ein enges Thema und formulieren Sie eine Leitfrage, die filmisch beobachtbar ist. Nutzen Sie mindestens einen Inspirationsfilm als thematischen Gegencheck.",
           help:
-            "Nicht: «Fake News allgemein». Besser: «Wie prüft unsere Klasse Nachrichten, bevor sie sie teilt?»",
-          checklist: ["Thema eingegrenzt", "Leitfrage als Frage formuliert", "Filmische Beobachtbarkeit geprüft"]
+            "Nicht: «Schulstress allgemein». Besser: «Was passiert in unserer Klasse in den letzten 24 Stunden vor einer großen Prüfung?»",
+          checklist: ["Thema eingegrenzt", "Inspirationsfilm als Gegencheck genutzt", "Leitfrage als Frage formuliert", "Filmische Beobachtbarkeit geprüft"]
         },
         {
           id: "vr5",
@@ -586,10 +659,10 @@ window.LESSON_DATA = {
           id: "vr6",
           type: "Mini-Exposé",
           question:
-            "Schreiben Sie ein Mini-Exposé von 120 bis 180 Wörtern: Thema, Leitfrage, Zielpublikum, Haltung, mögliche Szenen und Schlussgedanke.",
+            "Schreiben Sie ein Mini-Exposé von 120 bis 180 Wörtern: Thema, Leitfrage, Zielpublikum, Haltung, mögliche Szenen, Inspirationsfilm und Schlussgedanke.",
           help:
             "Das Exposé ist der Produktionsvertrag mit sich selbst. Es muss präzise genug sein, damit ein Team danach arbeiten kann.",
-          checklist: ["Thema", "Leitfrage", "Zielpublikum", "Haltung", "Szenen", "Schlussgedanke"]
+          checklist: ["Thema", "Leitfrage", "Zielpublikum", "Haltung", "Szenen", "Inspirationsfilm", "Schlussgedanke"]
         }
       ]
     },
@@ -609,10 +682,10 @@ window.LESSON_DATA = {
           id: "vr7",
           type: "Spannungsbogen",
           question:
-            "Planen Sie die 5-Minuten-Struktur in fünf Teilen: 0:00 Einstieg, 0:30 Problem, 1:30 Rechercheweg, 3:30 Wendepunkt, 4:30 Schluss.",
+            "Planen Sie die 5-Minuten-Struktur in fünf Teilen: 0:00 Einstieg, 0:30 Problem, 1:30 Rechercheweg, 3:30 Wendepunkt, 4:30 Schluss. Vergleichen Sie diese Struktur mit einem Inspirationsfilm oder mit «Die perfekte Schule».",
           help:
             "Schreiben Sie zu jedem Teil, welche Szene oder welcher O-Ton ihn trägt.",
-          checklist: ["Fünf Zeitfenster ausgefüllt", "Szenen/O-Töne zugeordnet", "Wendepunkt erkennbar"]
+          checklist: ["Fünf Zeitfenster ausgefüllt", "Beispielstruktur verglichen", "Szenen/O-Töne zugeordnet", "Wendepunkt erkennbar"]
         },
         {
           id: "vr8",

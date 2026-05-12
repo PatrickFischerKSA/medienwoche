@@ -15,6 +15,7 @@ const state = {
 const els = {
   mediaSwitcher: document.getElementById("media-switcher"),
   introGrid: document.getElementById("intro-grid"),
+  inspirationList: document.getElementById("inspiration-list"),
   resourceList: document.getElementById("resource-list"),
   studentName: document.getElementById("student-name"),
   applyLogin: document.getElementById("apply-login"),
@@ -338,6 +339,28 @@ function renderResources() {
             <span>Video</span>
           </div>
           <a href="${escapeHtml(video.url)}" target="_blank" rel="noreferrer">${escapeHtml(video.title)} auf YouTube öffnen</a>
+        </article>
+      `
+    )
+    .join("");
+
+  els.inspirationList.innerHTML = (data.inspirationFilms || [])
+    .map(
+      (film) => `
+        <article class="inspiration-card">
+          <iframe
+            src="${escapeHtml(film.embedUrl)}"
+            title="${escapeHtml(film.title)}"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <div>
+            <span>${escapeHtml(film.type)}</span>
+            <strong>${escapeHtml(film.title)}</strong>
+            <small>${escapeHtml(film.observation)}</small>
+            <a href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">Film einzeln öffnen</a>
+          </div>
         </article>
       `
     )
