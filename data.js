@@ -204,6 +204,18 @@ window.LESSON_DATA = {
       title: "Dramatisches Foto",
       scenario:
         "Ein Bild zeigt eine überschwemmte Strasse und soll angeblich von gestern aus Zürich stammen. Du bist unsicher.",
+      images: [
+        {
+          url:
+            "https://commons.wikimedia.org/wiki/Special:FilePath/FEMA_-_35547_-_Flooded_neighborhood_in_Iowa.jpg?width=900",
+          alt: "Überflutete Wohngegend in Iowa",
+          caption:
+            "Reales Archivbild aus Iowa. Als angebliches Foto aus Zürich wäre es irreführend, auch wenn die Aufnahme echt ist.",
+          sourceLabel: "Wikimedia Commons/FEMA: Flooded neighborhood in Iowa",
+          sourceUrl:
+            "https://commons.wikimedia.org/wiki/File:FEMA_-_35547_-_Flooded_neighborhood_in_Iowa.jpg"
+        }
+      ],
       question: "Welche Methode bringt dich am schnellsten weiter?",
       options: [
         "Bild-Rückwärtssuche mit Google Lens, TinEye oder Yandex.",
@@ -219,6 +231,16 @@ window.LESSON_DATA = {
       title: "Verkürzter Link",
       scenario:
         "Eine Nachricht enthält nur einen Kurzlink. Die Vorschau zeigt keine vertrauenswürdige Quelle.",
+      images: [
+        {
+          url: "https://commons.wikimedia.org/wiki/Special:FilePath/Get-shortened-URL.png?width=900",
+          alt: "Screenshot einer Funktion zum Erstellen eines gekürzten Links",
+          caption:
+            "Echte Plattform-Funktion: Gekürzte Links können nützlich sein, verdecken aber zunächst Zieladresse und Kontext.",
+          sourceLabel: "Wikimedia Commons: Get-shortened-URL",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Get-shortened-URL.png"
+        }
+      ],
       question: "Was solltest du tun, bevor du klickst oder teilst?",
       options: [
         "Den Kurzlink prüfen, zum Beispiel mit CheckShortURL oder einer Link-Vorschau.",
@@ -249,6 +271,16 @@ window.LESSON_DATA = {
       title: "Seltsames Video",
       scenario:
         "Ein Video wirkt echt, aber Lippenbewegungen passen nicht ganz zur Stimme. Schatten und Schnitte wirken unruhig.",
+      images: [
+        {
+          url: "https://commons.wikimedia.org/wiki/Special:FilePath/Apollo_11_bootprint.jpg?width=900",
+          alt: "Buzz Aldrins Fussabdruck auf der Mondoberfläche",
+          caption:
+            "Echtes NASA-Foto: Bei Videos und Bildern muss man trotzdem prüfen, ob die Begleitbehauptung zum Material passt.",
+          sourceLabel: "Wikimedia Commons/NASA: Apollo 11 bootprint",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Apollo_11_bootprint.jpg"
+        }
+      ],
       question: "Welche Prüfung passt?",
       options: [
         "Einzelne Standbilder als Screenshots sichern, rückwärts suchen und auf Schnitt, Stimme, Lippenbewegung und Licht achten.",
@@ -264,6 +296,17 @@ window.LESSON_DATA = {
       title: "Sehr plausibles KI-Bild",
       scenario:
         "Ein Bild zeigt angeblich ein neues Ereignis. Hände, Schrift im Hintergrund und Spiegelungen wirken aber leicht fehlerhaft.",
+      images: [
+        {
+          url:
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Artemis_2_Crew_Portrait.jpg?width=900",
+          alt: "Offizielles Porträt der Artemis-2-Crew",
+          caption:
+            "Echte Quelle, echte Metadaten, klare Herkunft: So sieht ein stark belegbares Bildmaterial aus.",
+          sourceLabel: "Wikimedia Commons/NASA: Artemis 2 Crew Portrait",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Artemis_2_Crew_Portrait.jpg"
+        }
+      ],
       question: "Was ist die beste Schlussfolgerung?",
       options: [
         "Das sind mögliche KI-Hinweise; zusätzlich Quelle, Kontext und Gegenquellen prüfen.",
@@ -279,6 +322,18 @@ window.LESSON_DATA = {
       title: "Artemis-2 und KI-Montage",
       scenario:
         "Ein virales Raumfahrtvideo sieht professionell aus. Es kombiniert offenbar echte Aufnahmen mit KI-Übergängen und einem aus einem Standbild erzeugten Abschnitt.",
+      images: [
+        {
+          url:
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Artemis_2_Crew_Portrait_%28cropped%29.jpg?width=900",
+          alt: "Zugeschnittenes offizielles Artemis-2-Crew-Porträt",
+          caption:
+            "Ausgangspunkt für den SRF-Fall: echtes Raumfahrtmaterial kann mit KI-Übergängen und falschem Kontext vermischt werden.",
+          sourceLabel: "Wikimedia Commons/NASA: Artemis 2 Crew Portrait cropped",
+          sourceUrl:
+            "https://commons.wikimedia.org/wiki/File:Artemis_2_Crew_Portrait_(cropped).jpg"
+        }
+      ],
       question: "Welche Aussage zeigt die reifste Prüfung?",
       options: [
         "Das Video kann teilweise auf echtem Material beruhen und trotzdem irreführend manipuliert sein.",

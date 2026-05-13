@@ -17,8 +17,6 @@ const els = {
   introDetails: document.getElementById("intro-details"),
   inspirationDetails: document.getElementById("inspiration-details"),
   resourceDetails: document.getElementById("resource-details"),
-  fakeNewsDetails: document.getElementById("fake-news-details"),
-  fakeNewsQuizDetails: document.getElementById("fake-news-quiz-details"),
   mediaSwitcher: document.getElementById("media-switcher"),
   introGrid: document.getElementById("intro-grid"),
   inspirationList: document.getElementById("inspiration-list"),
@@ -455,13 +453,31 @@ function renderFakeNewsQuiz() {
   if (renderedMaterials.fakeNewsQuiz) return;
   const quiz = (data.fakeNewsQuiz || [])
     .map(
-      (item, index) => `
+      (item, index) => {
+        const evidence = (item.images || [])
+          .map(
+            (image) => `
+              <figure class="quiz-image-card">
+                <img src="${escapeHtml(image.url)}" alt="${escapeHtml(image.alt)}" loading="lazy" />
+                <figcaption>
+                  <span>${escapeHtml(image.caption)}</span>
+                  <a href="${escapeHtml(image.sourceUrl)}" target="_blank" rel="noreferrer">
+                    ${escapeHtml(image.sourceLabel || "Quelle öffnen")}
+                  </a>
+                </figcaption>
+              </figure>
+            `
+          )
+          .join("");
+
+        return `
         <article class="quiz-card" data-quiz-index="${index}">
           <div class="quiz-head">
             <span>${escapeHtml(item.level)}</span>
             <strong>${escapeHtml(item.title)}</strong>
           </div>
           <p class="quiz-scenario">${escapeHtml(item.scenario)}</p>
+          ${evidence ? `<div class="quiz-evidence">${evidence}</div>` : ""}
           <p class="quiz-question">${escapeHtml(item.question)}</p>
           <div class="quiz-options">
             ${item.options
@@ -476,7 +492,8 @@ function renderFakeNewsQuiz() {
           </div>
           <p class="quiz-feedback" aria-live="polite"></p>
         </article>
-      `
+      `;
+      }
     )
     .join("");
 
@@ -495,8 +512,6 @@ function renderResources() {
   if (els.introDetails?.open) renderIntroVideos();
   if (els.inspirationDetails?.open) renderInspirationFilms();
   if (els.resourceDetails?.open) renderResourceLinks();
-  if (els.fakeNewsDetails?.open) renderFakeNewsChecks();
-  if (els.fakeNewsQuizDetails?.open) renderFakeNewsQuiz();
 }
 
 function renderActiveFilmPanel() {
@@ -633,6 +648,8 @@ function render() {
   els.studentName.value = state.studentName || "";
   renderMediaSwitcher();
   renderResources();
+  renderFakeNewsChecks();
+  renderFakeNewsQuiz();
   renderProgress();
   renderTeacherDashboard();
   renderPhaseNav();
@@ -698,9 +715,7 @@ function bindEvents() {
   const materialToggles = [
     [els.introDetails, renderIntroVideos],
     [els.inspirationDetails, renderInspirationFilms],
-    [els.resourceDetails, renderResourceLinks],
-    [els.fakeNewsDetails, renderFakeNewsChecks],
-    [els.fakeNewsQuizDetails, renderFakeNewsQuiz]
+    [els.resourceDetails, renderResourceLinks]
   ];
 
   materialToggles.forEach(([details, renderer]) => {
@@ -894,23 +909,6 @@ function bindEvents() {
   });
 }
 
-function loadBackgroundLater() {
-  if (!els.bgGif?.dataset.src) return;
-  if (window.matchMedia?.("(max-width: 760px)").matches) return;
-  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
-
-  const load = () => {
-    els.bgGif.src = els.bgGif.dataset.src;
-  };
-
-  if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(load, { timeout: 3500 });
-  } else {
-    window.setTimeout(load, 2500);
-  }
-}
-
 load();
 bindEvents();
 render();
-loadBackgroundLater();
