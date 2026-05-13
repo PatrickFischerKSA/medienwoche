@@ -168,6 +168,128 @@ window.LESSON_DATA = {
   ],
   fakeNewsReminder:
     "Erst Quelle, Inhalt, Bild/Video und Link prüfen - dann teilen. Besonders Nachrichten, die starke Gefühle auslösen, sollte man kritisch hinterfragen.",
+  fakeNewsQuiz: [
+    {
+      level: "1 · Einstieg",
+      title: "Reisserische Überschrift",
+      scenario:
+        "Ein Post behauptet: «Schockierende Wahrheit! Diese Nachricht verschweigen dir alle Medien!» Darunter steht kein Autor und kein Datum.",
+      question: "Was ist der erste sinnvolle Prüfschritt?",
+      options: [
+        "Sofort teilen, weil die Formulierung dringend klingt.",
+        "Quelle, Autor, Datum und Impressum prüfen.",
+        "Nur die Kommentare lesen und der Mehrheit folgen."
+      ],
+      answer: 1,
+      feedback:
+        "Richtig ist: Quelle prüfen. Reisserische Sprache und fehlende Angaben sind Warnsignale, aber erst die Quellenprüfung macht den Verdacht belastbar."
+    },
+    {
+      level: "2 · Aktualität",
+      title: "Alte Nachricht im neuen Gewand",
+      scenario:
+        "Ein Artikel über Unruhen wird heute geteilt. Das Veröffentlichungsdatum ist aber drei Jahre alt.",
+      question: "Welche Einschätzung ist am besten?",
+      options: [
+        "Alte Beiträge können trotzdem stimmen, aber sie dürfen nicht als aktuelle Nachricht verkauft werden.",
+        "Wenn ein Beitrag alt ist, ist er automatisch Fake News.",
+        "Das Datum spielt keine Rolle, wenn das Bild dramatisch wirkt."
+      ],
+      answer: 0,
+      feedback:
+        "Genau: Alte Inhalte sind nicht automatisch falsch. Entscheidend ist, ob Kontext und Aktualität korrekt dargestellt werden."
+    },
+    {
+      level: "3 · Bildkontext",
+      title: "Dramatisches Foto",
+      scenario:
+        "Ein Bild zeigt eine überschwemmte Strasse und soll angeblich von gestern aus Zürich stammen. Du bist unsicher.",
+      question: "Welche Methode bringt dich am schnellsten weiter?",
+      options: [
+        "Bild-Rückwärtssuche mit Google Lens, TinEye oder Yandex.",
+        "Das Bild heller stellen und schauen, ob es schöner wirkt.",
+        "Nur prüfen, ob viele Likes darunter stehen."
+      ],
+      answer: 0,
+      feedback:
+        "Eine Rückwärtssuche kann zeigen, ob das Bild schon früher oder an einem anderen Ort veröffentlicht wurde."
+    },
+    {
+      level: "4 · Linkprüfung",
+      title: "Verkürzter Link",
+      scenario:
+        "Eine Nachricht enthält nur einen Kurzlink. Die Vorschau zeigt keine vertrauenswürdige Quelle.",
+      question: "Was solltest du tun, bevor du klickst oder teilst?",
+      options: [
+        "Den Kurzlink prüfen, zum Beispiel mit CheckShortURL oder einer Link-Vorschau.",
+        "Den Link möglichst oft weiterleiten, damit andere ihn testen.",
+        "Die URL ignorieren, weil Kurzlinks immer sicher sind."
+      ],
+      answer: 0,
+      feedback:
+        "Kurzlinks können das eigentliche Ziel verstecken. Erst Zieladresse prüfen, dann entscheiden."
+    },
+    {
+      level: "5 · Faktencheck",
+      title: "Nur eine Seite berichtet",
+      scenario:
+        "Eine unbekannte Website meldet eine angeblich riesige politische Enthüllung. Kein seriöses Medium berichtet darüber.",
+      question: "Welche Kombination ist am stärksten?",
+      options: [
+        "Andere seriöse Medien suchen und Faktencheck-Seiten wie Correctiv, Mimikama, dpa oder ARD-Faktenfinder prüfen.",
+        "Nur die Überschrift kopieren und in den Klassenchat stellen.",
+        "Der unbekannten Website glauben, weil grosse Medien manchmal langsam sind."
+      ],
+      answer: 0,
+      feedback:
+        "Bei grossen Behauptungen braucht es unabhängige Bestätigung. Faktencheck-Seiten helfen besonders bei verbreiteten Falschmeldungen."
+    },
+    {
+      level: "6 · Video",
+      title: "Seltsames Video",
+      scenario:
+        "Ein Video wirkt echt, aber Lippenbewegungen passen nicht ganz zur Stimme. Schatten und Schnitte wirken unruhig.",
+      question: "Welche Prüfung passt?",
+      options: [
+        "Einzelne Standbilder als Screenshots sichern, rückwärts suchen und auf Schnitt, Stimme, Lippenbewegung und Licht achten.",
+        "Nur die Tonspur lauter stellen.",
+        "Das Video glauben, wenn es professionell aussieht."
+      ],
+      answer: 0,
+      feedback:
+        "Professionelle Wirkung reicht nicht. Gerade Videos brauchen technische und kontextuelle Prüfung."
+    },
+    {
+      level: "7 · KI-Spuren",
+      title: "Sehr plausibles KI-Bild",
+      scenario:
+        "Ein Bild zeigt angeblich ein neues Ereignis. Hände, Schrift im Hintergrund und Spiegelungen wirken aber leicht fehlerhaft.",
+      question: "Was ist die beste Schlussfolgerung?",
+      options: [
+        "Das sind mögliche KI-Hinweise; zusätzlich Quelle, Kontext und Gegenquellen prüfen.",
+        "Ein einzelner Fehler beweist immer sicher, dass das Bild KI-generiert ist.",
+        "KI-Bilder erkennt man immer sofort, deshalb ist keine Prüfung nötig."
+      ],
+      answer: 0,
+      feedback:
+        "KI-Hinweise sind Verdachtsmomente, keine vollständige Beweisführung. Sie müssen mit Quellen- und Kontextprüfung kombiniert werden."
+    },
+    {
+      level: "8 · Profi-Fall",
+      title: "Artemis-2 und KI-Montage",
+      scenario:
+        "Ein virales Raumfahrtvideo sieht professionell aus. Es kombiniert offenbar echte Aufnahmen mit KI-Übergängen und einem aus einem Standbild erzeugten Abschnitt.",
+      question: "Welche Aussage zeigt die reifste Prüfung?",
+      options: [
+        "Das Video kann teilweise auf echtem Material beruhen und trotzdem irreführend manipuliert sein.",
+        "Wenn ein Teil echt ist, ist das ganze Video zuverlässig.",
+        "Wenn ein Video KI enthält, ist automatisch jedes Detail frei erfunden."
+      ],
+      answer: 0,
+      feedback:
+        "Genau der schwierige Punkt: Moderne Fehlinformation kann echtes Material, KI-Übergänge und falschen Kontext mischen. Darum muss man Herkunft, Schnitt und Behauptung getrennt prüfen."
+    }
+  ],
   resources: [
     {
       title: "Fake News: zusätzlicher Materialpool",
@@ -180,7 +302,21 @@ window.LESSON_DATA = {
       type: "Hintergrund",
       url:
         "https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1",
-      description: "Grundlagenmaterial zu Fake News und Medienkompetenz."
+      description: "SRF-school-Dossier mit Videos, Aufgaben, didaktischen Hinweisen und Fakten-Checkliste."
+    },
+    {
+      title: "SRF Media school: Was sind Fake News?",
+      type: "Video",
+      url:
+        "https://www.srf.ch/play/tv/srf-media-school/video/was-sind-fake-news?urn=urn:srf:video:1cdf379e-20a6-43ba-88b6-d263eb34648d",
+      description: "Kurzes Erklärvideo: Fake News sehen oft wie echte Nachrichten aus, verbreiten sich aber als Lügen sehr schnell."
+    },
+    {
+      title: "SRF Faktencheck: Artemis-2, KI und Fehlinformation",
+      type: "Faktencheck",
+      url:
+        "https://www.srf.ch/news/srf-faktenchecks/faktencheck-artemis-2-ki-und-die-neue-generation-von-fehlinformationen",
+      description: "Anspruchsvoller Fall zu KI-generierten Bildern, KI-Montagen, echten Aufnahmen und falschem Kontext."
     },
     {
       title: "Teilen oder löschen?",

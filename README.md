@@ -7,7 +7,8 @@ Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen
 - zwei Filmzugänge über den SharePoint-/Mediaserver-Login
 - drei YouTube-Videos als Einstieg in die ganze Einheit
 - standardmäßig geöffnete Inspirationsfilme zu Schulalltag, Schulklima, Digitalisierung, Schulporträt und Pandemie-Erfahrung
-- standardmäßig geöffneter Ressourcenbereich mit Fake-News-Materialien, SRF/RTS, News-on-Video, e-teaching.org, Uni Halle, Dokumentarfilm-PDF, Großprojekt «Die perfekte Schule» und eingebetteten Rainer-Wolf-Lernfilmen
+- Ressourcenbereich mit Fake-News-Materialien, SRF/RTS, News-on-Video, e-teaching.org, Uni Halle, Dokumentarfilm-PDF, Großprojekt «Die perfekte Schule» und eingebetteten Rainer-Wolf-Lernfilmen
+- Fake-News-Prüfkarte und progressives Fake-News-Quiz mit ansteigendem Schwierigkeitsgrad bis zu KI-/Video-Manipulation
 - 21 Fragen zu **Die vierte Gewalt**, in sechs Filmabschnitte gegliedert
 - 11 Fragen zu **Tausend Zeilen**, in drei Filmabschnitte gegliedert
 - eigenständige Selbstlerneinheit für eine eigene Videoreportage von ca. 5 Minuten mit Wissensankern, Reflexionsstationen und Feedback-Checklisten
@@ -22,7 +23,7 @@ Statische, GitHub-fähige Lerneinheit zu **Die vierte Gewalt**, **Tausend Zeilen
 
 - `index.html` enthält die Seitenstruktur
 - `styles.css` definiert das responsive Layout
-- `data.js` enthält Film-Links, Einstiegsclips, Ressourcen, Abschnitte, Wissensanker und Aufgaben
+- `data.js` enthält Film-Links, Einstiegsclips, Ressourcen, Fake-News-Quiz, Abschnitte, Wissensanker und Aufgaben
 - `app.js` rendert Aufgaben, speichert Fortschritt und exportiert Notizen
 - `assets/images/tagesschau_trailer.gif` ist der animierte Hintergrund
 - `assets/docs/dokumentarfilm-im-unterricht-modul-3.pdf` ist die lokal eingebundene Projektressource

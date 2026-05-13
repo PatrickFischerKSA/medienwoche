@@ -18,11 +18,13 @@ const els = {
   inspirationDetails: document.getElementById("inspiration-details"),
   resourceDetails: document.getElementById("resource-details"),
   fakeNewsDetails: document.getElementById("fake-news-details"),
+  fakeNewsQuizDetails: document.getElementById("fake-news-quiz-details"),
   mediaSwitcher: document.getElementById("media-switcher"),
   introGrid: document.getElementById("intro-grid"),
   inspirationList: document.getElementById("inspiration-list"),
   resourceList: document.getElementById("resource-list"),
   fakeNewsList: document.getElementById("fake-news-list"),
+  fakeNewsQuiz: document.getElementById("fake-news-quiz"),
   studentName: document.getElementById("student-name"),
   applyLogin: document.getElementById("apply-login"),
   logout: document.getElementById("logout"),
@@ -46,7 +48,8 @@ const renderedMaterials = {
   intro: false,
   inspiration: false,
   resources: false,
-  fakeNews: false
+  fakeNews: false,
+  fakeNewsQuiz: false
 };
 
 function load() {
@@ -448,11 +451,52 @@ function renderFakeNewsChecks() {
   renderedMaterials.fakeNews = true;
 }
 
+function renderFakeNewsQuiz() {
+  if (renderedMaterials.fakeNewsQuiz) return;
+  const quiz = (data.fakeNewsQuiz || [])
+    .map(
+      (item, index) => `
+        <article class="quiz-card" data-quiz-index="${index}">
+          <div class="quiz-head">
+            <span>${escapeHtml(item.level)}</span>
+            <strong>${escapeHtml(item.title)}</strong>
+          </div>
+          <p class="quiz-scenario">${escapeHtml(item.scenario)}</p>
+          <p class="quiz-question">${escapeHtml(item.question)}</p>
+          <div class="quiz-options">
+            ${item.options
+              .map(
+                (option, optionIndex) => `
+                  <button type="button" data-quiz-answer="${optionIndex}">
+                    ${escapeHtml(option)}
+                  </button>
+                `
+              )
+              .join("")}
+          </div>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </article>
+      `
+    )
+    .join("");
+
+  els.fakeNewsQuiz.innerHTML = `
+    <section class="fake-news-brief">
+      <p class="eyebrow">Übungseinheit</p>
+      <h2>Fake oder glaubwürdig?</h2>
+      <p>Die Aufgaben werden schwieriger. Entscheiden Sie nicht nach Bauchgefühl, sondern nach Prüfmethode.</p>
+    </section>
+    ${quiz}
+  `;
+  renderedMaterials.fakeNewsQuiz = true;
+}
+
 function renderResources() {
   if (els.introDetails?.open) renderIntroVideos();
   if (els.inspirationDetails?.open) renderInspirationFilms();
   if (els.resourceDetails?.open) renderResourceLinks();
   if (els.fakeNewsDetails?.open) renderFakeNewsChecks();
+  if (els.fakeNewsQuizDetails?.open) renderFakeNewsQuiz();
 }
 
 function renderActiveFilmPanel() {
@@ -655,7 +699,8 @@ function bindEvents() {
     [els.introDetails, renderIntroVideos],
     [els.inspirationDetails, renderInspirationFilms],
     [els.resourceDetails, renderResourceLinks],
-    [els.fakeNewsDetails, renderFakeNewsChecks]
+    [els.fakeNewsDetails, renderFakeNewsChecks],
+    [els.fakeNewsQuizDetails, renderFakeNewsQuiz]
   ];
 
   materialToggles.forEach(([details, renderer]) => {
@@ -665,6 +710,24 @@ function bindEvents() {
   });
 
   document.addEventListener("click", (event) => {
+    const quizButton = event.target.closest("[data-quiz-answer]");
+    if (quizButton) {
+      const card = quizButton.closest("[data-quiz-index]");
+      const item = data.fakeNewsQuiz?.[Number(card?.dataset.quizIndex)];
+      if (!card || !item) return;
+      const selected = Number(quizButton.dataset.quizAnswer);
+      const correct = selected === item.answer;
+      card.querySelectorAll("[data-quiz-answer]").forEach((button) => {
+        const answerIndex = Number(button.dataset.quizAnswer);
+        button.classList.toggle("is-correct", answerIndex === item.answer);
+        button.classList.toggle("is-wrong", answerIndex === selected && !correct);
+      });
+      const feedback = card.querySelector(".quiz-feedback");
+      feedback.textContent = `${correct ? "Richtig." : "Noch nicht."} ${item.feedback}`;
+      feedback.className = `quiz-feedback ${correct ? "correct" : "wrong"}`;
+      return;
+    }
+
     const button = event.target.closest(".video-load-button");
     if (!button) return;
     const shell = button.closest(".video-shell");

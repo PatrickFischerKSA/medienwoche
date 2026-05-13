@@ -389,7 +389,8 @@ textarea {
 .intro-grid,
 .inspiration-list,
 .resource-list,
-.fake-news-list {
+.fake-news-list,
+.fake-news-quiz {
   display: grid;
   gap: 12px;
 }
@@ -424,6 +425,13 @@ textarea {
 
 .fake-news-list {
   max-height: 680px;
+  margin-top: 12px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.fake-news-quiz {
+  max-height: 760px;
   margin-top: 12px;
   overflow: auto;
   padding-right: 4px;
@@ -697,6 +705,95 @@ textarea {
   margin: 4px 0 0;
   color: var(--muted);
   line-height: 1.42;
+}
+
+.quiz-card {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.quiz-head {
+  display: grid;
+  gap: 4px;
+}
+
+.quiz-head span {
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quiz-head strong {
+  font-size: 1.03rem;
+}
+
+.quiz-scenario,
+.quiz-question,
+.quiz-feedback {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.quiz-scenario {
+  color: var(--muted);
+}
+
+.quiz-question {
+  color: var(--accent-strong);
+  font-weight: 850;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 8px;
+}
+
+.quiz-options button {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.18);
+  text-align: left;
+  line-height: 1.35;
+}
+
+.quiz-options button:hover {
+  border-color: var(--accent);
+}
+
+.quiz-options button.is-correct {
+  border-color: var(--good);
+  background: rgba(31, 122, 77, 0.14);
+}
+
+.quiz-options button.is-wrong {
+  border-color: var(--warn);
+  background: rgba(155, 94, 0, 0.14);
+}
+
+.quiz-feedback {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+}
+
+.quiz-feedback.correct {
+  color: var(--good);
+}
+
+.quiz-feedback.wrong {
+  color: var(--warn);
 }
 
 .reflection-item {
