@@ -224,7 +224,8 @@ button {
   gap: 8px;
 }
 
-.fake-lab-links a {
+.fake-lab-links a,
+.fake-lab-links button {
   display: inline-flex;
   align-items: center;
   min-height: 38px;
@@ -233,8 +234,13 @@ button {
   border-radius: 8px;
   color: var(--accent-strong);
   background: rgba(255, 255, 255, 0.2);
+  font: inherit;
   font-weight: 850;
   text-decoration: none;
+}
+
+.fake-lab-links button {
+  cursor: pointer;
 }
 
 .fake-lab-layout {
@@ -428,6 +434,12 @@ h2 {
   background: rgba(217, 238, 241, 0.18);
 }
 
+.media-links,
+.active-link-row {
+  display: grid;
+  gap: 8px;
+}
+
 .media-card.project-card {
   border-color: rgba(166, 111, 24, 0.42);
   background: rgba(255, 248, 232, 0.14);
@@ -488,6 +500,11 @@ h2 {
   font-weight: 800;
   text-align: center;
   text-decoration: none;
+}
+
+.media-link.secondary {
+  color: var(--accent-strong);
+  background: rgba(217, 238, 241, 0.28);
 }
 
 .toc-details {
@@ -620,6 +637,34 @@ textarea {
   margin-top: 12px;
   overflow: auto;
   padding-right: 4px;
+}
+
+.inspiration-nav {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(238, 243, 241, 0.42);
+  backdrop-filter: blur(14px) saturate(1.08);
+}
+
+.inspiration-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent-strong);
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-decoration: none;
 }
 
 .fake-news-list {
@@ -1331,6 +1376,17 @@ textarea {
   justify-self: start;
 }
 
+.active-link-row {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.active-link-row .strong-link {
+  grid-column: auto;
+}
+
 .active-film-panel p:not(.eyebrow) {
   margin: 7px 0 0;
   color: var(--muted);
@@ -1342,6 +1398,8 @@ textarea {
   align-items: center;
   justify-content: center;
   min-width: 190px;
+  min-height: 42px;
+  border-radius: 8px;
   color: var(--accent-strong);
   text-decoration: none;
 }

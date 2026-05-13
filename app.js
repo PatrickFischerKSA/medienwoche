@@ -331,9 +331,18 @@ function renderMediaSwitcher() {
             <small>${film.id === "videoreportage" ? "Eigenständige Praxiseinheit öffnen" : "Fragenblock zu diesem Film auswählen"}</small>
           </button>
           <div class="media-count">${phases.length} Stationen · ${questionCount} Aufgaben</div>
-          <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
-            ${escapeHtml(film.linkLabel || "Im Mediaserver öffnen und anmelden")}
-          </a>
+          <div class="media-links">
+            <a class="media-link" href="${escapeHtml(film.url)}" target="_blank" rel="noreferrer">
+              ${escapeHtml(film.linkLabel || "Im Mediaserver öffnen und anmelden")}
+            </a>
+            ${
+              film.platformUrl
+                ? `<a class="media-link secondary" href="${escapeHtml(film.platformUrl)}" target="_blank" rel="noreferrer">
+                    ${escapeHtml(film.platformLabel || "Projektplattform öffnen")}
+                  </a>`
+                : ""
+            }
+          </div>
           <details class="toc-details" ${film.id === state.activeFilmId ? "open" : ""}>
             <summary>Inhaltsverzeichnis</summary>
             <div class="toc-list">${toc}</div>
@@ -375,10 +384,17 @@ function renderIntroVideos() {
 
 function renderInspirationFilms() {
   if (renderedMaterials.inspiration) return;
-  els.inspirationList.innerHTML = (data.inspirationFilms || [])
+  const nav = (data.inspirationFilms || [])
     .map(
-      (film) => `
-        <article class="inspiration-card">
+      (film, index) => `
+        <a href="#inspiration-${index + 1}">${String(index + 1).padStart(2, "0")} ${escapeHtml(film.type)}</a>
+      `
+    )
+    .join("");
+  const films = (data.inspirationFilms || [])
+    .map(
+      (film, index) => `
+        <article class="inspiration-card" id="inspiration-${index + 1}">
           ${renderVideoShell(film, "Inspirationsfilm laden")}
           <div class="inspiration-body">
             <span>${escapeHtml(film.type)}</span>
@@ -390,6 +406,12 @@ function renderInspirationFilms() {
       `
     )
     .join("");
+  els.inspirationList.innerHTML = `
+    <nav class="inspiration-nav" aria-label="Inspirationsfilme direkt auswählen">
+      ${nav}
+    </nav>
+    ${films}
+  `;
   renderedMaterials.inspiration = true;
 }
 
@@ -559,6 +581,28 @@ function renderActiveFilmPanel() {
   const film = getActiveFilm();
   const phase = getActivePhase();
   const embed = renderVideoShell(film, "Beispielvideo laden");
+  const projectLinks = film?.platformUrl || (film?.quickLinks || []).length
+    ? `
+      <div class="active-link-row">
+        ${
+          film.platformUrl
+            ? `<a class="text-button strong-link" href="${escapeHtml(film.platformUrl)}" target="_blank" rel="noreferrer">
+                ${escapeHtml(film.platformLabel || "Projektplattform öffnen")}
+              </a>`
+            : ""
+        }
+        ${(film.quickLinks || [])
+          .map(
+            (link) => `
+              <button class="text-button strong-link" type="button" data-open-details="${escapeHtml(link.detailsId)}">
+                ${escapeHtml(link.label)}
+              </button>
+            `
+          )
+          .join("")}
+      </div>
+    `
+    : "";
   els.activeFilmPanel.innerHTML = `
     <div>
       <p class="eyebrow">Aktueller Arbeitsblock</p>
@@ -569,6 +613,7 @@ function renderActiveFilmPanel() {
     <a class="text-button strong-link" href="${escapeHtml(film?.url || "#")}" target="_blank" rel="noreferrer">
       ${escapeHtml(film?.linkLabel || "Film im Mediaserver öffnen")}
     </a>
+    ${projectLinks}
   `;
 }
 
@@ -792,6 +837,16 @@ function bindEvents() {
       return;
     }
 
+    const detailsButton = event.target.closest("[data-open-details]");
+    if (detailsButton) {
+      const details = document.getElementById(detailsButton.dataset.openDetails);
+      if (!details) return;
+      details.open = true;
+      renderResources();
+      details.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     const button = event.target.closest(".video-load-button");
     if (!button) return;
     const shell = button.closest(".video-shell");
@@ -809,7 +864,7 @@ function bindEvents() {
     `;
   });
 
-  els.phaseNav.addEventListener("click", (event) => {
+  els.mediaSwitcher.addEventListener("click", (event) => {
     const filmButton = event.target.closest("[data-film-id]");
     if (filmButton && !event.target.closest("[data-phase-id]")) {
       state.activeFilmId = filmButton.dataset.filmId;

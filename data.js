@@ -27,7 +27,19 @@ window.LESSON_DATA = {
       description: "Eigenständige Praxiseinheit: Sie entwickeln, drehen, schneiden und reflektieren eine Reportage von etwa fünf Minuten.",
       url: "https://www.youtube.com/watch?v=XRBsO8ytyCk&rco=1",
       embedUrl: "https://www.youtube-nocookie.com/embed/XRBsO8ytyCk",
-      linkLabel: "Reportage von SRF Impact öffnen"
+      linkLabel: "Reportage von SRF Impact öffnen",
+      platformUrl: "https://patrickfischerksa.github.io/videoreportage-schule-im-fokus/#top",
+      platformLabel: "Projektplattform öffnen",
+      quickLinks: [
+        {
+          label: "Inspirationsfilme öffnen",
+          detailsId: "inspiration-details"
+        },
+        {
+          label: "Ressourcen öffnen",
+          detailsId: "resource-details"
+        }
+      ]
     }
   ],
   introVideos: [
