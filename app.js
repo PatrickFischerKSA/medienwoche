@@ -575,7 +575,7 @@ function renderActiveFilmPanel() {
 function renderQuestions() {
   const phase = getActivePhase();
   const film = getActiveFilm();
-  const canWork = state.studentName.trim() && !isTeacherLogin(state.studentName);
+  const canWork = !isTeacherLogin(state.studentName);
   els.phaseFocus.textContent = phase.focus;
   els.phaseTitle.textContent = `${film?.title || ""}: ${phase.title}`;
   const anchors = (phase.anchors || [])
@@ -656,7 +656,7 @@ function renderQuestions() {
           <label for="${question.id}">${escapeHtml(question.question)}</label>
           ${quote}
           <p>${escapeHtml(question.help)}</p>
-          <textarea id="${question.id}" data-question-id="${question.id}" rows="6" placeholder="${canWork ? "Antwort, Beobachtungen und Filmbelege hier notieren" : "Bitte zuerst mit Namen einloggen"}" ${canWork ? "" : "disabled"}>${escapeHtml(answer)}</textarea>
+          <textarea id="${question.id}" data-question-id="${question.id}" rows="6" placeholder="${canWork ? "Antwort, Beobachtungen und Filmbelege hier notieren" : "Lehrpersonenmodus: Antworten sind hier gesperrt"}" ${canWork ? "" : "disabled"}>${escapeHtml(answer)}</textarea>
           ${conceptFeedback}
           ${checklist}
           <div class="feedback">${escapeHtml(quality.hint)}</div>
@@ -664,14 +664,11 @@ function renderQuestions() {
       `;
     })
     .join("");
-  const loginPanel = canWork
-    ? ""
-    : `<section class="station-panel"><p class="eyebrow">Login erforderlich</p><strong>Tragen Sie links Ihren Namen ein und bestätigen Sie mit Einloggen.</strong></section>`;
-  els.questionList.insertAdjacentHTML("afterbegin", `${loginPanel}${anchorPanel}${reflectionPanel}`);
+  els.questionList.insertAdjacentHTML("afterbegin", `${anchorPanel}${reflectionPanel}`);
 }
 
 function renderReflections() {
-  const canWork = state.studentName.trim() && !isTeacherLogin(state.studentName);
+  const canWork = !isTeacherLogin(state.studentName);
   els.reflectionList.innerHTML = data.reflectionPrompts
     .map((prompt, index) => {
       const id = `reflection-${index}`;
