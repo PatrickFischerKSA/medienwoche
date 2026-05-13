@@ -840,6 +840,68 @@ textarea {
   font-weight: 850;
 }
 
+.research-steps {
+  margin: 0;
+  padding-left: 22px;
+  color: var(--muted);
+}
+
+.research-steps li {
+  margin: 6px 0;
+  line-height: 1.42;
+}
+
+.quiz-reveal {
+  justify-self: start;
+  border: 1px solid var(--accent);
+  color: var(--accent-strong);
+  background: rgba(217, 238, 241, 0.34);
+}
+
+.quiz-reveal:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.research-solution {
+  display: grid;
+  gap: 8px;
+}
+
+.research-solution[hidden] {
+  display: none;
+}
+
+.research-solution ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.research-solution li,
+.research-solution p {
+  margin: 0;
+  line-height: 1.42;
+}
+
+.solution-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.solution-sources a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent-strong);
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
 .quiz-options {
   display: grid;
   gap: 8px;

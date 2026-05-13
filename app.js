@@ -461,14 +461,30 @@ function renderFakeNewsQuiz() {
                 <img src="${escapeHtml(image.url)}" alt="${escapeHtml(image.alt)}" loading="lazy" />
                 <figcaption>
                   <span>${escapeHtml(image.caption)}</span>
-                  <a href="${escapeHtml(image.sourceUrl)}" target="_blank" rel="noreferrer">
-                    ${escapeHtml(image.sourceLabel || "Quelle öffnen")}
+                  <a href="${escapeHtml(image.url)}" target="_blank" rel="noreferrer">
+                    Bilddatei für Rückwärtssuche öffnen
                   </a>
                 </figcaption>
               </figure>
             `
           )
           .join("");
+        const researchSteps = (item.researchSteps || [])
+          .map((step) => `<li>${escapeHtml(step)}</li>`)
+          .join("");
+        const expectedFindings = (item.expectedFindings || [])
+          .map((finding) => `<li>${escapeHtml(finding)}</li>`)
+          .join("");
+        const sourceLinks = (item.images || [])
+          .map(
+            (image) => `
+              <a href="${escapeHtml(image.sourceUrl)}" target="_blank" rel="noreferrer">
+                ${escapeHtml(image.sourceLabel || "Quelle öffnen")}
+              </a>
+            `
+          )
+          .join("");
+        const isResearchTask = Boolean(item.task);
 
         return `
         <article class="quiz-card" data-quiz-index="${index}">
@@ -478,19 +494,36 @@ function renderFakeNewsQuiz() {
           </div>
           <p class="quiz-scenario">${escapeHtml(item.scenario)}</p>
           ${evidence ? `<div class="quiz-evidence">${evidence}</div>` : ""}
-          <p class="quiz-question">${escapeHtml(item.question)}</p>
-          <div class="quiz-options">
-            ${item.options
-              .map(
-                (option, optionIndex) => `
-                  <button type="button" data-quiz-answer="${optionIndex}">
-                    ${escapeHtml(option)}
-                  </button>
-                `
-              )
-              .join("")}
-          </div>
-          <p class="quiz-feedback" aria-live="polite"></p>
+          <p class="quiz-question">${escapeHtml(item.task || item.question)}</p>
+          ${
+            isResearchTask
+              ? `
+                <ol class="research-steps">${researchSteps}</ol>
+                <button class="text-button quiz-reveal" type="button" data-quiz-reveal>
+                  Fundspur und Lösung anzeigen
+                </button>
+                <div class="quiz-feedback research-solution" aria-live="polite" hidden>
+                  <strong>Erwartete Fundspur</strong>
+                  <ul>${expectedFindings}</ul>
+                  <p>${escapeHtml(item.judgement || "")}</p>
+                  <div class="solution-sources">${sourceLinks}</div>
+                </div>
+              `
+              : `
+                <div class="quiz-options">
+                  ${item.options
+                    .map(
+                      (option, optionIndex) => `
+                        <button type="button" data-quiz-answer="${optionIndex}">
+                          ${escapeHtml(option)}
+                        </button>
+                      `
+                    )
+                    .join("")}
+                </div>
+                <p class="quiz-feedback" aria-live="polite"></p>
+              `
+          }
         </article>
       `;
       }
@@ -500,8 +533,8 @@ function renderFakeNewsQuiz() {
   els.fakeNewsQuiz.innerHTML = `
     <section class="fake-news-brief">
       <p class="eyebrow">Übungseinheit</p>
-      <h2>Fake oder glaubwürdig?</h2>
-      <p>Die Aufgaben werden schwieriger. Entscheiden Sie nicht nach Bauchgefühl, sondern nach Prüfmethode.</p>
+      <h2>Bild-Rückwärtssuche trainieren</h2>
+      <p>Die Fälle sind Rechercheaufträge: Erst Bild suchen, Treffer vergleichen, Kontext notieren - dann die Fundspur öffnen.</p>
     </section>
     ${quiz}
   `;
@@ -740,6 +773,17 @@ function bindEvents() {
       const feedback = card.querySelector(".quiz-feedback");
       feedback.textContent = `${correct ? "Richtig." : "Noch nicht."} ${item.feedback}`;
       feedback.className = `quiz-feedback ${correct ? "correct" : "wrong"}`;
+      return;
+    }
+
+    const revealButton = event.target.closest("[data-quiz-reveal]");
+    if (revealButton) {
+      const card = revealButton.closest("[data-quiz-index]");
+      const solution = card?.querySelector(".research-solution");
+      if (!solution) return;
+      solution.hidden = false;
+      revealButton.textContent = "Fundspur eingeblendet";
+      revealButton.disabled = true;
       return;
     }
 

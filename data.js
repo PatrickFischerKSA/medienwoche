@@ -170,179 +170,186 @@ window.LESSON_DATA = {
     "Erst Quelle, Inhalt, Bild/Video und Link prüfen - dann teilen. Besonders Nachrichten, die starke Gefühle auslösen, sollte man kritisch hinterfragen.",
   fakeNewsQuiz: [
     {
-      level: "1 · Einstieg",
-      title: "Reisserische Überschrift",
+      level: "1 · Bildsuche",
+      title: "Katastrophenbild im falschen Ort?",
       scenario:
-        "Ein Post behauptet: «Schockierende Wahrheit! Diese Nachricht verschweigen dir alle Medien!» Darunter steht kein Autor und kein Datum.",
-      question: "Was ist der erste sinnvolle Prüfschritt?",
-      options: [
-        "Sofort teilen, weil die Formulierung dringend klingt.",
-        "Quelle, Autor, Datum und Impressum prüfen.",
-        "Nur die Kommentare lesen und der Mehrheit folgen."
-      ],
-      answer: 1,
-      feedback:
-        "Richtig ist: Quelle prüfen. Reisserische Sprache und fehlende Angaben sind Warnsignale, aber erst die Quellenprüfung macht den Verdacht belastbar."
-    },
-    {
-      level: "2 · Aktualität",
-      title: "Alte Nachricht im neuen Gewand",
-      scenario:
-        "Ein Artikel über Unruhen wird heute geteilt. Das Veröffentlichungsdatum ist aber drei Jahre alt.",
-      question: "Welche Einschätzung ist am besten?",
-      options: [
-        "Alte Beiträge können trotzdem stimmen, aber sie dürfen nicht als aktuelle Nachricht verkauft werden.",
-        "Wenn ein Beitrag alt ist, ist er automatisch Fake News.",
-        "Das Datum spielt keine Rolle, wenn das Bild dramatisch wirkt."
-      ],
-      answer: 0,
-      feedback:
-        "Genau: Alte Inhalte sind nicht automatisch falsch. Entscheidend ist, ob Kontext und Aktualität korrekt dargestellt werden."
-    },
-    {
-      level: "3 · Bildkontext",
-      title: "Dramatisches Foto",
-      scenario:
-        "Ein Bild zeigt eine überschwemmte Strasse und soll angeblich von gestern aus Zürich stammen. Du bist unsicher.",
+        "In einem Klassenchat taucht dieses Bild mit der Behauptung auf: «Zürich gestern Abend nach dem Starkregen - die Medien spielen es herunter.»",
       images: [
         {
           url:
             "https://commons.wikimedia.org/wiki/Special:FilePath/FEMA_-_35547_-_Flooded_neighborhood_in_Iowa.jpg?width=900",
-          alt: "Überflutete Wohngegend in Iowa",
-          caption:
-            "Reales Archivbild aus Iowa. Als angebliches Foto aus Zürich wäre es irreführend, auch wenn die Aufnahme echt ist.",
+          alt: "Überflutete Wohngegend",
+          caption: "Prüfbild A: Screenshot aus einem angeblichen News-Post",
           sourceLabel: "Wikimedia Commons/FEMA: Flooded neighborhood in Iowa",
           sourceUrl:
             "https://commons.wikimedia.org/wiki/File:FEMA_-_35547_-_Flooded_neighborhood_in_Iowa.jpg"
         }
       ],
-      question: "Welche Methode bringt dich am schnellsten weiter?",
-      options: [
-        "Bild-Rückwärtssuche mit Google Lens, TinEye oder Yandex.",
-        "Das Bild heller stellen und schauen, ob es schöner wirkt.",
-        "Nur prüfen, ob viele Likes darunter stehen."
+      task:
+        "Führe eine Bild-Rückwärtssuche durch. Notiere: Wo wurde das Bild zuerst oder sehr früh veröffentlicht? Passt der Ort zur Behauptung?",
+      researchSteps: [
+        "Bild in neuem Tab öffnen oder Screenshot des Bildes machen.",
+        "Mit Google Lens, TinEye oder Yandex suchen.",
+        "Mindestens zwei Treffer vergleichen: Ort, Datum, Herausgeber."
       ],
-      answer: 0,
-      feedback:
-        "Eine Rückwärtssuche kann zeigen, ob das Bild schon früher oder an einem anderen Ort veröffentlicht wurde."
+      expectedFindings: [
+        "Die Aufnahme führt zu einem FEMA-/Wikimedia-Kontext.",
+        "Der Ort ist Iowa, nicht Zürich.",
+        "Das Bild ist echt, die Chat-Behauptung aber falsch kontextualisiert."
+      ],
+      judgement: "Irreführend: echtes Bild, falscher Ort und falscher aktueller Kontext."
     },
     {
-      level: "4 · Linkprüfung",
-      title: "Verkürzter Link",
+      level: "2 · Originalquelle",
+      title: "Mondfoto oder Meme-Material?",
       scenario:
-        "Eine Nachricht enthält nur einen Kurzlink. Die Vorschau zeigt keine vertrauenswürdige Quelle.",
-      images: [
-        {
-          url: "https://commons.wikimedia.org/wiki/Special:FilePath/Get-shortened-URL.png?width=900",
-          alt: "Screenshot einer Funktion zum Erstellen eines gekürzten Links",
-          caption:
-            "Echte Plattform-Funktion: Gekürzte Links können nützlich sein, verdecken aber zunächst Zieladresse und Kontext.",
-          sourceLabel: "Wikimedia Commons: Get-shortened-URL",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Get-shortened-URL.png"
-        }
-      ],
-      question: "Was solltest du tun, bevor du klickst oder teilst?",
-      options: [
-        "Den Kurzlink prüfen, zum Beispiel mit CheckShortURL oder einer Link-Vorschau.",
-        "Den Link möglichst oft weiterleiten, damit andere ihn testen.",
-        "Die URL ignorieren, weil Kurzlinks immer sicher sind."
-      ],
-      answer: 0,
-      feedback:
-        "Kurzlinks können das eigentliche Ziel verstecken. Erst Zieladresse prüfen, dann entscheiden."
-    },
-    {
-      level: "5 · Faktencheck",
-      title: "Nur eine Seite berichtet",
-      scenario:
-        "Eine unbekannte Website meldet eine angeblich riesige politische Enthüllung. Kein seriöses Medium berichtet darüber.",
-      question: "Welche Kombination ist am stärksten?",
-      options: [
-        "Andere seriöse Medien suchen und Faktencheck-Seiten wie Correctiv, Mimikama, dpa oder ARD-Faktenfinder prüfen.",
-        "Nur die Überschrift kopieren und in den Klassenchat stellen.",
-        "Der unbekannten Website glauben, weil grosse Medien manchmal langsam sind."
-      ],
-      answer: 0,
-      feedback:
-        "Bei grossen Behauptungen braucht es unabhängige Bestätigung. Faktencheck-Seiten helfen besonders bei verbreiteten Falschmeldungen."
-    },
-    {
-      level: "6 · Video",
-      title: "Seltsames Video",
-      scenario:
-        "Ein Video wirkt echt, aber Lippenbewegungen passen nicht ganz zur Stimme. Schatten und Schnitte wirken unruhig.",
+        "Ein Account behauptet: «Dieses Bild beweist, dass ein privates Raumfahrtunternehmen letzte Nacht heimlich auf dem Mond war.»",
       images: [
         {
           url: "https://commons.wikimedia.org/wiki/Special:FilePath/Apollo_11_bootprint.jpg?width=900",
-          alt: "Buzz Aldrins Fussabdruck auf der Mondoberfläche",
-          caption:
-            "Echtes NASA-Foto: Bei Videos und Bildern muss man trotzdem prüfen, ob die Begleitbehauptung zum Material passt.",
+          alt: "Fussabdruck auf der Mondoberfläche",
+          caption: "Prüfbild B: Bild aus einem viralen Raumfahrtpost",
           sourceLabel: "Wikimedia Commons/NASA: Apollo 11 bootprint",
           sourceUrl: "https://commons.wikimedia.org/wiki/File:Apollo_11_bootprint.jpg"
         }
       ],
-      question: "Welche Prüfung passt?",
-      options: [
-        "Einzelne Standbilder als Screenshots sichern, rückwärts suchen und auf Schnitt, Stimme, Lippenbewegung und Licht achten.",
-        "Nur die Tonspur lauter stellen.",
-        "Das Video glauben, wenn es professionell aussieht."
+      task:
+        "Suche das Bild rückwärts. Kläre, ob das Bild neu ist, wer es aufgenommen hat und in welchem historischen Kontext es steht.",
+      researchSteps: [
+        "Starte mit einer Bildsuche, nicht mit der Behauptung im Post.",
+        "Achte auf identische Ausschnitte und Dateinamen.",
+        "Prüfe, ob eine seriöse Primärquelle oder Archivquelle auftaucht."
       ],
-      answer: 0,
-      feedback:
-        "Professionelle Wirkung reicht nicht. Gerade Videos brauchen technische und kontextuelle Prüfung."
+      expectedFindings: [
+        "Das Bild ist ein bekanntes NASA-/Apollo-11-Foto.",
+        "Es zeigt keinen aktuellen privaten Mondflug.",
+        "Die Behauptung nutzt historisches Material für einen neuen falschen Kontext."
+      ],
+      judgement: "Falsch kontextualisiert: Bild echt, Aussage über ein neues Ereignis nicht belegt."
     },
     {
-      level: "7 · KI-Spuren",
-      title: "Sehr plausibles KI-Bild",
+      level: "3 · Zuschnitt",
+      title: "Wird ein Bildausschnitt zur Falschmeldung?",
       scenario:
-        "Ein Bild zeigt angeblich ein neues Ereignis. Hände, Schrift im Hintergrund und Spiegelungen wirken aber leicht fehlerhaft.",
-      images: [
-        {
-          url:
-            "https://commons.wikimedia.org/wiki/Special:FilePath/Artemis_2_Crew_Portrait.jpg?width=900",
-          alt: "Offizielles Porträt der Artemis-2-Crew",
-          caption:
-            "Echte Quelle, echte Metadaten, klare Herkunft: So sieht ein stark belegbares Bildmaterial aus.",
-          sourceLabel: "Wikimedia Commons/NASA: Artemis 2 Crew Portrait",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Artemis_2_Crew_Portrait.jpg"
-        }
-      ],
-      question: "Was ist die beste Schlussfolgerung?",
-      options: [
-        "Das sind mögliche KI-Hinweise; zusätzlich Quelle, Kontext und Gegenquellen prüfen.",
-        "Ein einzelner Fehler beweist immer sicher, dass das Bild KI-generiert ist.",
-        "KI-Bilder erkennt man immer sofort, deshalb ist keine Prüfung nötig."
-      ],
-      answer: 0,
-      feedback:
-        "KI-Hinweise sind Verdachtsmomente, keine vollständige Beweisführung. Sie müssen mit Quellen- und Kontextprüfung kombiniert werden."
-    },
-    {
-      level: "8 · Profi-Fall",
-      title: "Artemis-2 und KI-Montage",
-      scenario:
-        "Ein virales Raumfahrtvideo sieht professionell aus. Es kombiniert offenbar echte Aufnahmen mit KI-Übergängen und einem aus einem Standbild erzeugten Abschnitt.",
+        "Ein Post zeigt nur den engen Ausschnitt dieses Crew-Fotos und behauptet: «Geleaktes KI-Bild: Diese Mission existiert gar nicht.»",
       images: [
         {
           url:
             "https://commons.wikimedia.org/wiki/Special:FilePath/Artemis_2_Crew_Portrait_%28cropped%29.jpg?width=900",
-          alt: "Zugeschnittenes offizielles Artemis-2-Crew-Porträt",
-          caption:
-            "Ausgangspunkt für den SRF-Fall: echtes Raumfahrtmaterial kann mit KI-Übergängen und falschem Kontext vermischt werden.",
+          alt: "Zugeschnittenes Crew-Porträt",
+          caption: "Prüfbild C: Enger Ausschnitt aus einem viralen Raumfahrtpost",
           sourceLabel: "Wikimedia Commons/NASA: Artemis 2 Crew Portrait cropped",
           sourceUrl:
             "https://commons.wikimedia.org/wiki/File:Artemis_2_Crew_Portrait_(cropped).jpg"
         }
       ],
-      question: "Welche Aussage zeigt die reifste Prüfung?",
-      options: [
-        "Das Video kann teilweise auf echtem Material beruhen und trotzdem irreführend manipuliert sein.",
-        "Wenn ein Teil echt ist, ist das ganze Video zuverlässig.",
-        "Wenn ein Video KI enthält, ist automatisch jedes Detail frei erfunden."
+      task:
+        "Finde mit Rückwärtssuche das vollständige Bild und seine Quelle. Entscheide, ob der Ausschnitt als Beleg gegen die Echtheit taugt.",
+      researchSteps: [
+        "Suche zuerst den Ausschnitt rückwärts.",
+        "Vergleiche Treffer mit vollständigen Versionen des Bildes.",
+        "Prüfe, ob Quelle, Datum und Urheber zum Raumfahrtkontext passen."
       ],
-      answer: 0,
-      feedback:
-        "Genau der schwierige Punkt: Moderne Fehlinformation kann echtes Material, KI-Übergänge und falschen Kontext mischen. Darum muss man Herkunft, Schnitt und Behauptung getrennt prüfen."
+      expectedFindings: [
+        "Die Rückwärtssuche führt zu einem Artemis-2-Crew-Porträt.",
+        "Das Bild hat eine nachvollziehbare NASA-/Wikimedia-Herkunft.",
+        "Ein enger Ausschnitt kann Verdacht erzeugen, beweist aber keine Fälschung."
+      ],
+      judgement: "Nicht ausreichend belegt: Der Ausschnitt ist kein Beweis für KI oder Nichtexistenz."
+    },
+    {
+      level: "4 · Werkzeugspur",
+      title: "Was verrät ein Screenshot wirklich?",
+      scenario:
+        "Ein Screenshot wird geteilt mit der Behauptung: «Geheimes Behörden-Tool zum Verstecken gefährlicher Links.»",
+      images: [
+        {
+          url: "https://commons.wikimedia.org/wiki/Special:FilePath/Get-shortened-URL.png?width=900",
+          alt: "Screenshot einer Funktion zum Erstellen eines gekürzten Links",
+          caption: "Prüfbild D: Screenshot einer Oberfläche mit Kurzlink-Funktion",
+          sourceLabel: "Wikimedia Commons: Get-shortened-URL",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Get-shortened-URL.png"
+        }
+      ],
+      task:
+        "Suche den Screenshot rückwärts und finde heraus, aus welchem Kontext er stammt. Prüfe danach, ob die Behauptung «geheim» plausibel ist.",
+      researchSteps: [
+        "Suche nach dem Screenshot oder nach sichtbaren Textteilen im Bild.",
+        "Vergleiche die Treffer mit der Behauptung.",
+        "Unterscheide: Was zeigt der Screenshot? Was behauptet der Post zusätzlich?"
+      ],
+      expectedFindings: [
+        "Der Screenshot zeigt eine normale Kurzlink-Funktion.",
+        "Die Quelle ist öffentlich auffindbar.",
+        "Aus dem Bild allein folgt nicht, dass ein Link gefährlich oder geheim ist."
+      ],
+      judgement: "Überdehnt: Das Bild zeigt ein reales Werkzeug, aber die dramatische Behauptung ist nicht belegt."
+    },
+    {
+      level: "5 · KI-Verdacht",
+      title: "Echt, KI oder gemischt?",
+      scenario:
+        "In einem Video wird behauptet, die Artemis-2-Crew sei komplett KI-generiert. Als Beleg erscheint dieses offizielle Gruppenbild.",
+      images: [
+        {
+          url:
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Artemis_2_Crew_Portrait.jpg?width=900",
+          alt: "Offizielles Crew-Porträt",
+          caption: "Prüfbild E: Gruppenbild aus einem Raumfahrtvideo",
+          sourceLabel: "Wikimedia Commons/NASA: Artemis 2 Crew Portrait",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Artemis_2_Crew_Portrait.jpg"
+        }
+      ],
+      task:
+        "Führe eine Rückwärtssuche durch und vergleiche deine Treffer mit dem SRF-Faktencheck zu Artemis 2. Welche Teile können echt sein, obwohl ein Video manipuliert ist?",
+      researchSteps: [
+        "Finde die Bildquelle über Rückwärtssuche.",
+        "Prüfe die Herkunft des Fotos und suche nach dem SRF-Faktencheck.",
+        "Trenne Bildquelle, Videobearbeitung und Behauptung voneinander."
+      ],
+      expectedFindings: [
+        "Das Gruppenbild hat eine offizielle NASA-/Wikimedia-Spur.",
+        "Der SRF-Fall zeigt: Fehlinformation kann echtes Material und KI-Bearbeitung mischen.",
+        "Ein echtes Bild widerlegt nicht jede Manipulation im Video, aber auch nicht die Existenz der Crew."
+      ],
+      judgement: "Komplex: Bildquelle echt, Videokontext muss separat geprüft werden."
+    },
+    {
+      level: "6 · Profi-Recherche",
+      title: "Belege gegeneinander prüfen",
+      scenario:
+        "Du sollst eine kurze Faktencheck-Notiz schreiben: «Ein viraler Post nutzt mehrere Bilder, um ein aktuelles Ereignis zu beweisen.»",
+      images: [
+        {
+          url: "https://commons.wikimedia.org/wiki/Special:FilePath/Apollo_11_bootprint.jpg?width=900",
+          alt: "Fussabdruck auf der Mondoberfläche",
+          caption: "Prüfbild F1",
+          sourceLabel: "Wikimedia Commons/NASA: Apollo 11 bootprint",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Apollo_11_bootprint.jpg"
+        },
+        {
+          url:
+            "https://commons.wikimedia.org/wiki/Special:FilePath/FEMA_-_35547_-_Flooded_neighborhood_in_Iowa.jpg?width=900",
+          alt: "Überflutete Wohngegend",
+          caption: "Prüfbild F2",
+          sourceLabel: "Wikimedia Commons/FEMA: Flooded neighborhood in Iowa",
+          sourceUrl:
+            "https://commons.wikimedia.org/wiki/File:FEMA_-_35547_-_Flooded_neighborhood_in_Iowa.jpg"
+        }
+      ],
+      task:
+        "Suche beide Bilder rückwärts. Formuliere danach eine zweisätzige Faktencheck-Notiz mit Quelle, Kontext und Urteil.",
+      researchSteps: [
+        "Ermittle für jedes Bild eine wahrscheinliche Originalquelle.",
+        "Notiere, ob Ort, Zeit und Ereignis zur viralen Behauptung passen.",
+        "Formuliere nicht nur «Fake», sondern präzise: echt, falsch kontextualisiert, ungeklärt oder manipuliert."
+      ],
+      expectedFindings: [
+        "F1 führt in den Apollo-11-/NASA-Kontext.",
+        "F2 führt in den FEMA-/Iowa-Kontext.",
+        "Beide Bilder können echt sein und trotzdem als Belege für ein aktuelles Ereignis ungeeignet sein."
+      ],
+      judgement: "Profi-Urteil: Nicht das Bild allein bewerten, sondern Bild, Quelle und Behauptung getrennt."
     }
   ],
   resources: [
