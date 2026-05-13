@@ -890,6 +890,29 @@ textarea {
   font-weight: 850;
 }
 
+.reverse-search-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.reverse-search-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.reverse-search-actions a:first-child {
+  border-color: rgba(14, 102, 116, 0.45);
+  background: rgba(217, 238, 241, 0.36);
+}
+
 .quiz-question {
   color: var(--accent-strong);
   font-weight: 850;

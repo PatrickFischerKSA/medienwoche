@@ -456,17 +456,25 @@ function renderFakeNewsQuiz() {
       (item, index) => {
         const evidence = (item.images || [])
           .map(
-            (image) => `
-              <figure class="quiz-image-card">
+            (image) => {
+              const lensUrl = `https://lens.google.com/uploadbyurl?url=${encodeURIComponent(image.url)}`;
+              return `
+                <figure class="quiz-image-card">
                 <img src="${escapeHtml(image.url)}" alt="${escapeHtml(image.alt)}" loading="lazy" />
                 <figcaption>
                   <span>${escapeHtml(image.caption)}</span>
-                  <a href="${escapeHtml(image.url)}" target="_blank" rel="noreferrer">
-                    Bilddatei für Rückwärtssuche öffnen
-                  </a>
+                  <div class="reverse-search-actions">
+                    <a href="${escapeHtml(lensUrl)}" target="_blank" rel="noreferrer">
+                      Mit Google Lens suchen
+                    </a>
+                    <a href="${escapeHtml(image.url)}" target="_blank" rel="noreferrer">
+                      Bilddatei öffnen
+                    </a>
+                  </div>
                 </figcaption>
               </figure>
-            `
+            `;
+            }
           )
           .join("");
         const researchSteps = (item.researchSteps || [])
