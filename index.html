@@ -31,40 +31,50 @@
       </section>
 
       <section class="fake-news-lab" id="fake-news-lab" aria-labelledby="fake-news-lab-title">
-        <div class="fake-lab-head">
-          <div>
-            <p class="eyebrow">Fake-News-Labor</p>
-            <h2 id="fake-news-lab-title">Prüfen, bevor man teilt</h2>
-            <p>
-              Erst Methoden sichern, dann an konkreten Fällen üben: Quelle, Datum,
-              Bildkontext, Video-Manipulation und KI-Spuren.
-            </p>
+        <details class="fake-lab-details">
+          <summary class="fake-lab-summary">
+            <div>
+              <p class="eyebrow">Fake-News-Labor</p>
+              <h2 id="fake-news-lab-title">Prüfen, bevor man teilt</h2>
+              <p>Bild-Rückwärtssuche, Quellencheck und Recherchetraining ausklappen.</p>
+            </div>
+            <span>Öffnen</span>
+          </summary>
+          <div class="fake-lab-body">
+            <div class="fake-lab-head">
+              <div>
+                <p>
+                  Erst Methoden sichern, dann an konkreten Fällen üben: Quelle, Datum,
+                  Bildkontext, Video-Manipulation und KI-Spuren.
+                </p>
+              </div>
+              <div class="fake-lab-links">
+                <a href="https://www.srf.ch/play/tv/srf-media-school/video/was-sind-fake-news?urn=urn:srf:video:1cdf379e-20a6-43ba-88b6-d263eb34648d" target="_blank" rel="noreferrer">SRF-Video</a>
+                <a href="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" target="_blank" rel="noreferrer">SRF-Dossier</a>
+                <a href="https://www.srf.ch/news/srf-faktenchecks/faktencheck-artemis-2-ki-und-die-neue-generation-von-fehlinformationen" target="_blank" rel="noreferrer">Artemis-2-Faktencheck</a>
+              </div>
+            </div>
+            <aside class="reverse-search-guide" aria-label="Anleitung zur Bild-Rückwärtssuche">
+              <p class="eyebrow">Kurzanleitung</p>
+              <h3>Bild-Rückwärtssuche in 5 Schritten</h3>
+              <ol>
+                <li>Bilddatei öffnen oder vom verdächtigen Post einen Screenshot machen.</li>
+                <li>Das Bild in Google Lens, TinEye oder Yandex hochladen.</li>
+                <li>Nach älteren Treffern, gleichen Bildausschnitten und ähnlichen Dateinamen suchen.</li>
+                <li>Ort, Datum, Urheber und ursprünglichen Zusammenhang vergleichen.</li>
+                <li>Urteil formulieren: echt, falsch kontextualisiert, manipuliert oder ungeklärt.</li>
+              </ol>
+            </aside>
+            <div class="fake-lab-layout">
+              <section aria-label="Fake-News-Prüfkarte">
+                <div class="fake-news-list" id="fake-news-list"></div>
+              </section>
+              <section aria-label="Fake-News-Training">
+                <div class="fake-news-quiz" id="fake-news-quiz"></div>
+              </section>
+            </div>
           </div>
-          <div class="fake-lab-links">
-            <a href="https://www.srf.ch/play/tv/srf-media-school/video/was-sind-fake-news?urn=urn:srf:video:1cdf379e-20a6-43ba-88b6-d263eb34648d" target="_blank" rel="noreferrer">SRF-Video</a>
-            <a href="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" target="_blank" rel="noreferrer">SRF-Dossier</a>
-            <a href="https://www.srf.ch/news/srf-faktenchecks/faktencheck-artemis-2-ki-und-die-neue-generation-von-fehlinformationen" target="_blank" rel="noreferrer">Artemis-2-Faktencheck</a>
-          </div>
-        </div>
-        <aside class="reverse-search-guide" aria-label="Anleitung zur Bild-Rückwärtssuche">
-          <p class="eyebrow">Kurzanleitung</p>
-          <h3>Bild-Rückwärtssuche in 5 Schritten</h3>
-          <ol>
-            <li>Bilddatei öffnen oder vom verdächtigen Post einen Screenshot machen.</li>
-            <li>Das Bild in Google Lens, TinEye oder Yandex hochladen.</li>
-            <li>Nach älteren Treffern, gleichen Bildausschnitten und ähnlichen Dateinamen suchen.</li>
-            <li>Ort, Datum, Urheber und ursprünglichen Zusammenhang vergleichen.</li>
-            <li>Urteil formulieren: echt, falsch kontextualisiert, manipuliert oder ungeklärt.</li>
-          </ol>
-        </aside>
-        <div class="fake-lab-layout">
-          <section aria-label="Fake-News-Prüfkarte">
-            <div class="fake-news-list" id="fake-news-list"></div>
-          </section>
-          <section aria-label="Fake-News-Training">
-            <div class="fake-news-quiz" id="fake-news-quiz"></div>
-          </section>
-        </div>
+        </details>
       </section>
 
       <main class="learning-grid">

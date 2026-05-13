@@ -103,12 +103,98 @@ button {
 
 .fake-news-lab {
   margin: 0 0 18px;
-  padding: 18px;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.16);
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px) saturate(1.14);
+}
+
+.fake-lab-details {
+  display: block;
+}
+
+.fake-lab-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.fake-lab-summary::-webkit-details-marker {
+  display: none;
+}
+
+.fake-lab-summary::before {
+  content: "▸";
+  align-self: start;
+  margin-top: 29px;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.fake-lab-summary > div {
+  grid-column: 1;
+}
+
+.fake-lab-summary h2 {
+  font-size: clamp(1.35rem, 2.2vw, 2.2rem);
+}
+
+.fake-lab-summary p:not(.eyebrow) {
+  max-width: 780px;
+  margin: 5px 0 0;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.fake-lab-summary > span {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  min-width: 92px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent-strong);
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 900;
+  text-align: center;
+}
+
+.fake-lab-details[open] .fake-lab-summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.fake-lab-details[open] .fake-lab-summary::before {
+  content: "▾";
+}
+
+.fake-lab-details[open] .fake-lab-summary > span {
+  color: #fff;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.fake-lab-details[open] .fake-lab-summary > span::before {
+  content: "Schliessen";
+}
+
+.fake-lab-details[open] .fake-lab-summary > span {
+  font-size: 0;
+}
+
+.fake-lab-details[open] .fake-lab-summary > span::before {
+  font-size: 1rem;
+}
+
+.fake-lab-body {
+  padding: 18px;
 }
 
 .fake-lab-head {
@@ -124,9 +210,9 @@ button {
   font-size: clamp(1.6rem, 2.4vw, 2.6rem);
 }
 
-.fake-lab-head p:not(.eyebrow) {
+.fake-lab-head p {
   max-width: 760px;
-  margin: 8px 0 0;
+  margin: 0;
   color: var(--muted);
   line-height: 1.5;
 }
