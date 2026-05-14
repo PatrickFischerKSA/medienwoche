@@ -416,11 +416,13 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  align-items: start;
 }
 
 .media-card {
   display: grid;
   gap: 10px;
+  align-self: start;
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -447,6 +449,11 @@ h2 {
 
 .media-card.project-card .media-link {
   background: var(--gold);
+}
+
+.media-card.project-card .media-link.secondary {
+  color: var(--accent-strong);
+  background: rgba(217, 238, 241, 0.28);
 }
 
 .media-button {
